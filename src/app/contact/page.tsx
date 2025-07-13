@@ -11,7 +11,8 @@ export default function ContactPage() {
 					<div className="mb-8">
 						<h1 className="text-3xl font-bold gh-text mb-4">Get In Touch</h1>
 						<p className="gh-text-muted text-lg">
-							Let's connect! Whether you have a project in mind, want to collaborate, or just want to say hello.
+							Let&apos;s connect! Whether you have a project in mind, want to collaborate, or just want to
+							say hello.
 						</p>
 					</div>
 
@@ -21,7 +22,7 @@ export default function ContactPage() {
 							<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
 								<h2 className="text-xl font-semibold gh-text mb-4">Contact Information</h2>
 								<div className="space-y-4">
-									<a 
+									<a
 										href="mailto:adarsh3699@gmail.com"
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
@@ -34,7 +35,7 @@ export default function ContactPage() {
 										</div>
 									</a>
 
-									<a 
+									<a
 										href="tel:+1234567890"
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
@@ -63,7 +64,7 @@ export default function ContactPage() {
 							<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
 								<h2 className="text-xl font-semibold gh-text mb-4">Connect With Me</h2>
 								<div className="space-y-3">
-									<a 
+									<a
 										href="https://github.com/adarsh3699"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -72,7 +73,7 @@ export default function ContactPage() {
 										<Github className="w-5 h-5 gh-text-muted group-hover:gh-text-accent" />
 										<span className="gh-text group-hover:gh-text-accent">GitHub</span>
 									</a>
-									<a 
+									<a
 										href="https://linkedin.com/in/adarsh3699"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -93,8 +94,8 @@ export default function ContactPage() {
 									<h3 className="font-semibold gh-text">Response Time</h3>
 								</div>
 								<p className="gh-text-muted text-sm">
-									I typically respond to emails within 24 hours. For urgent matters, 
-									feel free to reach out via LinkedIn for a faster response.
+									I typically respond to emails within 24 hours. For urgent matters, feel free to
+									reach out via LinkedIn for a faster response.
 								</p>
 							</div>
 						</div>
@@ -185,17 +186,18 @@ export default function ContactPage() {
 						<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
 							<h3 className="text-lg font-semibold gh-text mb-2">Looking to Hire?</h3>
 							<p className="gh-text-muted mb-4">
-								I'm currently open to new opportunities and would love to discuss how I can contribute to your team.
+								I&apos;m currently open to new opportunities and would love to discuss how I can
+								contribute to your team.
 							</p>
 							<div className="flex flex-col sm:flex-row gap-3 justify-center">
-								<a 
-									href="/experience" 
+								<a
+									href="/experience"
 									className="btn-secondary inline-flex items-center justify-center gap-2"
 								>
 									View My Experience
 								</a>
-								<a 
-									href="/projects" 
+								<a
+									href="/projects"
 									className="btn-secondary inline-flex items-center justify-center gap-2"
 								>
 									See My Work

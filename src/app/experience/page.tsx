@@ -28,10 +28,10 @@ const experiences: Experience[] = [
 			"Lead development of scalable web applications using React, Next.js, and Node.js",
 			"Architected and implemented microservices infrastructure using Docker and Kubernetes",
 			"Mentored junior developers and conducted code reviews to maintain code quality",
-			"Collaborated with product teams to deliver features that improved user engagement by 40%"
+			"Collaborated with product teams to deliver features that improved user engagement by 40%",
 		],
 		technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "Docker", "Kubernetes"],
-		companyUrl: "https://techsolutions.com"
+		companyUrl: "https://techsolutions.com",
 	},
 	{
 		id: 2,
@@ -45,10 +45,10 @@ const experiences: Experience[] = [
 			"Built and maintained customer-facing web applications using React and Python",
 			"Implemented real-time features using WebSocket connections and Redis",
 			"Optimized database queries resulting in 50% performance improvement",
-			"Developed RESTful APIs and integrated third-party services"
+			"Developed RESTful APIs and integrated third-party services",
 		],
 		technologies: ["React", "Python", "Django", "PostgreSQL", "Redis", "AWS"],
-		companyUrl: "https://startupxyz.com"
+		companyUrl: "https://startupxyz.com",
 	},
 	{
 		id: 3,
@@ -62,11 +62,11 @@ const experiences: Experience[] = [
 			"Developed responsive websites and web applications for various clients",
 			"Collaborated with designers to implement pixel-perfect UI/UX designs",
 			"Optimized websites for performance and SEO, achieving 95+ PageSpeed scores",
-			"Maintained and updated existing client websites"
+			"Maintained and updated existing client websites",
 		],
 		technologies: ["React", "JavaScript", "HTML", "CSS", "SASS", "WordPress"],
-		companyUrl: "https://digitalagencypro.com"
-	}
+		companyUrl: "https://digitalagencypro.com",
+	},
 ];
 
 export default function ExperiencePage() {
@@ -78,7 +78,7 @@ export default function ExperiencePage() {
 					<div className="mb-8">
 						<h1 className="text-3xl font-bold gh-text mb-4">Work Experience</h1>
 						<p className="gh-text-muted text-lg">
-							My professional journey and the companies I've had the pleasure to work with.
+							My professional journey and the companies I&apos;ve had the pleasure to work with.
 						</p>
 					</div>
 
@@ -89,15 +89,17 @@ export default function ExperiencePage() {
 
 						{/* Experience items */}
 						<div className="space-y-8">
-							{experiences.map((exp, index) => (
+							{experiences.map((exp) => (
 								<div key={exp.id} className="relative flex items-start space-x-6">
 									{/* Timeline dot */}
 									<div className="flex-shrink-0 relative">
-										<div className={`w-4 h-4 rounded-full border-2 ${
-											exp.isCurrent 
-												? 'bg-green-500 border-green-500' 
-												: 'bg-gh-canvas-default border-gh-border-muted'
-										}`}></div>
+										<div
+											className={`w-4 h-4 rounded-full border-2 ${
+												exp.isCurrent
+													? "bg-green-500 border-green-500"
+													: "bg-gh-canvas-default border-gh-border-muted"
+											}`}
+										></div>
 										{exp.isCurrent && (
 											<div className="absolute -inset-1 w-6 h-6 rounded-full bg-green-500/20 animate-pulse"></div>
 										)}
@@ -116,7 +118,7 @@ export default function ExperiencePage() {
 													)}
 												</div>
 												<div className="flex items-center gap-2 mb-2">
-													<a 
+													<a
 														href={exp.companyUrl}
 														target="_blank"
 														rel="noopener noreferrer"
@@ -129,7 +131,9 @@ export default function ExperiencePage() {
 												<div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm gh-text-muted">
 													<div className="flex items-center gap-1">
 														<Calendar className="w-4 h-4" />
-														<span>{exp.startDate} - {exp.endDate}</span>
+														<span>
+															{exp.startDate} - {exp.endDate}
+														</span>
 													</div>
 													<span className="hidden sm:block">•</span>
 													<div className="flex items-center gap-1">
@@ -177,12 +181,9 @@ export default function ExperiencePage() {
 						<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
 							<h3 className="text-lg font-semibold gh-text mb-2">Looking for Opportunities</h3>
 							<p className="gh-text-muted mb-4">
-								I'm always interested in hearing about new opportunities and exciting projects.
+								I&apos;m always interested in hearing about new opportunities and exciting projects.
 							</p>
-							<a 
-								href="/contact" 
-								className="btn-primary inline-flex items-center gap-2"
-							>
+							<a href="/contact" className="btn-primary inline-flex items-center gap-2">
 								<Briefcase className="w-4 h-4" />
 								Get In Touch
 							</a>
