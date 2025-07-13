@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Github, Mail, BookOpen, Info, FolderOpen, Briefcase, Sun, Moon } from "lucide-react";
 
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
@@ -59,15 +60,16 @@ const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 const NAV_ITEMS: NavItem[] = [
-	{ href: "#overview", label: "Overview", icon: BookOpen, isActive: true },
-	{ href: "#about", label: "About", icon: Info },
-	{ href: "#projects", label: "Projects", icon: FolderOpen, badge: "26" },
-	{ href: "#experience", label: "Experience", icon: Briefcase },
-	{ href: "#contact", label: "Contact", icon: Mail },
+	{ href: "/", label: "Overview", icon: BookOpen },
+	{ href: "/about", label: "About", icon: Info },
+	{ href: "/projects", label: "Projects", icon: FolderOpen, badge: "26" },
+	{ href: "/experience", label: "Experience", icon: Briefcase },
+	{ href: "/contact", label: "Contact", icon: Mail },
 ];
 
 export default function Header() {
 	const { theme, setTheme } = useTheme();
+	const pathname = usePathname();
 	const [mounted, setMounted] = React.useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 	const [isPhoneView, setIsPhoneView] = React.useState(false);
@@ -201,12 +203,13 @@ export default function Header() {
 			<div className="flex items-center px-4">
 				{NAV_ITEMS.map((item, index) => {
 					const IconComponent = item.icon;
+					const isActive = pathname === item.href;
 					return (
 						<Link
 							key={index}
 							href={item.href}
 							className={`flex h-11 items-center px-4 py-2 text-sm font-medium gh-text hover:gh-text-accent transition-all border-b-2 transform ${
-								item.isActive
+								isActive
 									? "border-orange-500 gh-text-accent"
 									: "border-transparent hover:border-gh-border-muted"
 							}`}
@@ -263,13 +266,14 @@ export default function Header() {
 						<div className="space-y-1">
 							{NAV_ITEMS.map((item, index) => {
 								const IconComponent = item.icon;
+								const isActive = pathname === item.href;
 								return (
 									<Link
 										key={index}
 										href={item.href}
 										onClick={closeMobileMenu}
 										className={`flex items-center px-3 py-3 text-sm font-medium rounded-md transition-all ${
-											item.isActive
+											isActive
 												? "gh-bg-accent-muted gh-text-accent"
 												: "gh-text hover:gh-text-accent hover:gh-bg-neutral-muted"
 										}`}
