@@ -3,14 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-	/* GitHub Light Colors */
+	/* GitHub Light Colors - Updated to match real GitHub */
 	--gh-canvas-default: #ffffff;
 	--gh-canvas-overlay: #ffffff;
 	--gh-canvas-inset: #f6f8fa;
 	--gh-canvas-subtle: #f6f8fa;
 
 	--gh-fg-default: #1f2328;
-	--gh-fg-muted: #9198a1;
+	--gh-fg-muted: #59636e;
 	--gh-fg-subtle: #6e7681;
 	--gh-fg-on-emphasis: #ffffff;
 
@@ -44,14 +44,14 @@
 	--gh-done-muted: rgba(194, 151, 255, 0.4);
 	--gh-done-subtle: #fbefff;
 
-	--gh-border-default: #3d444d;
+	--gh-border-default: #d1d9e0;
 	--gh-border-muted: #d8dee4;
-	--gh-border-subtle: hsla(210, 18%, 87%, 1);
+	--gh-border-subtle: #f6f8fa;
 
 	--gh-neutral-emphasis-plus: #24292f;
 	--gh-neutral-emphasis: #6e7781;
 	--gh-neutral-muted: rgba(175, 184, 193, 0.2);
-	--gh-neutral-subtle: #afb8c1;
+	--gh-neutral-subtle: #f6f8fa;
 
 	--gh-shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
 	--gh-shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
@@ -121,6 +121,9 @@
 .gh-bg-canvas {
 	background-color: var(--gh-canvas-default);
 }
+.gh-bg-canvas-default {
+	background-color: var(--gh-canvas-default);
+}
 .gh-bg-canvas-overlay {
 	background-color: var(--gh-canvas-overlay);
 }
@@ -182,6 +185,23 @@
 }
 .gh-bg-danger-subtle {
 	background-color: var(--gh-danger-subtle);
+}
+
+.gh-bg-neutral-muted {
+	background-color: var(--gh-neutral-muted);
+}
+.gh-bg-neutral-subtle {
+	background-color: var(--gh-neutral-subtle);
+}
+
+.gh-border {
+	border-color: var(--gh-border-default);
+}
+.gh-border-muted {
+	border-color: var(--gh-border-muted);
+}
+.gh-border-subtle {
+	border-color: var(--gh-border-subtle);
 }
 
 .gh-border {
