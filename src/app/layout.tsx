@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Portfolio - adarsh3699",
 	description: "A GitHub-inspired portfolio showcasing my work and projects",
+	icons: {
+		icon: "/myLogo.webp",
+		shortcut: "/myLogo.webp",
+		apple: "/myLogo.webp",
+	},
 };
 
 // Theme initialization script

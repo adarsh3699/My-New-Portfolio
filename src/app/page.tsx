@@ -5,13 +5,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen gh-bg-canvas-default">
+		<>
 			<Header />
-			<main>
+			<main className="in-h-screen gh-bg-canvas-default">
 				<ProfileSection />
 				<ProjectsSection />
 			</main>
 			<Footer />
-		</div>
+		</>
 	);
 }
