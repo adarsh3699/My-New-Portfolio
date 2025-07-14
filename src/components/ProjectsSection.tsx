@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Search } from "lucide-react";
 
 interface Project {
@@ -151,9 +152,9 @@ export default function ProjectsSection() {
 								{/* Repository Header */}
 								<div className="flex items-center gap-3 mb-2">
 									<h3 className="text-lg font-semibold">
-										<a href="#" className="gh-text-accent hover:underline">
+										<Link href="#" className="gh-text-accent hover:underline">
 											{project.name}
-										</a>
+										</Link>
 									</h3>
 									<span
 										className={`text-xs px-2 py-1 border rounded-full ${

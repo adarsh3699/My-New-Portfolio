@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react";
@@ -183,10 +184,10 @@ export default function ExperiencePage() {
 							<p className="gh-text-muted mb-4">
 								I&apos;m always interested in hearing about new opportunities and exciting projects.
 							</p>
-							<a href="/contact" className="btn-primary inline-flex items-center gap-2">
+							<Link href="/contact" className="btn-primary inline-flex items-center gap-2">
 								<Briefcase className="w-4 h-4" />
 								Get In Touch
-							</a>
+							</Link>
 						</div>
 					</div>
 				</section>

@@ -121,6 +121,7 @@ export default function Header() {
 		<button
 			onClick={toggleMobileMenu}
 			className="p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group md:hidden"
+			aria-label="Toggle mobile menu"
 		>
 			<div className="transform transition-transform duration-300 group-hover:scale-110">
 				<Menu className="w-4 h-4" />
@@ -174,6 +175,7 @@ export default function Header() {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
+						aria-label={link.tooltip}
 					>
 						<div className="transform transition-transform duration-300 group-hover:scale-110">
 							{link.icon}
@@ -256,6 +258,7 @@ export default function Header() {
 						<button
 							onClick={closeMobileMenu}
 							className="p-2 gh-text hover:gh-text-accent transition-colors"
+							aria-label="Close mobile menu"
 						>
 							<X className="w-5 h-5" />
 						</button>
