@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import PlaceholderImage from "./PlaceholderImage";
+import Image from "next/image";
 
 export default function ProfileSection() {
 	return (
@@ -12,16 +12,17 @@ export default function ProfileSection() {
 						{/* Profile Picture */}
 						<div className="text-center mb-6">
 							<div className="relative w-32 h-32 mx-auto mb-4">
-								<PlaceholderImage
+								<Image
+									src="/images/myPhoto.png"
 									width={128}
 									height={128}
 									alt="Profile Picture"
-									className="rounded-full border-2 gh-border"
+									className="rounded-full border-2 gh-border object-cover"
 								/>
 								<div className="absolute bottom-0 right-0 w-6 h-6 gh-bg-success rounded-full gh-border-2"></div>
 							</div>
-							<h1 className="text-2xl font-bold gh-text mb-1">Your Name</h1>
-							<p className="gh-text-muted mb-3">@yourusername</p>
+							<h1 className="text-2xl font-bold gh-text mb-1">Adarsh Suman</h1>
+							<p className="gh-text-muted mb-3">@adarsh3699</p>
 							<p className="gh-text text-sm leading-relaxed">
 								Full-stack developer passionate about creating amazing user experiences with modern
 								technologies.
@@ -53,7 +54,7 @@ export default function ProfileSection() {
 									<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
 									<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
 								</svg>
-								<span className="gh-text">your.email@example.com</span>
+								<span className="gh-text">adarsh3699@gmail.com</span>
 							</div>
 							<div className="flex items-center text-sm">
 								<svg className="w-4 h-4 mr-3 gh-text-muted" fill="currentColor" viewBox="0 0 20 20">
@@ -63,7 +64,7 @@ export default function ProfileSection() {
 										clipRule="evenodd"
 									/>
 								</svg>
-								<span className="gh-text">Your City, Country</span>
+								<span className="gh-text">Nalanda, Bihar, India</span>
 							</div>
 							<div className="flex items-center text-sm">
 								<svg className="w-4 h-4 mr-3 gh-text-muted" fill="currentColor" viewBox="0 0 20 20">
@@ -74,12 +75,12 @@ export default function ProfileSection() {
 									/>
 								</svg>
 								<Link
-									href="https://yourwebsite.com"
+									href="https://www.bhemu.me"
 									className="gh-text-accent hover:underline"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									yourwebsite.com
+									www.bhemu.me
 								</Link>
 							</div>
 						</div>

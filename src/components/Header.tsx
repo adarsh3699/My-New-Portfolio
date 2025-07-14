@@ -210,7 +210,7 @@ export default function Header() {
 						<Link
 							key={index}
 							href={item.href}
-							className={`flex h-11 items-center px-4 py-2 text-sm font-medium gh-text hover:gh-text-accent transition-all border-b-2 transform ${
+							className={`flex h-10 items-center px-4 text-sm font-medium gh-text hover:gh-text-accent transition-all border-b-2 transform ${
 								isActive
 									? "border-orange-500 gh-text-accent"
 									: "border-transparent hover:border-gh-border-muted"
