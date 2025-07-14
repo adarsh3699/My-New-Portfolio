@@ -9,7 +9,7 @@ export default function ProfileSection() {
 			<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
 				{/* Profile Sidebar */}
 				<div className="xl:col-span-1">
-					<div className="border gh-border rounded-lg p-4 sm:p-6 gh-shadow sticky top-4">
+					<div className="border gh-border rounded-lg p-4 sm:p-6 gh-shadow sticky top-30">
 						{/* Profile Picture */}
 						<div className="text-center mb-4 sm:mb-6">
 							<div className="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4">

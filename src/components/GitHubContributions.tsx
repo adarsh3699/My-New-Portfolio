@@ -4,7 +4,7 @@ export default function GitHubContributions() {
 	// Generate realistic contribution data for the last year
 	const generateContributionData = () => {
 		const weeks = [];
-		const today = new Date();
+		// const today = new Date();
 
 		// Create 53 weeks of data (52 weeks + partial week at start)
 		for (let week = 0; week < 53; week++) {
