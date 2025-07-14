@@ -35,6 +35,18 @@ const SEARCH_PLACEHOLDERS = [
 	"Contact information...",
 ];
 
+// Optimized transition classes for consistent animations
+const TRANSITIONS = {
+	// Base transition for most interactive elements
+	base: "transition-colors duration-200 ease-out",
+	// For elements that need transform effects
+	interactive: "transition-all duration-200 ease-out",
+	// For hover scale effects
+	scale: "transform transition-transform duration-200 ease-out",
+	// For mobile drawer
+	drawer: "transform transition-transform duration-300 ease-in-out",
+} as const;
+
 const SOCIAL_LINKS: SocialLink[] = [
 	{
 		href: "https://linkedin.com/in/adarsh3699",
@@ -80,8 +92,6 @@ export default function Header() {
 	}, []);
 
 	React.useEffect(() => {
-		// Set initial phone view state
-
 		const handleResize = () => {
 			const isPhone = window.innerWidth < 768;
 			setIsPhoneView(isPhone);
@@ -93,8 +103,6 @@ export default function Header() {
 		};
 
 		handleResize();
-
-		// Add resize listener
 		window.addEventListener("resize", handleResize);
 		return () => window.removeEventListener("resize", handleResize);
 	}, [isMobileMenuOpen]);
@@ -106,31 +114,43 @@ export default function Header() {
 		};
 	}, [isMobileMenuOpen]);
 
-	// Event Handlers
-	const toggleDarkMode = () => setTheme(theme === "dark" ? "light" : "dark");
-	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-	const closeMobileMenu = () => setIsMobileMenuOpen(false);
-	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value);
-	const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	// Optimized Event Handlers
+	const toggleDarkMode = React.useCallback(() => {
+		setTheme(theme === "dark" ? "light" : "dark");
+	}, [theme, setTheme]);
+
+	const toggleMobileMenu = React.useCallback(() => {
+		setIsMobileMenuOpen(!isMobileMenuOpen);
+	}, [isMobileMenuOpen]);
+
+	const closeMobileMenu = React.useCallback(() => {
+		setIsMobileMenuOpen(false);
+	}, []);
+
+	const handleSearchChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		console.log(e.target.value);
+	}, []);
+
+	const handleSearchSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		console.log("submitted");
-	};
+	}, []);
 
 	// Render Components
 	const renderMobileMenuButton = () => (
 		<button
 			onClick={toggleMobileMenu}
-			className="p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group md:hidden"
+			className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group md:hidden`}
 			aria-label="Toggle mobile menu"
 		>
-			<div className="transform transition-transform duration-300 group-hover:scale-110">
+			<div className={`${TRANSITIONS.scale} group-hover:scale-110`}>
 				<Menu className="w-4 h-4" />
 			</div>
 		</button>
 	);
 
 	const renderLogo = () => (
-		<Link href="/" className="flex items-center space-x-3 transition-all duration-200 transform hover:scale-105">
+		<Link href="/" className={`flex items-center space-x-3 ${TRANSITIONS.interactive} hover:scale-105`}>
 			<svg className="w-7 h-7 gh-text md:ml-3" fill="currentColor" viewBox="0 0 16 16">
 				<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
 			</svg>
@@ -154,13 +174,13 @@ export default function Header() {
 		>
 			<button
 				onClick={toggleDarkMode}
-				className="p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
+				className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
 				aria-label="Toggle dark mode"
 			>
 				{theme === "dark" ? (
-					<Sun className="w-4 h-4 transform transition-transform duration-300 group-hover:scale-110" />
+					<Sun className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
 				) : (
-					<Moon className="w-4 h-4 transform transition-transform duration-300 group-hover:scale-110" />
+					<Moon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
 				)}
 			</button>
 		</Tooltip>
@@ -174,12 +194,10 @@ export default function Header() {
 						href={link.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
+						className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
 						aria-label={link.tooltip}
 					>
-						<div className="transform transition-transform duration-300 group-hover:scale-110">
-							{link.icon}
-						</div>
+						<div className={`${TRANSITIONS.scale} group-hover:scale-110`}>{link.icon}</div>
 					</Link>
 				</Tooltip>
 			))}
@@ -187,8 +205,13 @@ export default function Header() {
 	);
 
 	const renderProfilePicture = () => (
-		<button className="group hover:bg-gray-100transition-all p-1 rounded-md" aria-label="User profile">
-			<div className="w-8 h-8 rounded-full overflow-hidden border border-gh-border-muted transform transition-transform duration-300 group-hover:scale-105">
+		<button
+			className={`group hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} p-1 rounded-md`}
+			aria-label="User profile"
+		>
+			<div
+				className={`w-8 h-8 rounded-full overflow-hidden border border-gh-border-muted ${TRANSITIONS.scale} group-hover:scale-105`}
+			>
 				<Image
 					src="/images/profile-avatar.jpg"
 					alt="Profile"
@@ -210,7 +233,9 @@ export default function Header() {
 						<Link
 							key={index}
 							href={item.href}
-							className={`flex h-10 items-center px-4 text-sm font-medium gh-text hover:gh-text-accent transition-all border-b-2 transform ${
+							className={`flex h-10 items-center px-4 text-sm font-medium gh-text hover:gh-text-accent ${
+								TRANSITIONS.base
+							} border-b-2 transform ${
 								isActive
 									? "border-orange-500 gh-text-accent"
 									: "border-transparent hover:border-gh-border-muted"
@@ -243,9 +268,9 @@ export default function Header() {
 			{/* Drawer */}
 			{isPhoneView && (
 				<div
-					className={`fixed top-0 left-0 h-full w-80 max-w-[70vw] gh-bg-canvas-inset border-r gh-border z-[70] transform transition-transform duration-300 ease-in-out md:hidden ${
-						isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-					}`}
+					className={`fixed top-0 left-0 h-full w-80 max-w-[70vw] gh-bg-canvas-inset border-r gh-border z-[70] transform ${
+						TRANSITIONS.drawer
+					} md:hidden ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
 				>
 					{/* Drawer Header */}
 					<div className="flex items-center justify-between p-4 border-b gh-border">
@@ -257,7 +282,7 @@ export default function Header() {
 						</div>
 						<button
 							onClick={closeMobileMenu}
-							className="p-2 gh-text hover:gh-text-accent transition-colors"
+							className={`p-2 gh-text hover:gh-text-accent ${TRANSITIONS.base}`}
 							aria-label="Close mobile menu"
 						>
 							<X className="w-5 h-5" />
@@ -275,7 +300,9 @@ export default function Header() {
 										key={index}
 										href={item.href}
 										onClick={closeMobileMenu}
-										className={`flex items-center px-3 py-3 text-sm font-medium rounded-md transition-all ${
+										className={`flex items-center px-3 py-3 text-sm font-medium rounded-md ${
+											TRANSITIONS.base
+										} ${
 											isActive
 												? "gh-bg-accent-muted gh-text-accent"
 												: "gh-text hover:gh-text-accent hover:gh-bg-neutral-muted"

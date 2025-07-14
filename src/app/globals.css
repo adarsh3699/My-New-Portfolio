@@ -11,6 +11,20 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
+
+	/* Optimized theme transitions - only for necessary properties */
+	*,
+	*::before,
+	*::after {
+		transition-property: background-color, border-color, color, opacity;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 0.2s;
+	}
+
+	/* Disable all transitions during theme changes to prevent visual glitches */
+	.theme-transition * {
+		transition: none !important;
+	}
 }
 
 :root {

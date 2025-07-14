@@ -123,7 +123,7 @@ export default function GitHubContributions() {
 									{week.map((level, dayIndex) => (
 										<div
 											key={dayIndex}
-											className={`w-[10px] h-[10px] rounded-[2px] cursor-pointer transition-colors hover:outline-1 hover:outline-gray-400 ${getLevelClass(
+											className={`w-[10px] h-[10px] rounded-[2px] hover:outline-1 hover:outline-gray-400 ${getLevelClass(
 												level
 											)}`}
 											title={`${

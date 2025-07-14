@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 // Types
@@ -23,7 +24,7 @@ export function ThemeProvider({ children, defaultTheme = "light", storageKey = "
 	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
 	useEffect(() => {
-		const root = window.document.documentElement;
+		const root = document.documentElement;
 		const stored = localStorage.getItem(storageKey) as Theme;
 		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 		const initialTheme = stored || (prefersDark ? "dark" : "light");
@@ -35,7 +36,10 @@ export function ThemeProvider({ children, defaultTheme = "light", storageKey = "
 	}, [storageKey]);
 
 	const handleSetTheme = (newTheme: Theme) => {
-		const root = window.document.documentElement;
+		const root = document.documentElement;
+
+		// Temporarily disable transitions during theme change
+		root.classList.add("theme-transition");
 
 		// Update localStorage
 		localStorage.setItem(storageKey, newTheme);
@@ -46,6 +50,11 @@ export function ThemeProvider({ children, defaultTheme = "light", storageKey = "
 
 		// Update state
 		setTheme(newTheme);
+
+		// Re-enable transitions after a short delay
+		setTimeout(() => {
+			root.classList.remove("theme-transition");
+		}, 50);
 	};
 
 	const value: ThemeProviderState = {

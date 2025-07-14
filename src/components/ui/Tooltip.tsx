@@ -8,7 +8,7 @@ interface TooltipProps {
 	delay?: number;
 }
 
-export default function Tooltip({ children, content, side = "bottom", delay = 600 }: TooltipProps) {
+export default function Tooltip({ children, content, side = "bottom", delay = 500 }: TooltipProps) {
 	const [isVisible, setIsVisible] = useState(false);
 	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
