@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Essential performance optimizations */
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	body {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
 
 :root {
 	/* GitHub Light Colors - Updated to match real GitHub */

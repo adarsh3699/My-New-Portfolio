@@ -187,7 +187,7 @@ export default function Header() {
 	);
 
 	const renderProfilePicture = () => (
-		<button className="group hover:bg-gray-100transition-all p-1 rounded-md">
+		<button className="group hover:bg-gray-100transition-all p-1 rounded-md" aria-label="User profile">
 			<div className="w-8 h-8 rounded-full overflow-hidden border border-gh-border-muted transform transition-transform duration-300 group-hover:scale-105">
 				<Image
 					src="/images/profile-avatar.jpg"

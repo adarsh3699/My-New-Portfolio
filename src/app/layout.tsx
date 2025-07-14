@@ -3,15 +3,17 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-// Font configurations
+// Font configurations with performance optimizations
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
+	display: 'swap',
 });
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
+	display: 'swap',
 });
 
 // Site metadata
@@ -43,10 +45,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				{/* Theme initialization - prevents flash of wrong theme */}
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
-
 				<ThemeProvider defaultTheme="light" storageKey="theme">
 					{children}
 				</ThemeProvider>
