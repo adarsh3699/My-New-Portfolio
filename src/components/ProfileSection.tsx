@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import GitHubContributions from "./GitHubContributions";
+import { TextGenerateEffect } from "./ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { GitHubIcon, TwitterIcon, LinkedInIcon, ForkIcon } from "@/components/icons";
 import { getPinnedProjects, type Project } from "@/data";
@@ -21,7 +22,7 @@ const STATIC_PROFILE_DATA = {
 	username: "@adarsh3699",
 	email: "adarsh3699@gmail.com",
 	location: "Nalanda, Bihar, India",
-	defaultBio: "Full-stack developer passionate about creating amazing user experiences with modern technologies.",
+	defaultBio: "Full Stack Developer || React, Node.js, MongoDB, JavaScript, TailwindCSS",
 	defaultWebsite: "https://www.bhemu.me",
 	profileImage: "/images/myPhoto.png",
 	socialLinks: {
@@ -69,10 +70,6 @@ export default function ProfileSection() {
 		return count >= 1000 ? (count / 1000).toFixed(1).replace(/\.0$/, "") + "k" : count.toString();
 	};
 
-	const getDisplayValue = (value: string | undefined, fallback: string): string => {
-		return loading ? "Loading..." : value || fallback;
-	};
-
 	const getWebsiteDisplay = (url: string | undefined): string => {
 		if (loading) return "Loading...";
 		return url?.replace(/^https?:\/\//, "") || "www.bhemu.me";
@@ -86,7 +83,6 @@ export default function ProfileSection() {
 					profileData={profileData}
 					loading={loading}
 					formatCount={formatCount}
-					getDisplayValue={getDisplayValue}
 					getWebsiteDisplay={getWebsiteDisplay}
 				/>
 				<MainContent />
@@ -107,7 +103,6 @@ interface ProfileSidebarProps {
 	profileData: GitHubProfileData | null;
 	loading: boolean;
 	formatCount: (count: number) => string;
-	getDisplayValue: (value: string | undefined, fallback: string) => string;
 	getWebsiteDisplay: (url: string | undefined) => string;
 }
 
@@ -115,12 +110,11 @@ const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
 	profileData,
 	loading,
 	formatCount,
-	getDisplayValue,
 	getWebsiteDisplay,
 }) => (
 	<div className="xl:col-span-1">
 		<div className="border gh-border rounded-lg p-4 sm:px-12 gh-shadow sticky top-30">
-			<ProfileHeader profileData={profileData} getDisplayValue={getDisplayValue} />
+			<ProfileHeader />
 			<ProfileStats profileData={profileData} loading={loading} formatCount={formatCount} />
 			<ContactInfo profileData={profileData} loading={loading} getWebsiteDisplay={getWebsiteDisplay} />
 			<SocialLinks />
@@ -129,12 +123,7 @@ const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
 );
 
 // Profile Header Component
-interface ProfileHeaderProps {
-	profileData: GitHubProfileData | null;
-	getDisplayValue: (value: string | undefined, fallback: string) => string;
-}
-
-const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profileData, getDisplayValue }) => (
+const ProfileHeader: React.FC = () => (
 	<div className="mb-4 sm:mb-6">
 		<div className="relative w-48 h-48 sm:w-64sm:h-64 xl:w-[298px] xl:h-[298px] mx-auto mb-3 sm:mb-4">
 			<Image
@@ -151,9 +140,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({ profileData, getDisplayVa
 		</div>
 		<h1 className="text-xl sm:text-2xl font-bold gh-text mb-1">{STATIC_PROFILE_DATA.name}</h1>
 		<p className="gh-text-muted mb-2 sm:mb-3 text-sm sm:text-base">{STATIC_PROFILE_DATA.username}</p>
-		<p className="gh-text text-xs sm:text-sm leading-relaxed px-2 sm:px-0">
-			{getDisplayValue(profileData?.bio, STATIC_PROFILE_DATA.defaultBio)}
-		</p>
+		<TextGenerateEffect words={STATIC_PROFILE_DATA.defaultBio} className="gh-text text-xs sm:text-sm" />
 	</div>
 );
 
