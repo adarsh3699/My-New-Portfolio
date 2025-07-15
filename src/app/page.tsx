@@ -1,15 +1,9 @@
-import Header from "@/components/Header";
-import ProfileSection from "@/components/ProfileSection";
-import Footer from "@/components/Footer";
+import { ProfileSection } from "@/components/home";
 
 export default function Home() {
 	return (
-		<>
-			<Header />
-			<main className="min-h-screen gh-bg-canvas-default">
-				<ProfileSection />
-			</main>
-			<Footer />
-		</>
+		<main className="min-h-screen gh-bg-canvas-default">
+			<ProfileSection />
+		</main>
 	);
 }

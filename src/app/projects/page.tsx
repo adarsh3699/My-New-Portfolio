@@ -1,15 +1,9 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ProjectsSection from "@/components/ProjectsSection";
+import { ProjectsSection } from "@/components/projects";
 
 export default function ProjectsPage() {
 	return (
-		<>
-			<Header />
-			<main className="min-h-screen gh-bg-canvas-default">
-				<ProjectsSection />
-			</main>
-			<Footer />
-		</>
+		<main className="min-h-screen gh-bg-canvas-default">
+			<ProjectsSection />
+		</main>
 	);
 }

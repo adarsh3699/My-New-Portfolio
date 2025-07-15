@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import GitHubContributions from "./GitHubContributions";
-import { TextGenerateEffect } from "./ui/text-generate-effect";
+import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon, StarIcon } from "@heroicons/react/24/outline";
 import { GitHubIcon, TwitterIcon, LinkedInIcon, ForkIcon } from "@/components/icons";
 import { getPinnedProjects, type Project } from "@/data";
@@ -106,12 +106,7 @@ interface ProfileSidebarProps {
 	getWebsiteDisplay: (url: string | undefined) => string;
 }
 
-const ProfileSidebar: React.FC<ProfileSidebarProps> = ({
-	profileData,
-	loading,
-	formatCount,
-	getWebsiteDisplay,
-}) => (
+const ProfileSidebar: React.FC<ProfileSidebarProps> = ({ profileData, loading, formatCount, getWebsiteDisplay }) => (
 	<div className="xl:col-span-1">
 		<div className="border gh-border rounded-lg p-4 sm:px-12 gh-shadow sticky top-30">
 			<ProfileHeader />

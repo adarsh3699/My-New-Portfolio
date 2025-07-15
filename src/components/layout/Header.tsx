@@ -17,8 +17,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { GitHubIcon } from "@/components/icons";
 
-import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
-import Tooltip from "./ui/Tooltip";
+import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
+import Tooltip from "../ui/Tooltip";
 import { useTheme } from "./theme-provider";
 
 // Types

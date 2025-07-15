@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider, Header, Footer } from "@/components/layout";
 import "./globals.css";
 
 // Font configurations with performance optimizations
@@ -51,7 +51,9 @@ export default function RootLayout({
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				<ThemeProvider defaultTheme="light" storageKey="theme">
+					<Header />
 					{children}
+					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>
