@@ -4,7 +4,18 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Github, Mail, BookOpen, Info, FolderOpen, Briefcase, Sun, Moon } from "lucide-react";
+import {
+	Bars3Icon,
+	XMarkIcon,
+	EnvelopeIcon,
+	BookOpenIcon,
+	InformationCircleIcon,
+	FolderOpenIcon,
+	BriefcaseIcon,
+	SunIcon,
+	MoonIcon,
+} from "@heroicons/react/24/outline";
+import { GitHubIcon } from "@/components/icons";
 
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 import Tooltip from "./ui/Tooltip";
@@ -62,21 +73,21 @@ const SOCIAL_LINKS: SocialLink[] = [
 		href: "https://github.com/adarsh3699",
 		tooltip: "GitHub Profile",
 		external: true,
-		icon: <Github className="w-4 h-4" />,
+		icon: <GitHubIcon className="w-4 h-4" />,
 	},
 	{
 		href: "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=adarsh3699@gmail.com",
 		tooltip: "Send Email",
-		icon: <Mail className="w-4 h-4" />,
+		icon: <EnvelopeIcon className="w-4 h-4" />,
 	},
 ];
 
 const NAV_ITEMS: NavItem[] = [
-	{ href: "/", label: "Overview", icon: BookOpen },
-	{ href: "/about", label: "About", icon: Info },
-	{ href: "/projects", label: "Projects", icon: FolderOpen, badge: "26" },
-	{ href: "/experience", label: "Experience", icon: Briefcase },
-	{ href: "/contact", label: "Contact", icon: Mail },
+	{ href: "/", label: "Overview", icon: BookOpenIcon },
+	{ href: "/about", label: "About", icon: InformationCircleIcon },
+	{ href: "/projects", label: "Projects", icon: FolderOpenIcon, badge: "26" },
+	{ href: "/experience", label: "Experience", icon: BriefcaseIcon },
+	{ href: "/contact", label: "Contact", icon: EnvelopeIcon },
 ];
 
 export default function Header() {
@@ -143,8 +154,9 @@ export default function Header() {
 			className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group md:hidden`}
 			aria-label="Toggle mobile menu"
 		>
+			{" "}
 			<div className={`${TRANSITIONS.scale} group-hover:scale-110`}>
-				<Menu className="w-4 h-4" />
+				<Bars3Icon className="w-4 h-4" />
 			</div>
 		</button>
 	);
@@ -178,9 +190,9 @@ export default function Header() {
 				aria-label="Toggle dark mode"
 			>
 				{theme === "dark" ? (
-					<Sun className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
+					<SunIcon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
 				) : (
-					<Moon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
+					<MoonIcon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
 				)}
 			</button>
 		</Tooltip>
@@ -285,7 +297,7 @@ export default function Header() {
 							className={`p-2 gh-text hover:gh-text-accent ${TRANSITIONS.base}`}
 							aria-label="Close mobile menu"
 						>
-							<X className="w-5 h-5" />
+							<XMarkIcon className="w-5 h-5" />
 						</button>
 					</div>
 

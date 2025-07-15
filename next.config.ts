@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react', 'motion'],
+    optimizePackageImports: ['@heroicons/react', 'motion'],
   },
   
   // Remove console logs in production

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Github, Mail } from "lucide-react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { GitHubIcon } from "@/components/icons";
 
 export default function Footer() {
 	return (
@@ -44,7 +45,7 @@ export default function Footer() {
 							className="p-2 gh-text-muted hover:gh-text-accent transition-colors"
 							aria-label="GitHub Profile"
 						>
-							<Github className="w-4 h-4" />
+							<GitHubIcon className="w-4 h-4" />
 						</Link>
 						<Link
 							href="https://linkedin.com/in/adarsh3699"
@@ -64,7 +65,7 @@ export default function Footer() {
 							className="p-2 gh-text-muted hover:gh-text-accent transition-colors"
 							aria-label="Send Email"
 						>
-							<Mail className="w-4 h-4" />
+							<EnvelopeIcon className="w-4 h-4" />
 						</Link>
 					</div>
 				</div>

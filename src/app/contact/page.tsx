@@ -1,6 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Github, Linkedin, Send, MessageSquare } from "lucide-react";
+import {
+	EnvelopeIcon,
+	PhoneIcon,
+	MapPinIcon,
+	PaperAirplaneIcon,
+	ChatBubbleLeftRightIcon,
+} from "@heroicons/react/24/outline";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
 
 export default function ContactPage() {
 	return (
@@ -27,7 +34,7 @@ export default function ContactPage() {
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
 										<div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
-											<Mail className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+											<EnvelopeIcon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
 										</div>
 										<div>
 											<h3 className="font-medium gh-text">Email</h3>
@@ -40,7 +47,7 @@ export default function ContactPage() {
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
 										<div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-colors">
-											<Phone className="w-5 h-5 text-green-600 dark:text-green-400" />
+											<PhoneIcon className="w-5 h-5 text-green-600 dark:text-green-400" />
 										</div>
 										<div>
 											<h3 className="font-medium gh-text">Phone</h3>
@@ -50,7 +57,7 @@ export default function ContactPage() {
 
 									<div className="flex items-center gap-3 p-3 rounded-lg">
 										<div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-											<MapPin className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+											<MapPinIcon className="w-5 h-5 text-purple-600 dark:text-purple-400" />
 										</div>
 										<div>
 											<h3 className="font-medium gh-text">Location</h3>
@@ -70,7 +77,7 @@ export default function ContactPage() {
 										rel="noopener noreferrer"
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
-										<Github className="w-5 h-5 gh-text-muted group-hover:gh-text-accent" />
+										<GitHubIcon className="w-5 h-5 gh-text-muted group-hover:gh-text-accent" />
 										<span className="gh-text group-hover:gh-text-accent">GitHub</span>
 									</a>
 									<a
@@ -79,7 +86,7 @@ export default function ContactPage() {
 										rel="noopener noreferrer"
 										className="flex items-center gap-3 p-3 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 									>
-										<Linkedin className="w-5 h-5 gh-text-muted group-hover:gh-text-accent" />
+										<LinkedInIcon className="w-5 h-5 gh-text-muted group-hover:gh-text-accent" />
 										<span className="gh-text group-hover:gh-text-accent">LinkedIn</span>
 									</a>
 								</div>
@@ -89,7 +96,7 @@ export default function ContactPage() {
 							<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
 								<div className="flex items-center gap-3 mb-3">
 									<div className="p-2 bg-orange-100 dark:bg-orange-900 rounded-lg">
-										<MessageSquare className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+										<ChatBubbleLeftRightIcon className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 									</div>
 									<h3 className="font-semibold gh-text">Response Time</h3>
 								</div>
@@ -174,7 +181,7 @@ export default function ContactPage() {
 									type="submit"
 									className="w-full btn-primary flex items-center justify-center gap-2"
 								>
-									<Send className="w-4 h-4" />
+									<PaperAirplaneIcon className="w-4 h-4" />
 									Send Message
 								</button>
 							</form>

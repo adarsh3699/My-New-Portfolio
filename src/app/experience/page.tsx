@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react";
+import { BriefcaseIcon, CalendarIcon, MapPinIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 
 interface Experience {
 	id: number;
@@ -126,19 +126,19 @@ export default function ExperiencePage() {
 														className="text-lg font-medium gh-text-accent hover:underline flex items-center gap-1"
 													>
 														{exp.company}
-														<ExternalLink className="w-4 h-4" />
+														<ArrowTopRightOnSquareIcon className="w-4 h-4" />
 													</a>
 												</div>
 												<div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm gh-text-muted">
 													<div className="flex items-center gap-1">
-														<Calendar className="w-4 h-4" />
+														<CalendarIcon className="w-4 h-4" />
 														<span>
 															{exp.startDate} - {exp.endDate}
 														</span>
 													</div>
 													<span className="hidden sm:block">•</span>
 													<div className="flex items-center gap-1">
-														<MapPin className="w-4 h-4" />
+														<MapPinIcon className="w-4 h-4" />
 														<span>{exp.location}</span>
 													</div>
 												</div>
@@ -185,7 +185,7 @@ export default function ExperiencePage() {
 								I&apos;m always interested in hearing about new opportunities and exciting projects.
 							</p>
 							<Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-								<Briefcase className="w-4 h-4" />
+								<BriefcaseIcon className="w-4 h-4" />
 								Get In Touch
 							</Link>
 						</div>
