@@ -13,7 +13,7 @@ const PROFILE_DATA = {
 	username: "@adarsh3699",
 	email: "adarsh3699@gmail.com",
 	location: "Nalanda, Bihar, India",
-	bio: "Full Stack Developer || React, Node.js, MongoDB, JavaScript, TailwindCSS",
+	bio: "Full Stack Developer || NEXT.js, React, NodeJs, MongoDB, TypeScript, TailwindCSS, C++",
 	image: "/images/myPhoto.png",
 	defaultWebsite: "www.bhemu.me",
 	social: {

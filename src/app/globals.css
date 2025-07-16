@@ -34,9 +34,9 @@
 
 :root {
 	/* GitHub Light Colors - Updated to match real GitHub */
-	--gh-canvas-default: #ffffff;
-	--gh-canvas-overlay: #ffffff;
-	--gh-canvas-inset: #f6f8fa;
+	--gh-canvas-default: #ffffff; /* use in main content areas */
+	--gh-canvas-overlay: #f9fafb; /* use in input overlays and modals */
+	--gh-canvas-inset: #f6f8fa; /* use in headers and footers */
 	--gh-canvas-subtle: #f6f8fa;
 
 	--gh-fg-default: #1f2328;

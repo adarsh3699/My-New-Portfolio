@@ -1,4 +1,4 @@
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { WhatsAppIcon } from "@/components/icons";
 
 const contactMethods = [
@@ -46,18 +46,6 @@ const contactMethods = [
 		bg: "bg-green-100 dark:bg-green-800",
 		hoverBg: "group-hover:bg-green-200 dark:group-hover:bg-green-700",
 		text: "text-green-600 dark:text-green-400",
-		isPrimary: false,
-		external: true,
-	},
-	{
-		type: "location",
-		icon: MapPinIcon,
-		label: "Location",
-		value: "Nalanda, Bihar, India",
-		href: "https://maps.app.goo.gl/Wr5hEa4Q3bTswgs18",
-		bg: "bg-purple-100 dark:bg-purple-900",
-		hoverBg: "group-hover:bg-purple-200 dark:group-hover:bg-purple-800",
-		text: "text-purple-600 dark:text-purple-400",
 		isPrimary: false,
 		external: true,
 	},
