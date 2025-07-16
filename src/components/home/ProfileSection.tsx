@@ -15,7 +15,7 @@ const PROFILE_DATA = {
 	location: "Nalanda, Bihar, India",
 	bio: "Full Stack Developer || React, Node.js, MongoDB, JavaScript, TailwindCSS",
 	image: "/images/myPhoto.png",
-	defaultWebsite: "https://www.bhemu.me",
+	defaultWebsite: "www.bhemu.me",
 	social: {
 		github: "https://github.com/adarsh3699",
 		twitter: "https://twitter.com/adarsh3699",
@@ -107,7 +107,7 @@ export default function ProfileSection() {
 						<LinkIcon />
 					</div>
 					<Link
-						href={loading ? "#" : profileData?.websiteUrl || PROFILE_DATA.defaultWebsite}
+						href={`https://${loading ? "#" : profileData?.websiteUrl || PROFILE_DATA.defaultWebsite}`}
 						className="gh-text-accent hover:underline truncate"
 						target="_blank"
 						rel="noopener noreferrer"

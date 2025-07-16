@@ -1,0 +1,63 @@
+import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import { Input, Textarea, Button } from "@/components/ui";
+
+export default function ContactForm() {
+	return (
+		<div className="border gh-border rounded-lg p-6">
+			<h2 className="text-xl font-semibold gh-text mb-4">Send a Message</h2>
+			<form className="space-y-4">
+				<div>
+					<label htmlFor="fullName" className="block text-sm font-medium gh-text mb-1">
+						Full Name
+					</label>
+
+					<Input type="text" id="fullName" className="gh-bg-canvas-overlay" placeholder="John" />
+				</div>
+
+				<div>
+					<label htmlFor="email" className="block text-sm font-medium gh-text mb-1">
+						Email Address
+					</label>
+					<Input
+						type="email"
+						id="email"
+						className="gh-bg-canvas-overlay"
+						placeholder="john.doe@example.com"
+					/>
+				</div>
+
+				<div>
+					<label htmlFor="subject" className="block text-sm font-medium gh-text mb-1">
+						Subject
+					</label>
+					<Input
+						type="text"
+						id="subject"
+						name="subject"
+						className="gh-bg-canvas-overlay"
+						placeholder="Project Collaboration"
+					/>
+				</div>
+
+				<div>
+					<label htmlFor="message" className="block text-sm font-medium gh-text mb-1">
+						Message
+					</label>
+					<Textarea
+						id="message"
+						name="message"
+						rows={10}
+						style={{ resize: "vertical" }}
+						className="gh-bg-canvas-overlay"
+						placeholder="Tell me about your project or just say hello..."
+					/>
+				</div>
+
+				<Button type="submit" className="w-full">
+					<PaperAirplaneIcon className="w-4 h-4" />
+					Send Message
+				</Button>
+			</form>
+		</div>
+	);
+}

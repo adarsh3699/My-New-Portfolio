@@ -17,21 +17,21 @@ export default function Footer() {
 							</svg>
 							<span className="font-semibold gh-text">adarsh3699</span>
 						</div>
-						<p className="text-sm gh-text-muted">© 2025 Adarsh Kumar. All rights reserved.</p>
+						<p className="text-sm gh-text-muted">© 2025 Adarsh Sumar. All rights reserved.</p>
 					</div>
 
 					{/* Quick Links */}
 					<div className="flex items-center space-x-6 text-sm">
-						<Link href="#about" className="gh-text-muted hover:gh-text-accent transition-colors">
+						<Link href="/about" className="gh-text-muted hover:gh-text-accent transition-colors">
 							About
 						</Link>
-						<Link href="#projects" className="gh-text-muted hover:gh-text-accent transition-colors">
+						<Link href="/projects" className="gh-text-muted hover:gh-text-accent transition-colors">
 							Projects
 						</Link>
-						<Link href="#experience" className="gh-text-muted hover:gh-text-accent transition-colors">
+						<Link href="/experience" className="gh-text-muted hover:gh-text-accent transition-colors">
 							Experience
 						</Link>
-						<Link href="#contact" className="gh-text-muted hover:gh-text-accent transition-colors">
+						<Link href="/contact" className="gh-text-muted hover:gh-text-accent transition-colors">
 							Contact
 						</Link>
 					</div>
