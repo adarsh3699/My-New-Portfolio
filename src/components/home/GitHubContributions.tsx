@@ -1,21 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
-
-// Types
-interface ContributionDay {
-	contributionCount: number;
-	date: string;
-	contributionLevel: "NONE" | "FIRST_QUARTILE" | "SECOND_QUARTILE" | "THIRD_QUARTILE" | "FOURTH_QUARTILE";
-}
-
-interface ContributionWeek {
-	contributionDays: ContributionDay[];
-}
-
-interface GitHubContributionsData {
-	totalContributions: number;
-	weeks: ContributionWeek[];
-}
+import React from "react";
+import {
+	fetchGitHubContributions,
+	getCachedContributions,
+	type ContributionDay,
+	type ContributionWeek,
+} from "@/lib/github-api";
+import { useApi } from "@/lib/hooks";
 
 // Constants
 const CONTRIBUTION_LEVELS = {
@@ -28,67 +19,6 @@ const CONTRIBUTION_LEVELS = {
 
 const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
-
-// Helper functions
-function generateMockData(): GitHubContributionsData {
-	const weeks: ContributionWeek[] = [];
-	let totalContributions = 0;
-
-	for (let week = 0; week < 53; week++) {
-		const contributionDays: ContributionDay[] = [];
-		for (let day = 0; day < 7; day++) {
-			const random = Math.random();
-			const isWeekend = day === 0 || day === 6;
-
-			let contributionCount = 0;
-			let contributionLevel: ContributionDay["contributionLevel"] = "NONE";
-
-			if (isWeekend) {
-				if (random > 0.85) contributionLevel = "FIRST_QUARTILE";
-				if (random > 0.93) contributionLevel = "SECOND_QUARTILE";
-				if (random > 0.97) contributionLevel = "THIRD_QUARTILE";
-				if (random > 0.99) contributionLevel = "FOURTH_QUARTILE";
-			} else {
-				if (random > 0.4) contributionLevel = "FIRST_QUARTILE";
-				if (random > 0.7) contributionLevel = "SECOND_QUARTILE";
-				if (random > 0.85) contributionLevel = "THIRD_QUARTILE";
-				if (random > 0.94) contributionLevel = "FOURTH_QUARTILE";
-			}
-
-			// Set contribution count based on level
-			switch (contributionLevel) {
-				case "FIRST_QUARTILE":
-					contributionCount = Math.floor(Math.random() * 3) + 1;
-					break;
-				case "SECOND_QUARTILE":
-					contributionCount = Math.floor(Math.random() * 5) + 4;
-					break;
-				case "THIRD_QUARTILE":
-					contributionCount = Math.floor(Math.random() * 8) + 8;
-					break;
-				case "FOURTH_QUARTILE":
-					contributionCount = Math.floor(Math.random() * 10) + 15;
-					break;
-				default:
-					contributionCount = 0;
-			}
-
-			totalContributions += contributionCount;
-
-			const date = new Date();
-			date.setDate(date.getDate() - (52 - week) * 7 - (6 - day));
-
-			contributionDays.push({
-				contributionCount,
-				date: date.toISOString().split("T")[0],
-				contributionLevel,
-			});
-		}
-		weeks.push({ contributionDays });
-	}
-
-	return { totalContributions, weeks };
-}
 
 function getLevelClass(level: ContributionDay["contributionLevel"]): string {
 	return CONTRIBUTION_LEVELS[level];
@@ -107,28 +37,7 @@ function generateMonthLabels(weeks: ContributionWeek[]): string[] {
 }
 
 export default function GitHubContributions() {
-	const [data, setData] = useState<GitHubContributionsData | null>(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
-
-	useEffect(() => {
-		fetchContributions();
-	}, []);
-
-	const fetchContributions = async () => {
-		try {
-			const response = await fetch("/api/github-contributions");
-			if (!response.ok) throw new Error("Failed to fetch contributions");
-
-			const contributionsData = await response.json();
-			setData(contributionsData);
-		} catch (err) {
-			setError(err instanceof Error ? err.message : "An error occurred");
-			setData(generateMockData());
-		} finally {
-			setLoading(false);
-		}
-	};
+	const { data, loading, error } = useApi(fetchGitHubContributions, { getCachedData: getCachedContributions });
 
 	// Loading state
 	if (loading) {
@@ -142,19 +51,17 @@ export default function GitHubContributions() {
 		);
 	}
 
-	// Error state with fallback
-	if (error && !data) {
+	// Error state
+	if (error || !data) {
 		return (
 			<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6">
-				<div className="text-red-500 mb-4">
-					<p>Failed to load GitHub contributions: {error}</p>
-					<p className="text-sm text-gray-500">Showing mock data instead.</p>
+				<div className="text-center py-8">
+					<p className="text-red-500 mb-2">Failed to load GitHub contributions</p>
+					<p className="text-sm gh-text-muted">{error || "No data available"}</p>
 				</div>
 			</div>
 		);
 	}
-
-	if (!data) return null;
 
 	const { totalContributions, weeks } = data;
 	const months = generateMonthLabels(weeks);

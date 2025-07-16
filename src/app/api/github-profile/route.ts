@@ -47,7 +47,11 @@ export async function GET() {
 
     validateResponse(data);
 
-    return NextResponse.json(formatResponse(data.data.user));
+    return NextResponse.json(formatResponse(data.data.user), {
+      headers: {
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',
+      },
+    });
   } catch (error) {
     console.error('Error fetching GitHub profile stats:', error);
     return NextResponse.json(

@@ -1,9 +1,22 @@
-import { ProfileSection } from "@/components/home";
+import { ProfileSection, GitHubContributions, PinnedRepositories } from "@/components/home";
 
 export default function Home() {
 	return (
 		<main className="min-h-screen gh-bg-canvas-default">
-			<ProfileSection />
+			<section className="max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
+				<div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
+					{/* Profile Sidebar */}
+					<div className="xl:col-span-1">
+						<ProfileSection />
+					</div>
+
+					{/* Main Content */}
+					<div className="xl:col-span-2">
+						<GitHubContributions />
+						<PinnedRepositories />
+					</div>
+				</div>
+			</section>
 		</main>
 	);
 }

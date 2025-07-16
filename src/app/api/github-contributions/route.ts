@@ -70,6 +70,10 @@ export async function GET() {
     return NextResponse.json({
       totalContributions: calendar.totalContributions,
       weeks: calendar.weeks,
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=1200',
+      },
     });
   } catch (error) {
     console.error('Error fetching GitHub contributions:', error);
