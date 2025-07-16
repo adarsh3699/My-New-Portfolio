@@ -8,7 +8,9 @@ const contactMethods = [
 		label: "Email",
 		value: "adarsh3699@gmail.com",
 		href: "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=adarsh3699@gmail.com",
-		color: "blue",
+		bg: "bg-blue-100 dark:bg-blue-900",
+		hoverBg: "group-hover:bg-blue-200 dark:group-hover:bg-blue-800",
+		text: "text-blue-600 dark:text-blue-400",
 		isPrimary: true,
 		external: true,
 	},
@@ -18,7 +20,9 @@ const contactMethods = [
 		label: "Email",
 		value: "bhemu369@gmail.com",
 		href: "https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=bhemu369@gmail.com",
-		color: "blue",
+		bg: "bg-blue-100 dark:bg-blue-900",
+		hoverBg: "group-hover:bg-blue-200 dark:group-hover:bg-blue-800",
+		text: "text-blue-600 dark:text-blue-400",
 		isPrimary: false,
 		external: true,
 	},
@@ -28,7 +32,9 @@ const contactMethods = [
 		label: "Phone",
 		value: "+91 94707-56460",
 		href: "tel:+919470756460",
-		color: "green",
+		bg: "bg-emerald-100 dark:bg-emerald-900",
+		hoverBg: "group-hover:bg-emerald-200 dark:group-hover:bg-emerald-800",
+		text: "text-emerald-600 dark:text-emerald-400",
 		isPrimary: false,
 	},
 	{
@@ -37,7 +43,9 @@ const contactMethods = [
 		label: "WhatsApp",
 		value: "+91 94707-56460",
 		href: "https://wa.me/919470756460",
-		color: "green",
+		bg: "bg-green-100 dark:bg-green-800",
+		hoverBg: "group-hover:bg-green-200 dark:group-hover:bg-green-700",
+		text: "text-green-600 dark:text-green-400",
 		isPrimary: false,
 		external: true,
 	},
@@ -47,7 +55,9 @@ const contactMethods = [
 		label: "Location",
 		value: "Nalanda, Bihar, India",
 		href: "https://maps.app.goo.gl/Wr5hEa4Q3bTswgs18",
-		color: "purple",
+		bg: "bg-purple-100 dark:bg-purple-900",
+		hoverBg: "group-hover:bg-purple-200 dark:group-hover:bg-purple-800",
+		text: "text-purple-600 dark:text-purple-400",
 		isPrimary: false,
 		external: true,
 	},
@@ -69,12 +79,8 @@ export default function ContactInformation() {
 						className="flex items-center w-fit gap-3 p-2 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 						aria-label={`${contact.label}: ${contact.value}`}
 					>
-						<div
-							className={`p-2 bg-${contact.color}-100 dark:bg-${contact.color}-900 rounded-lg group-hover:bg-${contact.color}-200 dark:group-hover:bg-${contact.color}-800 transition-colors`}
-						>
-							<contact.icon
-								className={`w-5 h-5 text-${contact.color}-600 dark:text-${contact.color}-400`}
-							/>
+						<div className={`p-2 ${contact.bg} rounded-lg ${contact.hoverBg} transition-colors`}>
+							<contact.icon className={`w-5 h-5 ${contact.text}`} />
 						</div>
 						<div className="flex flex-col">
 							<div className="flex items-center gap-2">
