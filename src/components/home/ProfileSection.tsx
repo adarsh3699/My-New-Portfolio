@@ -107,7 +107,7 @@ export default function ProfileSection() {
 						<LinkIcon />
 					</div>
 					<Link
-						href={`https://${loading ? "#" : profileData?.websiteUrl || PROFILE_DATA.defaultWebsite}`}
+						href={loading ? "#" : `https://${profileData?.websiteUrl || PROFILE_DATA.defaultWebsite}`}
 						className="gh-text-accent hover:underline truncate"
 						target="_blank"
 						rel="noopener noreferrer"
