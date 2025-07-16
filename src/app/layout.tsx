@@ -47,6 +47,10 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				{/* Preload critical resources to prevent layout shifts */}
+				<link rel="preload" href="/images/myPhoto.png" as="image" type="image/png" />
+				<link rel="dns-prefetch" href="https://api.github.com" />
+				<link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />

@@ -15,6 +15,8 @@
 	body {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		/* Prevent layout shifts during font loading */
+		font-display: swap;
 	}
 
 	/* Optimized theme transitions - only for necessary properties */
@@ -29,6 +31,11 @@
 	/* Disable all transitions during theme changes to prevent visual glitches */
 	.theme-transition * {
 		transition: none !important;
+	}
+
+	/* Prevent layout shifts from dynamic content */
+	.gh-contributions-container {
+		contain: layout style;
 	}
 }
 
@@ -345,4 +352,14 @@ body {
 }
 .gh-contribution-level-4 {
 	background-color: var(--gh-contrib-4);
+}
+
+/* Optimize contribution grid animations to prevent layout shifts */
+.gh-contribution-level-0,
+.gh-contribution-level-1,
+.gh-contribution-level-2,
+.gh-contribution-level-3,
+.gh-contribution-level-4 {
+	transform: translateZ(0); /* Force GPU acceleration */
+	will-change: background-color; /* Optimize for background color changes */
 }
