@@ -230,7 +230,6 @@ export default function Header() {
 					width={32}
 					height={32}
 					className="w-full h-full object-cover"
-					loading="lazy"
 					sizes="32px"
 				/>
 			</div>

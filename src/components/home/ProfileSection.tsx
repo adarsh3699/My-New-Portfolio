@@ -53,8 +53,8 @@ export default function ProfileSection() {
 						height={298}
 						alt="Profile Picture"
 						className="rounded-full border-2 gh-border object-cover w-full h-full"
-						loading="lazy"
-						priority={false}
+						priority={true}
+						fetchPriority="high"
 						sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 298px"
 					/>
 					<div className="absolute bottom-[9.5%] right-[9.5%] w-5 h-5 sm:w-6 sm:h-6 gh-bg-success rounded-full gh-border-2" />

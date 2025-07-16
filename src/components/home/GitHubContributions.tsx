@@ -41,96 +41,12 @@ export default function GitHubContributions() {
 
 	// Loading state - maintain exact layout dimensions
 	if (loading) {
-		return (
-			<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
-				{/* Header skeleton - exact same structure as real content */}
-				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4">
-					<div className="animate-pulse">
-						<div className="h-5 sm:h-6 bg-gray-200 dark:bg-gray-700 rounded w-64"></div>
-					</div>
-					<div className="flex items-center gap-2 text-xs gh-text-muted">
-						<span className="hidden sm:inline opacity-0">Learn how we count contributions</span>
-					</div>
-				</div>
-
-				{/* Contributions Grid skeleton - exact same dimensions */}
-				<div className="overflow-x-auto">
-					<div className="font-mono text-xs min-w-[680px]">
-						{/* Month labels skeleton */}
-						<div className="flex items-center mb-1">
-							<div className="w-[10px]"></div>
-							<div className="flex flex-1 ml-[14px]">
-								{Array.from({ length: 13 }, (_, index) => (
-									<div
-										key={index}
-										className="text-[10px] gh-text text-left flex-1"
-										style={{ minWidth: "44px" }}
-									>
-										<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-3 w-6 rounded"></div>
-									</div>
-								))}
-							</div>
-						</div>
-
-						{/* Days grid skeleton */}
-						<div className="flex">
-							{/* Day labels skeleton */}
-							<div className="flex flex-col">
-								{DAY_LABELS.map((_, index) => (
-									<div
-										key={index}
-										className="h-[10px] text-[10px] gh-text text-right flex items-center justify-end flex-1"
-									>
-										{/* Empty space to maintain layout */}
-									</div>
-								))}
-							</div>
-
-							{/* Contribution squares skeleton */}
-							<div className="flex ml-[8px] flex-1 justify-between">
-								{Array.from({ length: 53 }, (_, weekIndex) => (
-									<div key={weekIndex} className="flex flex-col gap-1" style={{ minWidth: "10px" }}>
-										{Array.from({ length: 7 }, (_, dayIndex) => (
-											<div
-												key={dayIndex}
-												className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"
-											/>
-										))}
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-				</div>
-
-				{/* Legend skeleton */}
-				<div className="mt-3 flex items-center justify-end">
-					<div className="flex items-center gap-1 text-[11px] gh-text-muted">
-						<span>Less</span>
-						<div className="flex gap-[2px] mx-2">
-							<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
-							<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
-							<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
-							<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
-							<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
-						</div>
-						<span>More</span>
-					</div>
-				</div>
-			</div>
-		);
+		return loadingPlaceholder();
 	}
 
 	// Error state
 	if (error || !data) {
-		return (
-			<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
-				<div className="text-center py-8">
-					<p className="text-red-500 mb-2">Failed to load GitHub contributions</p>
-					<p className="text-sm gh-text-muted">{error || "No data available"}</p>
-				</div>
-			</div>
-		);
+		return errorPlaceholder(error || "No data available");
 	}
 
 	const { totalContributions, weeks } = data;
@@ -217,6 +133,98 @@ export default function GitHubContributions() {
 					</div>
 					<span>More</span>
 				</div>
+			</div>
+		</div>
+	);
+}
+
+function loadingPlaceholder() {
+	return (
+		<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
+			{/* Header skeleton - exact same structure as real content */}
+			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4">
+				<div className="animate-pulse">
+					<div className="h-5 sm:h-6 bg-gray-200 dark:bg-gray-700 rounded w-64"></div>
+				</div>
+				<div className="flex items-center gap-2 text-xs gh-text-muted">
+					<span className="hidden sm:inline opacity-0">Learn how we count contributions</span>
+				</div>
+			</div>
+
+			{/* Contributions Grid skeleton - exact same dimensions */}
+			<div className="overflow-x-auto">
+				<div className="font-mono text-xs min-w-[680px]">
+					{/* Month labels skeleton */}
+					<div className="flex items-center mb-1">
+						<div className="w-[10px]"></div>
+						<div className="flex flex-1 ml-[14px]">
+							{Array.from({ length: 13 }, (_, index) => (
+								<div
+									key={index}
+									className="text-[10px] gh-text text-left flex-1"
+									style={{ minWidth: "44px" }}
+								>
+									<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-3 w-6 rounded"></div>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Days grid skeleton */}
+					<div className="flex">
+						{/* Day labels skeleton */}
+						<div className="flex flex-col">
+							{DAY_LABELS.map((_, index) => (
+								<div
+									key={index}
+									className="h-[10px] text-[10px] gh-text text-right flex items-center justify-end flex-1"
+								>
+									{/* Empty space to maintain layout */}
+								</div>
+							))}
+						</div>
+
+						{/* Contribution squares skeleton */}
+						<div className="flex ml-[8px] flex-1 justify-between">
+							{Array.from({ length: 53 }, (_, weekIndex) => (
+								<div key={weekIndex} className="flex flex-col gap-1" style={{ minWidth: "10px" }}>
+									{Array.from({ length: 7 }, (_, dayIndex) => (
+										<div
+											key={dayIndex}
+											className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"
+										/>
+									))}
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Legend skeleton */}
+			<div className="mt-3 flex items-center justify-end">
+				<div className="flex items-center gap-1 text-[11px] gh-text-muted">
+					<span>Less</span>
+					<div className="flex gap-[2px] mx-2">
+						<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] animate-pulse bg-gray-200 dark:bg-gray-700"></div>
+					</div>
+					<span>More</span>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+function errorPlaceholder(error: string) {
+	return (
+		<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
+			<div className="text-center py-8">
+				<p className="text-red-500 mb-2">Failed to load GitHub contributions</p>
+				<p className="text-sm gh-text-muted">{error || "No data available"}</p>
 			</div>
 		</div>
 	);
