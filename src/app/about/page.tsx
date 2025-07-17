@@ -11,7 +11,7 @@ export default function AboutPage() {
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 					{/* Bio Section */}
-					<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
+					<div className="border gh-border rounded-lg p-6">
 						<h2 className="text-xl font-semibold gh-text mb-4">My Story</h2>
 						<div className="space-y-4 gh-text-muted">
 							<p>
@@ -32,7 +32,7 @@ export default function AboutPage() {
 					</div>
 
 					{/* Skills Section */}
-					<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-6">
+					<div className="border gh-border rounded-lg p-6">
 						<h2 className="text-xl font-semibold gh-text mb-4">Technical Skills</h2>
 						<div className="space-y-4">
 							<div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
 				</div>
 
 				{/* Education & Certifications */}
-				<div className="mt-8 gh-bg-canvas-overlay border gh-border rounded-lg p-6">
+				<div className="mt-8 border gh-border rounded-lg p-6">
 					<h2 className="text-xl font-semibold gh-text mb-4">Education & Certifications</h2>
 					<div className="space-y-4">
 						<div className="border-l-2 border-blue-500 pl-4">
