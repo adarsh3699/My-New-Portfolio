@@ -61,3 +61,18 @@ export default function ContactForm() {
 		</div>
 	);
 }
+
+export function ContactFormSkeleton() {
+	return (
+		<div className="border gh-border rounded-lg p-6 animate-pulse">
+			<div className="h-8 w-48 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+			<div className="space-y-4">
+				<div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+				<div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+				<div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+				<div className="h-32 bg-gray-200 dark:bg-gray-700 rounded"></div>
+				<div className="h-10 bg-gray-200 dark:bg-gray-700 rounded"></div>
+			</div>
+		</div>
+	);
+}

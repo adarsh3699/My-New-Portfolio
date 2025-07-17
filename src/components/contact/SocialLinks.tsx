@@ -50,7 +50,7 @@ export default function SocialLinks() {
 						href={platform.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="flex items-center gap-3 p-2 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
+						className="flex items-center w-fit gap-3 p-2 rounded-lg hover:gh-bg-canvas-subtle transition-colors group"
 						aria-label={`Follow me on ${platform.name} - ${platform.description}`}
 					>
 						<div className={`p-2 ${platform.bg} rounded-lg ${platform.hoverBg} transition-colors`}>

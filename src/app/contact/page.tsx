@@ -1,11 +1,10 @@
-import {
-	ContactHeader,
-	ContactInformation,
-	SocialLinks,
-	ResponseTime,
-	ContactForm,
-	HireCallToAction,
-} from "@/components/contact";
+import dynamic from "next/dynamic";
+import { ContactHeader, ContactInformation, SocialLinks, ResponseTime, HireCallToAction } from "@/components/contact";
+import { ContactFormSkeleton } from "@/components/contact/ContactForm";
+
+const ContactForm = dynamic(() => import("@/components/contact/ContactForm"), {
+	loading: () => <ContactFormSkeleton />,
+});
 
 export default function ContactPage() {
 	return (

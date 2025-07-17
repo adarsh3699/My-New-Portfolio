@@ -74,7 +74,7 @@ export default function ContactInformation() {
 							<div className="flex items-center gap-2">
 								<h3 className="font-medium gh-text">{contact.label}</h3>
 								{contact.isPrimary && (
-									<span className="text-xs bg-blue-500 text-white px-2 py-0.5 rounded-full">
+									<span className="text-xs bg-blue-700 text-white px-2 py-0.5 rounded-full">
 										Primary
 									</span>
 								)}
