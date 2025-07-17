@@ -11,7 +11,7 @@ export default function ExperienceCard({ experience: exp }: ExperienceCardProps)
 			<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
 				<div className="flex-1">
 					<div className="flex items-center gap-3 mb-2">
-						<h3 className="text-xl font-semibold gh-text">{exp.position}</h3>
+						<h2 className="text-xl font-semibold gh-text">{exp.position}</h2>
 						{exp.isCurrent && (
 							<span className="text-xs px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full">
 								Current
