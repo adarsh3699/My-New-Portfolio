@@ -87,7 +87,7 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 
 			{/* Technologies */}
 			<div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
-				<h4 className="text-sm font-medium gh-text">Technologies Used:</h4>
+				<h3 className="text-sm font-medium gh-text">Technologies Used:</h3>
 				<div className="flex flex-wrap gap-1.5 sm:gap-2">
 					{exp.technologies.map((tech) => (
 						<span
