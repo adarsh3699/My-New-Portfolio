@@ -9,6 +9,7 @@ export interface Experience {
 	description: string[];
 	technologies: string[];
 	companyUrl?: string;
+	companyLogo?: string;
 }
 
 export const experiences: Experience[] = [

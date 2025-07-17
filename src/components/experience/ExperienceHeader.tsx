@@ -2,7 +2,7 @@ import { ColourfulText } from "../ui";
 
 export default function ExperienceHeader() {
 	return (
-		<div className="mb-8">
+		<div>
 			<h1 className="text-3xl font-bold gh-text mb-4">
 				Work <ColourfulText text="Experience" />
 			</h1>

@@ -10,7 +10,7 @@ const ContactForm = dynamic(() => import("@/components/contact/ContactForm"), {
 export default function ContactPage() {
 	return (
 		<main className="min-h-screen gh-bg-canvas-default">
-			<section className="max-w-7xl mx-auto px-4 py-12">
+			<section className="max-w-7xl mx-auto px-3 md:px-8 lg:px-6 py-8 sm:py-12">
 				<ContactHeader />
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

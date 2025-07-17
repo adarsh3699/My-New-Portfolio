@@ -5,13 +5,24 @@ export default function ContactForm() {
 	return (
 		<div className="border gh-border rounded-lg p-6">
 			<h2 className="text-xl font-semibold gh-text mb-4">Send a Message</h2>
-			<form className="space-y-4">
+			<form
+				className="space-y-4"
+				method="post"
+				action="https://send.pageclip.co/YYFiRgfPYOw99mcNfB9R8RHgiwcappSO"
+			>
 				<div>
 					<label htmlFor="fullName" className="block text-sm font-medium gh-text mb-1">
 						Full Name
 					</label>
 
-					<Input type="text" id="fullName" className="gh-bg-canvas-overlay" placeholder="John" />
+					<Input
+						type="text"
+						id="fullName"
+						name="fullName"
+						required
+						className="gh-bg-canvas-overlay"
+						placeholder="John"
+					/>
 				</div>
 
 				<div>
@@ -21,6 +32,8 @@ export default function ContactForm() {
 					<Input
 						type="email"
 						id="email"
+						name="email"
+						required
 						className="gh-bg-canvas-overlay"
 						placeholder="john.doe@example.com"
 					/>
@@ -34,6 +47,7 @@ export default function ContactForm() {
 						type="text"
 						id="subject"
 						name="subject"
+						required
 						className="gh-bg-canvas-overlay"
 						placeholder="Project Collaboration"
 					/>
@@ -45,7 +59,8 @@ export default function ContactForm() {
 					</label>
 					<Textarea
 						id="message"
-						name="message"
+						name="body"
+						required
 						rows={10}
 						style={{ resize: "vertical" }}
 						className="gh-bg-canvas-overlay"

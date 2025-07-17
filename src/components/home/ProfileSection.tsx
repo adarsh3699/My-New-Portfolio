@@ -36,7 +36,7 @@ export default function ProfileSection() {
 	};
 
 	return (
-		<div className="border gh-border rounded-lg p-4 sm:px-12 gh-shadow sticky top-30">
+		<div className="border gh-border rounded-lg p-4 sm:px-12 py-8 gh-shadow sticky top-30">
 			{/* Error Banner */}
 			{error && (
 				<div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
