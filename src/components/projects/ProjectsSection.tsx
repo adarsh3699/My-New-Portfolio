@@ -71,7 +71,7 @@ export default function ProjectsSection() {
 	};
 
 	return (
-		<section id="projects" className="max-w-6xl mx-auto px-4 py-12">
+		<section id="projects" className="max-w-7xl mx-auto px-4 py-12">
 			<div className="mb-8">
 				<h2 className="text-2xl font-bold gh-text mb-2">All repositories</h2>
 				<p className="gh-text-muted">

@@ -1,7 +1,7 @@
 export default function AboutPage() {
 	return (
 		<main className="min-h-screen gh-bg-canvas-default">
-			<section className="max-w-6xl mx-auto px-4 py-12">
+			<section className="max-w-7xl mx-auto px-4 py-12">
 				<div className="mb-8">
 					<h1 className="text-3xl font-bold gh-text mb-4">About Me</h1>
 					<p className="gh-text-muted text-lg">

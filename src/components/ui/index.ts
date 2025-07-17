@@ -1,7 +1,10 @@
-export { default as Tooltip } from './Tooltip';
-export { Input } from './input';
-export { Textarea } from './textarea';
 export { Button } from './button';
-export { TextGenerateEffect } from './text-generate-effect';
+export { ColourfulText } from './colourful-text';
+export { FlipWords } from './flip-words';
+export { Input } from './input';
 export { PlaceholdersAndVanishInput } from './placeholders-and-vanish-input';
-export { ColourfulText} from './colourful-text';
+export { TextGenerateEffect } from './text-generate-effect';
+export { Textarea } from './textarea';
+export { Timeline } from './timeline';
+export { default as Tooltip } from './tooltip';
+export { default as OpportunitiesSection } from './opportunities-section';

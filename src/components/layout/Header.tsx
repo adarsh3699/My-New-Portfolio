@@ -18,7 +18,7 @@ import {
 import { GitHubIcon } from "@/components/icons";
 
 import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
-import Tooltip from "../ui/Tooltip";
+import { Tooltip } from "../ui";
 import { useTheme } from "./theme-provider";
 
 // Types
