@@ -83,8 +83,8 @@ export default function AboutPage() {
 					<h2 className="text-xl font-semibold gh-text mb-4">Education & Certifications</h2>
 					<div className="space-y-4">
 						<div className="border-l-2 border-blue-500 pl-4">
-							<h3 className="font-medium gh-text">Bachelor&apos;s in Computer Science</h3>
-							<p className="gh-text-muted text-sm">University Name • 2018-2022</p>
+							<h3 className="font-medium gh-text">Bachelor of Technology in Computer Science</h3>
+							<p className="gh-text-muted text-sm">Lovely Professional University • 2024-2028</p>
 							<p className="gh-text-muted text-sm mt-1">
 								Focused on software engineering, data structures, algorithms, and web development.
 							</p>
