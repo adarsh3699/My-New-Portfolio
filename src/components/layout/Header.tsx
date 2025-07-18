@@ -217,10 +217,7 @@ export default function Header() {
 	);
 
 	const renderProfilePicture = () => (
-		<button
-			className={`group hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} p-1 rounded-md`}
-			aria-label="User profile"
-		>
+		<div className={`group ${TRANSITIONS.base} p-1 rounded-md`} aria-label="User profile">
 			<div
 				className={`w-8 h-8 rounded-full overflow-hidden border border-gh-border-muted ${TRANSITIONS.scale} group-hover:scale-105`}
 			>
@@ -233,7 +230,7 @@ export default function Header() {
 					sizes="32px"
 				/>
 			</div>
-		</button>
+		</div>
 	);
 
 	const renderNavigationTabs = () => (

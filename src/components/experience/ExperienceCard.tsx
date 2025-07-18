@@ -23,7 +23,7 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 									alt={`${exp.company} logo`}
 									width={48}
 									height={48}
-									className="object-contain w-8 h-8 sm:w-10 sm:h-10"
+									className="object-contain w-10 h-10 sm:w-12 sm:h-12"
 								/>
 							) : (
 								<BuildingOffice2Icon className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
@@ -77,7 +77,7 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 			<div className="mt-4 sm:mt-6">
 				<ul className="space-y-2 sm:space-y-3">
 					{exp.description.map((item, i) => (
-						<li key={i} className="gh-text-muted text-sm flex items-start group/item">
+						<li key={i} className="gh-text text-sm flex items-start group/item">
 							<span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gh-text-accent rounded-full mt-2 mr-2 sm:mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform"></span>
 							<span className="flex-1">{item}</span>
 						</li>
@@ -87,7 +87,7 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 
 			{/* Technologies */}
 			<div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
-				<h3 className="text-sm font-medium gh-text">Technologies Used:</h3>
+				<h3 className="text-base font-medium gh-text">Technologies Used:</h3>
 				<div className="flex flex-wrap gap-1.5 sm:gap-2">
 					{exp.technologies.map((tech) => (
 						<span
