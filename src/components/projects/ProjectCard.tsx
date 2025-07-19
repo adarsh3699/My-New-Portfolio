@@ -8,9 +8,7 @@ interface Project {
 	description: string;
 	githubUrl?: string;
 	liveUrl?: string;
-	status: string;
 	featured?: boolean;
-	isActive: boolean;
 	technologies: string[];
 	primaryLanguage: {
 		name: string;
@@ -51,17 +49,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 								<span className="gh-text-accent">{project.name}</span>
 							)}
 						</h3>
-						<span className="text-xs px-2 py-1 border rounded-full gh-text-muted gh-border capitalize">
-							{project.status}
-						</span>
 						{project.featured && (
 							<span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full border border-yellow-200">
 								Featured
-							</span>
-						)}
-						{!project.isActive && (
-							<span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full border border-gray-200">
-								Archived
 							</span>
 						)}
 					</div>

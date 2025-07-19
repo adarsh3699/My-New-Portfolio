@@ -1,21 +1,18 @@
+import { ColourfulText } from "@/components/ui";
+
 interface ProjectHeaderProps {
 	totalProjects: number;
-	filteredCount: number;
 }
 
-export function ProjectHeader({ totalProjects, filteredCount }: ProjectHeaderProps) {
+export function ProjectHeader({ totalProjects }: ProjectHeaderProps) {
 	return (
-		<>
-			<div className="mb-8">
-				<h2 className="text-2xl font-bold gh-text mb-2">All repositories</h2>
-				<p className="gh-text-muted">A showcase of all my projects and repositories ({totalProjects} total)</p>
-			</div>
-
-			<div className="mb-4">
-				<p className="text-sm gh-text-muted">
-					{filteredCount} {filteredCount === 1 ? "repository" : "repositories"}
-				</p>
-			</div>
-		</>
+		<div className="mb-8">
+			<h1 className="text-3xl font-bold gh-text mb-4">
+				All <ColourfulText text="Repositories" />
+			</h1>
+			<p className="gh-text-muted text-lg">
+				A showcase of all my projects and repositories ({totalProjects} total)
+			</p>
+		</div>
 	);
 }

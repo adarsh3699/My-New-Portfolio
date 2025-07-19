@@ -52,7 +52,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
 				)}
 			</h3>
 			<span className="text-xs gh-text-muted px-2 py-1 border gh-border rounded-full flex-shrink-0 capitalize">
-				{project.status}
+				{project.category}
 			</span>
 		</div>
 		<p className="text-xs sm:text-sm gh-text-muted mb-2 sm:mb-3 line-clamp-2">{project.description}</p>

@@ -9,7 +9,7 @@ export default function ProjectsPage() {
 	return (
 		<main className="min-h-screen gh-bg-canvas-default">
 			<section className="max-w-7xl mx-auto px-3 md:px-8 lg:px-6 py-8 sm:py-12">
-				<ProjectHeader totalProjects={projects.length} filteredCount={filteredProjects.length} />
+				<ProjectHeader totalProjects={projects.length} />
 				<ProjectFilters projects={projects} onFilterChange={setFilteredProjects} />
 
 				<div className="space-y-4">

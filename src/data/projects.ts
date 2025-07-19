@@ -16,12 +16,10 @@ export interface Project {
     forks: number;
     watchers?: number;
   };
-  status: "public" | "private";
-  isActive: boolean;
   isPinned: boolean;
   createdAt: string;
   updatedAt: string;
-  category: "web" | "mobile" | "desktop" | "library" | "tool" | "other";
+  category: "Web" | "Mobile" | "Desktop" | "Library" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other";
   featured?: boolean;
   images?: string[];
 }
@@ -44,12 +42,10 @@ export const projects: Project[] = [
       forks: 12,
       watchers: 8
     },
-    status: "public",
-    isActive: true,
     isPinned: true,
     createdAt: "2023-01-15",
     updatedAt: "2024-12-10",
-    category: "web",
+    category: "Web",
     featured: true
   },
   {
@@ -69,12 +65,10 @@ export const projects: Project[] = [
       forks: 8,
       watchers: 5
     },
-    status: "public",
-    isActive: true,
     isPinned: true,
     createdAt: "2024-11-01",
     updatedAt: "2024-12-15",
-    category: "web",
+    category: "Web",
     featured: true
   },
   {
@@ -94,12 +88,10 @@ export const projects: Project[] = [
       forks: 15,
       watchers: 7
     },
-    status: "public",
-    isActive: true,
     isPinned: true,
     createdAt: "2023-06-20",
     updatedAt: "2024-08-22",
-    category: "web"
+    category: "Web"
   },
   {
     id: "task-manager-app",
@@ -118,12 +110,10 @@ export const projects: Project[] = [
       forks: 9,
       watchers: 4
     },
-    status: "public",
-    isActive: true,
     isPinned: true,
     createdAt: "2023-09-12",
     updatedAt: "2024-10-05",
-    category: "web"
+    category: "Web"
   },
   {
     id: "weather-dashboard",
@@ -139,12 +129,10 @@ export const projects: Project[] = [
       forks: 6,
       watchers: 3
     },
-    status: "public",
-    isActive: true,
     isPinned: false,
     createdAt: "2023-04-08",
     updatedAt: "2024-06-15",
-    category: "web"
+    category: "Web"
   },
   {
     id: "expense-tracker",
@@ -160,12 +148,10 @@ export const projects: Project[] = [
       forks: 11,
       watchers: 6
     },
-    status: "public",
-    isActive: true,
     isPinned: false,
     createdAt: "2023-07-03",
     updatedAt: "2024-09-18",
-    category: "mobile"
+    category: "Mobile"
   },
   {
     id: "api-testing-tool",
@@ -181,12 +167,10 @@ export const projects: Project[] = [
       forks: 4,
       watchers: 2
     },
-    status: "public",
-    isActive: false,
     isPinned: false,
     createdAt: "2023-02-28",
     updatedAt: "2024-04-12",
-    category: "desktop"
+    category: "Desktop"
   },
   {
     id: "code-snippet-manager",
@@ -202,12 +186,10 @@ export const projects: Project[] = [
       forks: 7,
       watchers: 5
     },
-    status: "public",
-    isActive: true,
     isPinned: false,
     createdAt: "2023-11-22",
     updatedAt: "2024-11-30",
-    category: "tool"
+    category: "Tool"
   },
   {
     id: "blockchain-voting",
@@ -223,12 +205,10 @@ export const projects: Project[] = [
       forks: 18,
       watchers: 12
     },
-    status: "public",
-    isActive: false,
     isPinned: false,
     createdAt: "2023-05-15",
     updatedAt: "2024-07-08",
-    category: "web"
+    category: "Blockchain"
   },
   {
     id: "ml-image-classifier",
@@ -244,12 +224,10 @@ export const projects: Project[] = [
       forks: 13,
       watchers: 8
     },
-    status: "public",
-    isActive: true,
     isPinned: false,
     createdAt: "2023-08-07",
     updatedAt: "2024-10-22",
-    category: "other"
+    category: "AI/ML"
   }
 ];
 
@@ -260,10 +238,6 @@ export const getPinnedProjects = (): Project[] => {
 
 export const getFeaturedProjects = (): Project[] => {
   return projects.filter(project => project.featured);
-};
-
-export const getActiveProjects = (): Project[] => {
-  return projects.filter(project => project.isActive);
 };
 
 export const getProjectsByCategory = (category: Project['category']): Project[] => {
