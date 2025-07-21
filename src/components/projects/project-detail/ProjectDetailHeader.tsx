@@ -32,7 +32,12 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 				<div className="flex items-center gap-2">
 					{/* Live Demo button */}
 					{project.liveUrl && (
-						<Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+						<Link
+							href={project.liveUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View live demo"
+						>
 							<Button variant="default" size="sm">
 								<EyeIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Live Demo</span>
@@ -42,7 +47,12 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 
 					{/* Source Code button */}
 					{project.githubUrl && (
-						<Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+						<Link
+							href={project.githubUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View source code"
+						>
 							<Button variant="outline" size="sm">
 								<CodeBracketIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Source Code</span>
@@ -52,7 +62,12 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 
 					{/* Demo Video button (only if demo video URL is available) */}
 					{project.demoVideoUrl && (
-						<Link href={project.demoVideoUrl} target="_blank" rel="noopener noreferrer">
+						<Link
+							href={project.demoVideoUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Watch demo video"
+						>
 							<Button variant="outline" size="sm">
 								<PlayIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Demo Video</span>
