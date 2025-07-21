@@ -1,13 +1,34 @@
 "use client";
 import React from "react";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { projects, getProjectWithReadme, type Project } from "@/data";
-import {
-	ProjectDetailHeader,
-	ProjectScreenshots,
-	ProjectReadme,
-	ProjectSidebar,
-} from "@/components/projects/project-detail";
+import { ProjectScreenshotsSkeleton } from "@/components/projects/project-detail/ProjectScreenshots";
+
+// Dynamic imports - only skeleton for heavy components
+const ProjectDetailHeader = dynamic(() =>
+	import("@/components/projects/project-detail/ProjectDetailHeader").then((mod) => ({
+		default: mod.ProjectDetailHeader,
+	}))
+);
+
+const ProjectScreenshots = dynamic(
+	() =>
+		import("@/components/projects/project-detail/ProjectScreenshots").then((mod) => ({
+			default: mod.ProjectScreenshots,
+		})),
+	{
+		loading: () => <ProjectScreenshotsSkeleton />,
+	}
+);
+
+const ProjectReadme = dynamic(() =>
+	import("@/components/projects/project-detail/ProjectReadme").then((mod) => ({ default: mod.ProjectReadme }))
+);
+
+const ProjectSidebar = dynamic(() =>
+	import("@/components/projects/project-detail/ProjectSidebar").then((mod) => ({ default: mod.ProjectSidebar }))
+);
 
 interface ProjectDetailPageProps {
 	params: Promise<{ id: string }>;

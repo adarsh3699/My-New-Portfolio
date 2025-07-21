@@ -48,3 +48,35 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 		</div>
 	);
 }
+
+// Loading skeleton for ProjectScreenshots
+export function ProjectScreenshotsSkeleton() {
+	return (
+		<div className="mb-12 animate-pulse">
+			<div className="mb-6">
+				<div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-2 w-48"></div>
+				<div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+			</div>
+
+			{/* Sticky scroll placeholder */}
+			<div className="space-y-6">
+				{Array.from({ length: 3 }, (_, index) => (
+					<div key={index} className="flex flex-col lg:flex-row gap-8">
+						{/* Text content skeleton */}
+						<div className="lg:w-1/3 space-y-4">
+							<div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-32"></div>
+							<div className="space-y-2">
+								<div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+								<div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+								<div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+							</div>
+						</div>
+
+						{/* Image skeleton */}
+						<div className="lg:w-2/3 h-64 lg:h-80 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+}

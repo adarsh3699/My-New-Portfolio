@@ -1,5 +1,15 @@
-import { ExperienceHeader, ExperienceTimeline } from "@/components/experience";
-import { OpportunitiesSection } from "@/components/ui";
+import dynamic from "next/dynamic";
+import { ExperienceHeader } from "@/components/experience";
+import { ExperienceTimelineSkeleton } from "@/components/experience/ExperienceTimeline";
+
+// Dynamic imports with loading skeletons
+const ExperienceTimeline = dynamic(() => import("@/components/experience/ExperienceTimeline"), {
+	loading: () => <ExperienceTimelineSkeleton />,
+});
+
+const OpportunitiesSection = dynamic(() => import("@/components/ui/opportunities-section"), {
+	loading: () => <div className="animate-pulse h-32 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>,
+});
 
 export default function ExperiencePage() {
 	return (

@@ -1,7 +1,17 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { projects } from "@/data";
-import { ProjectHeader, ProjectFilters, ProjectCard } from "@/components/projects";
+import { ProjectHeader } from "@/components/projects";
+
+// Dynamic imports - only skeleton for heavy components
+const ProjectFilters = dynamic(() =>
+	import("@/components/projects/ProjectFilters").then((mod) => ({ default: mod.ProjectFilters }))
+);
+
+const ProjectCard = dynamic(() =>
+	import("@/components/projects/ProjectCard").then((mod) => ({ default: mod.ProjectCard }))
+);
 
 export default function ProjectsPage() {
 	const [filteredProjects, setFilteredProjects] = useState(projects);

@@ -1,4 +1,10 @@
-import { ProfileSection, GitHubContributions, PinnedRepositories } from "@/components/home";
+import dynamic from "next/dynamic";
+// Dynamic imports with loading skeletons
+const ProfileSection = dynamic(() => import("@/components/home/ProfileSection"));
+
+const GitHubContributions = dynamic(() => import("@/components/home/GitHubContributions"));
+
+const PinnedRepositories = dynamic(() => import("@/components/home/PinnedRepositories"));
 
 export default function Home() {
 	return (
