@@ -38,7 +38,7 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 							rel="noopener noreferrer"
 							aria-label="View live demo"
 						>
-							<Button variant="default" size="sm">
+							<Button variant="default" size="sm" aria-label="View live demo">
 								<EyeIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Live Demo</span>
 							</Button>
@@ -53,7 +53,7 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 							rel="noopener noreferrer"
 							aria-label="View source code"
 						>
-							<Button variant="outline" size="sm">
+							<Button variant="outline" size="sm" aria-label="View source code">
 								<CodeBracketIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Source Code</span>
 							</Button>
@@ -68,7 +68,7 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 							rel="noopener noreferrer"
 							aria-label="Watch demo video"
 						>
-							<Button variant="outline" size="sm">
+							<Button variant="outline" size="sm" aria-label="Watch demo video">
 								<PlayIcon className="w-4 h-4" />
 								<span className="hidden sm:inline">Demo Video</span>
 							</Button>
