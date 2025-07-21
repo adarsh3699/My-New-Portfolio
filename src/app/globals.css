@@ -363,3 +363,21 @@ body {
 	transform: translateZ(0); /* Force GPU acceleration */
 	will-change: background-color; /* Optimize for background color changes */
 }
+
+/* Badge layout improvements for markdown content */
+.prose p img[src*="img.shields.io"] {
+	display: inline-block;
+	margin-right: 0.25rem;
+	margin-bottom: 0.25rem;
+	height: 24px;
+	width: auto;
+}
+
+/* Code block styling - remove inline styling when code is inside pre */
+.prose pre code {
+	background: none !important;
+	padding: 0 !important;
+	border-radius: 0 !important;
+	color: inherit;
+	font-size: 0.875rem;
+}

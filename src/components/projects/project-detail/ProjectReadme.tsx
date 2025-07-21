@@ -1,6 +1,7 @@
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import React from "react"; // Added missing import for React
 
 // Style constants
 const STYLES = {
@@ -98,10 +99,6 @@ interface ReactComponentProps {
 
 interface LinkProps extends ReactComponentProps {
 	href?: string;
-}
-
-interface CodeProps extends ReactComponentProps {
-	className?: string;
 }
 
 interface ImageProps {
@@ -302,36 +299,44 @@ const getMarkdownComponents = () => ({
 			{children}
 		</a>
 	),
-	code: ({ children, className }: CodeProps) => {
-		const isCodeBlock = className?.includes("language-");
+	// Inline code styling
+	code: ({ children }: ReactComponentProps) => <code className={STYLES.inlineCode}>{children}</code>,
 
-		if (isCodeBlock) {
-			return (
-				<pre className={STYLES.codeBlock}>
-					<code className="text-sm gh-text font-mono">{children}</code>
-				</pre>
-			);
-		}
-
-		return <code className={STYLES.inlineCode}>{children}</code>;
-	},
+	// Code block container - children already contains <code> from ReactMarkdown
+	pre: ({ children }: ReactComponentProps) => <pre className={STYLES.codeBlock}>{children}</pre>,
 	blockquote: ({ children }: ReactComponentProps) => (
 		<blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic gh-text-muted mb-4">
 			{children}
 		</blockquote>
 	),
-	img: ({ src, alt }: ImageProps) => (
-		<div className="relative w-full h-auto mb-4">
+	img: ({ src, alt }: ImageProps) => {
+		const srcString = src as string;
+		const isBadge = srcString?.includes("img.shields.io");
+
+		if (isBadge) {
+			return (
+				<Image
+					src={srcString}
+					alt={alt || ""}
+					width={100}
+					height={24}
+					className="inline-block"
+					style={{ width: "auto", height: "24px" }}
+				/>
+			);
+		}
+
+		return (
 			<Image
-				src={src as string}
+				src={srcString}
 				alt={alt || ""}
 				width={800}
 				height={400}
-				className="max-w-full h-auto rounded-md shadow-sm object-contain"
+				className="max-w-full h-auto rounded-md shadow-sm object-contain mb-4 block"
 				style={{ width: "auto", height: "auto" }}
 			/>
-		</div>
-	),
+		);
+	},
 	hr: () => <hr className="border-t gh-border my-8" />,
 });
 
