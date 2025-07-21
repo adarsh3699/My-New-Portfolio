@@ -40,8 +40,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			warning:
 				"bg-gradient-to-br from-yellow-500 to-orange-500 text-white shadow-[0px_1px_0px_0px_#ffffff50_inset,0px_-1px_0px_0px_#ffffff30_inset] hover:from-yellow-600 hover:to-orange-600 hover:shadow-lg dark:from-yellow-500 dark:to-orange-600 dark:shadow-[0px_1px_0px_0px_#ffffff20_inset,0px_-1px_0px_0px_#ffffff20_inset] dark:hover:from-yellow-600 dark:hover:to-orange-700",
 			danger: "bg-gradient-to-br from-red-500 to-red-600 text-white shadow-[0px_1px_0px_0px_#ffffff50_inset,0px_-1px_0px_0px_#ffffff30_inset] hover:from-red-600 hover:to-red-700 hover:shadow-lg dark:from-red-600 dark:to-red-700 dark:shadow-[0px_1px_0px_0px_#ffffff20_inset,0px_-1px_0px_0px_#ffffff20_inset] dark:hover:from-red-700 dark:hover:to-red-800",
-			outline:
-				"border-2 border-neutral-300 bg-white/80 text-gray-700 hover:bg-white hover:border-neutral-400 hover:shadow-sm dark:border-neutral-700 hover:dark:border-neutral-600 dark:bg-transparent dark:text-white dark:hover:bg-neutral-900",
+			outline: `${
+				size === "sm" ? "border" : "border-2"
+			} border-neutral-300 bg-white/80 text-gray-700 hover:bg-white hover:border-neutral-400 hover:shadow-sm dark:border-neutral-700 hover:dark:border-neutral-600 dark:bg-transparent dark:text-white dark:hover:bg-neutral-900`,
 			ghost: "bg-transparent text-gray-700 hover:bg-neutral-100/80 hover:text-gray-900 dark:text-white dark:hover:bg-neutral-800",
 		};
 

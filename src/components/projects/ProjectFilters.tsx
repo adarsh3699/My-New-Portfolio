@@ -13,7 +13,7 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedLanguage, setSelectedLanguage] = useState("All");
 	const [selectedCategory, setSelectedCategory] = useState("All");
-	const [sortBy, setSortBy] = useState("updated");
+	const [sortBy, setSortBy] = useState("none");
 
 	// Get unique languages and categories for filters
 	const languageOptions = useMemo((): SelectOption[] => {
@@ -33,9 +33,9 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
 	}, [projects]);
 
 	const sortOptions: SelectOption[] = [
-		{ value: "updated", label: "Sort: Updated" },
+		{ value: "none", label: "No Sort" },
+		{ value: "featured", label: "Featured First" },
 		{ value: "name", label: "Name" },
-		{ value: "stars", label: "Stars" },
 		{ value: "created", label: "Created" },
 	];
 
@@ -56,15 +56,19 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
 		// Sort projects
 		filtered.sort((a, b) => {
 			switch (sortBy) {
+				case "featured":
+					// Featured projects first, then by index
+					if (a.featured && !b.featured) return -1;
+					if (!a.featured && b.featured) return 1;
+					return a.index - b.index;
 				case "name":
 					return a.name.localeCompare(b.name);
-				case "stars":
-					return b.stats.stars - a.stats.stars;
 				case "created":
 					return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-				case "updated":
+				case "none":
 				default:
-					return new Date(b.updatedAt).getTime() - new Date(a.createdAt).getTime();
+					// Sort by custom index (lower index = higher priority)
+					return a.index - b.index;
 			}
 		});
 

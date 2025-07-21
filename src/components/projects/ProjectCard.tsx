@@ -1,6 +1,21 @@
 import Link from "next/link";
 import { StarIcon } from "@heroicons/react/24/outline";
-import { ProjectStats } from "./ProjectStats";
+
+const formatCreatedTime = (dateString: string) => {
+	const date = new Date(dateString);
+	const now = new Date();
+	const diffTime = Math.abs(now.getTime() - date.getTime());
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+	if (diffDays === 1) return "Created 1 day ago";
+	if (diffDays < 30) return `Created ${diffDays} days ago`;
+	if (diffDays < 365) {
+		const months = Math.floor(diffDays / 30);
+		return `Created ${months} month${months > 1 ? "s" : ""} ago`;
+	}
+	const years = Math.floor(diffDays / 365);
+	return `Created ${years} year${years > 1 ? "s" : ""} ago`;
+};
 
 interface Project {
 	id: string;
@@ -14,12 +29,7 @@ interface Project {
 		name: string;
 		color: string;
 	};
-	stats: {
-		stars: number;
-		forks: number;
-		watchers?: number;
-	};
-	updatedAt: string;
+
 	category: string;
 	createdAt: string;
 }
@@ -35,20 +45,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
 				<div className="flex-1">
 					{/* Repository Header */}
 					<div className="flex items-center gap-3 mb-2">
-						<h3 className="text-lg font-semibold">
-							{project.githubUrl ? (
-								<Link
-									href={project.githubUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="gh-text-accent hover:underline"
-								>
-									{project.name}
-								</Link>
-							) : (
-								<span className="gh-text-accent">{project.name}</span>
-							)}
-						</h3>
+						<h2 className="text-lg font-semibold">
+							<Link href={`/projects/${project.id}`} className="gh-text-accent hover:underline">
+								{project.name}
+							</Link>
+						</h2>
 						{project.featured && (
 							<span className="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full border border-yellow-200">
 								Featured
@@ -78,12 +79,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
 						</div>
 					)}
 
-					{/* Repository Stats */}
-					<ProjectStats
-						primaryLanguage={project.primaryLanguage}
-						stats={project.stats}
-						updatedAt={project.updatedAt}
-					/>
+					{/* Language and Created Date Footer - Same style as original */}
+					<div className="flex items-center gap-4 pt-3 mt-3 text-xs gh-text-muted">
+						<div className="flex items-center gap-1">
+							<div className={`w-2.5 h-2.5 rounded-full ${project.primaryLanguage.color}`} />
+							<span>{project.primaryLanguage.name}</span>
+						</div>
+						<span>{formatCreatedTime(project.createdAt)}</span>
+					</div>
 				</div>
 
 				{/* Repository Actions */}

@@ -4,6 +4,7 @@ export { FlipWords } from './flip-words';
 export { Input } from './input';
 export { PlaceholdersAndVanishInput } from './placeholders-and-vanish-input';
 export { Select, type SelectOption } from './select';
+export { StickyScroll } from './sticky-scroll-reveal';
 export { TextGenerateEffect } from './text-generate-effect';
 export { Textarea } from './textarea';
 export { Timeline } from './timeline';

@@ -1,36 +1,27 @@
 import React from "react";
 import Link from "next/link";
-import { StarIcon } from "@heroicons/react/24/outline";
-import { ForkIcon } from "@/components/icons";
 import { getPinnedProjects, type Project } from "@/data";
 
-const formatUpdatedTime = (dateString: string) => {
+const formatCreatedTime = (dateString: string) => {
 	const date = new Date(dateString);
 	const now = new Date();
 	const diffTime = Math.abs(now.getTime() - date.getTime());
 	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-	if (diffDays === 1) return "Updated 1 day ago";
-	if (diffDays < 30) return `Updated ${diffDays} days ago`;
+	if (diffDays === 1) return "Created 1 day ago";
+	if (diffDays < 30) return `Created ${diffDays} days ago`;
 	if (diffDays < 365) {
 		const months = Math.floor(diffDays / 30);
-		return `Updated ${months} month${months > 1 ? "s" : ""} ago`;
+		return `Created ${months} month${months > 1 ? "s" : ""} ago`;
 	}
 	const years = Math.floor(diffDays / 365);
-	return `Updated ${years} year${years > 1 ? "s" : ""} ago`;
+	return `Created ${years} year${years > 1 ? "s" : ""} ago`;
 };
 
 const LanguageTag = ({ color, name }: { color: string; name: string }) => (
 	<span className="flex items-center flex-shrink-0">
 		<div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${color} rounded-full mr-1`} />
 		<span className="text-xs">{name}</span>
-	</span>
-);
-
-const StatTag = ({ icon, count }: { icon: React.ReactNode; count: string }) => (
-	<span className="flex items-center flex-shrink-0">
-		<div className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-1">{icon}</div>
-		<span className="text-xs">{count}</span>
 	</span>
 );
 
@@ -59,10 +50,8 @@ const ProjectCard = ({ project }: { project: Project }) => (
 		<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs gh-text-muted">
 			<div className="flex items-center space-x-3 sm:space-x-4 overflow-x-auto">
 				<LanguageTag color={project.primaryLanguage.color} name={project.primaryLanguage.name} />
-				<StatTag icon={<StarIcon />} count={project.stats.stars.toString()} />
-				<StatTag icon={<ForkIcon />} count={project.stats.forks.toString()} />
 			</div>
-			<span className="text-xs flex-shrink-0">{formatUpdatedTime(project.updatedAt)}</span>
+			<span className="text-xs flex-shrink-0">{formatCreatedTime(project.createdAt)}</span>
 		</div>
 	</div>
 );
