@@ -7,6 +7,7 @@ import {
 	type ContributionWeek,
 } from "@/lib/github-api";
 import { useApi } from "@/lib/hooks";
+import "@/styles/github-contributions.css";
 
 // Constants
 const CONTRIBUTION_LEVELS = {

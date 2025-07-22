@@ -32,11 +32,6 @@
 	.theme-transition * {
 		transition: none !important;
 	}
-
-	/* Prevent layout shifts from dynamic content */
-	.gh-contributions-container {
-		contain: layout style;
-	}
 }
 
 :root {
@@ -94,13 +89,6 @@
 	--gh-shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
 	--gh-shadow-large: 0 8px 24px rgba(140, 149, 159, 0.2);
 	--gh-shadow-extra-large: 0 12px 28px rgba(140, 149, 159, 0.3);
-
-	/* Add these inside :root */
-	--gh-contrib-0: #eff2f5;
-	--gh-contrib-1: #aceebb;
-	--gh-contrib-2: #4ac26b;
-	--gh-contrib-3: #2da44e;
-	--gh-contrib-4: #116329;
 }
 
 /* Dark mode with explicit class override */
@@ -159,13 +147,6 @@
 	--gh-shadow-medium: 0 3px 6px #010409;
 	--gh-shadow-large: 0 8px 24px #010409;
 	--gh-shadow-extra-large: 0 12px 28px #010409;
-
-	/* Add these inside .dark */
-	--gh-contrib-0: #151b23;
-	--gh-contrib-1: #033a16;
-	--gh-contrib-2: #196c2e;
-	--gh-contrib-3: #2ea043;
-	--gh-contrib-4: #56d364;
 }
 
 /* GitHub-style utility classes */
@@ -334,50 +315,4 @@ body {
 	color: var(--gh-fg-default);
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji";
-}
-
-/* Contribution level colors as CSS variables (add to existing :root and .dark blocks) */
-/* Contribution level utility classes */
-.gh-contribution-level-0 {
-	background-color: var(--gh-contrib-0);
-}
-.gh-contribution-level-1 {
-	background-color: var(--gh-contrib-1);
-}
-.gh-contribution-level-2 {
-	background-color: var(--gh-contrib-2);
-}
-.gh-contribution-level-3 {
-	background-color: var(--gh-contrib-3);
-}
-.gh-contribution-level-4 {
-	background-color: var(--gh-contrib-4);
-}
-
-/* Optimize contribution grid animations to prevent layout shifts */
-.gh-contribution-level-0,
-.gh-contribution-level-1,
-.gh-contribution-level-2,
-.gh-contribution-level-3,
-.gh-contribution-level-4 {
-	transform: translateZ(0); /* Force GPU acceleration */
-	will-change: background-color; /* Optimize for background color changes */
-}
-
-/* Badge layout improvements for markdown content */
-.prose p img[src*="img.shields.io"] {
-	display: inline-block;
-	margin-right: 0.25rem;
-	margin-bottom: 0.25rem;
-	height: 24px;
-	width: auto;
-}
-
-/* Code block styling - remove inline styling when code is inside pre */
-.prose pre code {
-	background: none !important;
-	padding: 0 !important;
-	border-radius: 0 !important;
-	color: inherit;
-	font-size: 0.875rem;
 }
