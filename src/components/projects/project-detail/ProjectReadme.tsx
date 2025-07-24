@@ -260,7 +260,7 @@ const GeneratedReadme = ({ project }: { project: ProjectReadmeProps["project"] }
 									href={project.liveUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+									className="btn-link inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
 								>
 									🌐 Live Demo
 								</a>
@@ -270,7 +270,7 @@ const GeneratedReadme = ({ project }: { project: ProjectReadmeProps["project"] }
 									href={project.githubUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors gh-text"
+									className="btn-link inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors gh-text"
 								>
 									📂 Source Code
 								</a>

@@ -68,14 +68,16 @@ import { nirakshGuardianData } from "./niraksh-guardian";
 import { bhemuNotesData } from "./bhemu-notes";
 import { priceComparisonWebData } from "./price-comparison-web";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
+import { youngMindsClubData } from "./youngminds-club";
 
 // All projects - single source of truth
 export const projects: Project[] = [
-	myNewPortfolioData,
+	youngMindsClubData,
 	nirakshGuardianData,
 	bhemuNotesData,
 	priceComparisonWebData,
 	facilityEvaluationSystemIITPData,
+	myNewPortfolioData,
 ];
 
 // Core utility functions

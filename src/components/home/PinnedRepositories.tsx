@@ -26,34 +26,25 @@ const LanguageTag = ({ color, name }: { color: string; name: string }) => (
 );
 
 const ProjectCard = ({ project }: { project: Project }) => (
-	<div className="border gh-border rounded-lg p-3 sm:p-4 hover:gh-bg-canvas-subtle transition-colors">
-		<div className="flex items-start justify-between mb-2">
-			<h3 className="font-medium gh-text-accent hover:underline cursor-pointer text-sm sm:text-base truncate mr-2">
-				{project.githubUrl ? (
-					<Link
-						href={project.githubUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="hover:underline"
-					>
-						{project.name}
-					</Link>
-				) : (
-					project.name
-				)}
-			</h3>
-			<span className="text-xs gh-text-muted px-2 py-1 border gh-border rounded-full flex-shrink-0 capitalize">
-				{project.category}
-			</span>
-		</div>
-		<p className="text-xs sm:text-sm gh-text-muted mb-2 sm:mb-3 line-clamp-2">{project.description}</p>
-		<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs gh-text-muted">
-			<div className="flex items-center space-x-3 sm:space-x-4 overflow-x-auto">
-				<LanguageTag color={project.primaryLanguage.color} name={project.primaryLanguage.name} />
+	<Link href={`/projects/${project.id}`} className="block">
+		<div className="border gh-border rounded-lg p-3 sm:p-4 hover:gh-bg-canvas-subtle transition-colors cursor-pointer">
+			<div className="flex items-start justify-between mb-2">
+				<h3 className="font-medium gh-text-accent hover:underline text-sm sm:text-base truncate mr-2">
+					{project.name}
+				</h3>
+				<span className="text-xs gh-text-muted px-2 py-1 border gh-border rounded-full flex-shrink-0 capitalize">
+					{project.category}
+				</span>
 			</div>
-			<span className="text-xs flex-shrink-0">{formatCreatedTime(project.createdAt)}</span>
+			<p className="text-xs sm:text-sm gh-text-muted mb-2 sm:mb-3 line-clamp-2">{project.description}</p>
+			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs gh-text-muted">
+				<div className="flex items-center space-x-3 sm:space-x-4 overflow-x-auto">
+					<LanguageTag color={project.primaryLanguage.color} name={project.primaryLanguage.name} />
+				</div>
+				<span className="text-xs flex-shrink-0">{formatCreatedTime(project.createdAt)}</span>
+			</div>
 		</div>
-	</div>
+	</Link>
 );
 
 export default function PinnedRepositories() {

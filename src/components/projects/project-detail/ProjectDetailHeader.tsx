@@ -8,6 +8,11 @@ interface ProjectDetailHeaderProps {
 		liveUrl?: string;
 		githubUrl?: string;
 		demoVideoUrl?: string;
+		githubRepo?: {
+			owner: string;
+			name: string;
+			branch?: string;
+		};
 	};
 }
 
@@ -27,7 +32,7 @@ export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
 					<span className="gh-text-muted text-sm sm:text-lg flex-shrink-0">/</span>
 					<h1 className="text-sm sm:text-lg font-semibold gh-text truncate min-w-0">{project.name}</h1>
 					<span className="text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 gh-bg-neutral-subtle border gh-border rounded-full gh-text-muted font-medium flex-shrink-0 hidden sm:inline-block">
-						Public
+						{project.githubRepo ? "Public" : "Private"}
 					</span>
 				</div>
 
