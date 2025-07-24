@@ -38,7 +38,7 @@ export const StickyScroll = ({
 	const cardLength = content.length;
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
-		const cardsBreakpoints = content.map((_, index) => index / cardLength);
+		const cardsBreakpoints = content.map((_, index) => index / (cardLength + 0.5));
 		const closestBreakpointIndex = cardsBreakpoints.reduce((acc, breakpoint, index) => {
 			const distance = Math.abs(latest - breakpoint);
 			if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
@@ -60,19 +60,27 @@ export const StickyScroll = ({
 			animate={{
 				backgroundColor: backgroundColors[activeCard % backgroundColors.length],
 			}}
+			transition={{
+				duration: 0.8,
+				ease: "easeInOut",
+			}}
 			className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
 			ref={ref}
 		>
 			<div className="div relative flex items-start px-4">
 				<div className="max-w-2xl">
 					{content.map((item, index) => (
-						<div key={item.title + index} className="my-20">
+						<div key={item.title + index} className="my-20 mb-40">
 							<motion.h2
 								initial={{
 									opacity: 0,
 								}}
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
+								}}
+								transition={{
+									duration: 0.3,
+									ease: "easeInOut",
 								}}
 								className="text-2xl font-bold text-slate-100"
 							>
@@ -84,6 +92,10 @@ export const StickyScroll = ({
 								}}
 								animate={{
 									opacity: activeCard === index ? 1 : 0.3,
+								}}
+								transition={{
+									duration: 0.3,
+									ease: "easeInOut",
 								}}
 								className="text-kg mt-10 max-w-sm text-slate-300"
 							>

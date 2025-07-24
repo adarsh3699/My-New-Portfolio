@@ -7,7 +7,6 @@ export const priceComparisonWebData: Project = {
 	description: "Smart price comparison tool across multiple e-commerce platforms to find the best deals",
 	longDescription:
 		"A modern, responsive web application that helps users compare product prices across multiple e-commerce platforms including Amazon, Flipkart, Myntra, Paytm, and others. Built with React and Node.js, this tool provides real-time price comparisons, automatic discount detection, and intelligent search functionality to help users make informed purchasing decisions.",
-	index: 4,
 
 	// Links
 	githubUrl: "https://github.com/adarsh3699/price-comparison-web",
@@ -44,19 +43,22 @@ export const priceComparisonWebData: Project = {
 	// Visual content
 	screenshots: [
 		{
-			url: "/images/price-comparison-search.png",
+			url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
 			title: "Smart Product Search",
-			description: "Intelligent search interface with real-time product results and filtering options",
+			description:
+				"Intelligent search interface with real-time product results, advanced filtering options, and category-based browsing for easy product discovery",
 		},
 		{
-			url: "/images/price-comparison-results.png",
+			url: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
 			title: "Price Comparison Results",
-			description: "Side-by-side price comparison across multiple retailers with discount calculations",
+			description:
+				"Side-by-side price comparison across multiple e-commerce platforms with discount calculations, savings highlights, and direct purchase links",
 		},
 		{
-			url: "/images/price-comparison-mobile.png",
+			url: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
 			title: "Mobile Responsive Design",
-			description: "Optimized mobile experience with touch-friendly interface and fast loading",
+			description:
+				"Fully optimized mobile experience with touch-friendly interface, fast loading times, and seamless shopping experience across all devices",
 		},
 	],
 

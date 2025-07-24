@@ -8,9 +8,6 @@ export const nirakshGuardianData: Project = {
 	longDescription:
 		"Niraksh Guardian is a comprehensive healthcare application that leverages artificial intelligence to provide patients with intelligent medical assistance. The platform offers AI-driven doctor recommendations based on symptoms, comprehensive medicine search capabilities, detailed prescription explanations, and crucial drug-drug interaction warnings to ensure patient safety.",
 
-	// Custom sorting order
-	index: 2,
-
 	// URLs and links
 	githubUrl: "https://github.com/adarsh3699/Niraksh-Guardian",
 	liveUrl: "https://niraksh-20.vercel.app",
@@ -36,6 +33,34 @@ export const nirakshGuardianData: Project = {
 
 	// Dates
 	createdAt: "2024-10-15",
+
+	// Project screenshots with descriptions
+	screenshots: [
+		{
+			url: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop",
+			title: "AI Doctor Recommendations",
+			description:
+				"Smart doctor recommendation system that analyzes patient symptoms and suggests appropriate specialists using advanced AI algorithms for optimal healthcare guidance.",
+		},
+		{
+			url: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&h=600&fit=crop",
+			title: "Medicine Search & Information",
+			description:
+				"Comprehensive medicine database with detailed drug information, dosage instructions, side effects, and contraindications for informed medication decisions.",
+		},
+		{
+			url: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&h=600&fit=crop",
+			title: "Prescription Explanation Tool",
+			description:
+				"User-friendly prescription explainer that breaks down complex medical prescriptions into simple, understandable terms for better patient comprehension.",
+		},
+		{
+			url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+			title: "Drug Interaction Checker",
+			description:
+				"Advanced safety system that identifies potential harmful drug interactions and provides critical warnings to ensure patient safety and prevent adverse reactions.",
+		},
+	],
 
 	// All README content organized in one place
 	readmeContent: {

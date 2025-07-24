@@ -66,7 +66,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 							{project.technologies.slice(0, 6).map((tech) => (
 								<span
 									key={tech}
-									className="text-xs px-2 py-1 gh-bg-accent-subtle gh-text-accent rounded-full border gh-border-subtle hover:gh-bg-accent-muted transition-colors cursor-pointer"
+									className="text-xs px-2 py-1 gh-bg-accent-subtle gh-text-accent rounded-full border gh-border-subtle hover:gh-bg-accent-muted transition-colors"
 								>
 									{tech}
 								</span>
@@ -87,31 +87,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
 						</div>
 						<span>{formatCreatedTime(project.createdAt)}</span>
 					</div>
-				</div>
-
-				{/* Repository Actions */}
-				<div className="flex gap-2">
-					{project.githubUrl && (
-						<Link
-							href={project.githubUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="btn-secondary text-xs px-3 py-1 flex items-center gap-1"
-						>
-							<StarIcon className="w-3 h-3" />
-							Star
-						</Link>
-					)}
-					{project.liveUrl && (
-						<Link
-							href={project.liveUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="btn-primary text-xs px-3 py-1"
-						>
-							Live Demo
-						</Link>
-					)}
 				</div>
 			</div>
 		</div>

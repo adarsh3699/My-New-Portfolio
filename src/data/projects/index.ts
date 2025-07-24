@@ -7,7 +7,6 @@ export interface Project {
 	name: string;
 	description: string;
 	longDescription?: string;
-	index: number; // For custom sorting
 
 	// Links
 	githubUrl?: string;
@@ -71,7 +70,13 @@ import { priceComparisonWebData } from "./price-comparison-web";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 
 // All projects - single source of truth
-export const projects: Project[] = [myNewPortfolioData, nirakshGuardianData, facilityEvaluationSystemIITPData, bhemuNotesData, priceComparisonWebData];
+export const projects: Project[] = [
+	myNewPortfolioData,
+	nirakshGuardianData,
+	bhemuNotesData,
+	priceComparisonWebData,
+	facilityEvaluationSystemIITPData,
+];
 
 // Core utility functions
 export const getProjectById = (id: string): Project | undefined => {

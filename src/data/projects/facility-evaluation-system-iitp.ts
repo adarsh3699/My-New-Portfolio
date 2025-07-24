@@ -11,9 +11,6 @@ export const facilityEvaluationSystemIITPData: Project = {
 	longDescription:
 		"Developed during my internship at IIT Patna, this system facilitates the faculty recruitment process by providing a platform where candidates can register and submit applications, faculty members can evaluate candidates based on standardized criteria, and administrators can generate comprehensive reports. The system features a complete multi-role architecture with secure authentication, email verification, and automated PDF report generation.",
 
-	// Custom sorting order
-	index: 5,
-
 	// URLs and links
 	githubUrl: "https://github.com/adarsh3699/Facility-Evaluation-System-IITP",
 	// Note: No live demo URL as this is an internal system for IIT Patna

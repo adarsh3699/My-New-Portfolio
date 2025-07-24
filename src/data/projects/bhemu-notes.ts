@@ -7,7 +7,6 @@ export const bhemuNotesData: Project = {
 	description: "Advanced Multi-User Notes Application with Rich Text Editor and Real-time Collaboration",
 	longDescription:
 		"Bhemu Notes is a comprehensive note-taking application that facilitates creative writing and organization. Features include a rich text editor powered by Quill.js, encrypted data storage, folder organization, PDF export capabilities, and real-time note sharing with collaborative editing features.",
-	index: 3,
 
 	// Links
 	githubUrl: "https://github.com/adarsh3699/Bhemu-Notes-Web",
@@ -42,21 +41,22 @@ export const bhemuNotesData: Project = {
 	// Visual content
 	screenshots: [
 		{
-			url: "/images/bhemu-notes-dashboard.png",
+			url: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop",
 			title: "Dashboard Overview",
 			description:
-				"Main dashboard showing organized notes with folder structure and quick access to recent documents",
+				"Main dashboard showing organized notes with folder structure and quick access to recent documents with an intuitive and clean interface",
 		},
 		{
-			url: "/images/bhemu-notes-editor.png",
+			url: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop",
 			title: "Rich Text Editor",
 			description:
-				"Advanced text editor with formatting tools, media embedding, and real-time collaboration features",
+				"Advanced text editor with formatting tools, media embedding, and real-time collaboration features powered by Quill.js for enhanced writing experience",
 		},
 		{
-			url: "/images/bhemu-notes-sharing.png",
-			title: "Note Sharing",
-			description: "Collaborative note sharing with role-based access control (editor/viewer permissions)",
+			url: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+			title: "Note Sharing & Collaboration",
+			description:
+				"Collaborative note sharing with role-based access control, real-time editing, and secure sharing options for team productivity",
 		},
 	],
 

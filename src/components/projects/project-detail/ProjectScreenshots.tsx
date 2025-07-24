@@ -21,20 +21,24 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 	}
 
 	// Create content for StickyScroll using detailed screenshot data
-	const content = screenshots.map((screenshot: { url: string; title: string; description: string }) => ({
-		title: screenshot.title,
-		description: screenshot.description,
-		content: (
-			<div className="h-full w-full bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-950 flex items-center justify-center relative">
-				<Image
-					src={screenshot.url}
-					alt={`${project.name} - ${screenshot.title}`}
-					fill
-					className="object-cover rounded-lg shadow-lg"
-				/>
-			</div>
-		),
-	}));
+	const content = screenshots.map(
+		(screenshot: { url: string; title: string; description: string }, index: number) => ({
+			title: screenshot.title,
+			description: screenshot.description,
+			content: (
+				<div className="h-full w-full bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-950 flex items-center justify-center relative">
+					<Image
+						src={screenshot.url}
+						alt={`${project.name} - ${screenshot.title}`}
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						priority={index === 0} // Add priority to first image for LCP optimization
+						className="object-cover rounded-lg shadow-lg"
+					/>
+				</div>
+			),
+		})
+	);
 
 	return (
 		<div className="mb-12">

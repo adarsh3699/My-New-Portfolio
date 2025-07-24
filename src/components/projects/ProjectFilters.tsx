@@ -57,18 +57,18 @@ export function ProjectFilters({ projects, onFilterChange }: ProjectFiltersProps
 		filtered.sort((a, b) => {
 			switch (sortBy) {
 				case "featured":
-					// Featured projects first, then by index
+					// Featured projects first, then by array order
 					if (a.featured && !b.featured) return -1;
 					if (!a.featured && b.featured) return 1;
-					return a.index - b.index;
+					return projects.indexOf(a) - projects.indexOf(b);
 				case "name":
 					return a.name.localeCompare(b.name);
 				case "created":
 					return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
 				case "none":
 				default:
-					// Sort by custom index (lower index = higher priority)
-					return a.index - b.index;
+					// Sort by array order (position in projects array)
+					return projects.indexOf(a) - projects.indexOf(b);
 			}
 		});
 

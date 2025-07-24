@@ -49,7 +49,7 @@ export function ProjectSidebar({ project }: ProjectSidebarProps) {
 					{project.technologies.map((tech) => (
 						<span
 							key={tech}
-							className="text-xs px-2 py-1 gh-bg-accent-subtle gh-text-accent rounded-full border gh-border-subtle hover:gh-bg-accent-muted transition-colors cursor-pointer"
+							className="text-xs px-2 py-1 gh-bg-accent-subtle gh-text-accent rounded-full border gh-border-subtle hover:gh-bg-accent-muted transition-colors"
 						>
 							{tech}
 						</span>
