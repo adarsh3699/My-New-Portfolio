@@ -23,14 +23,14 @@ export const nirakshGuardianData: Project = {
 	},
 
 	// Technical details
-	technologies: ["React", "JavaScript", "Node.js", "Express", "AI/ML", "Medical APIs"],
+	technologies: ["React", "JavaScript", "Node.js", "Express", "Generative AI", "Medical APIs"],
 	primaryLanguage: {
 		name: "JavaScript",
 		color: "bg-yellow-500",
 	},
 
 	// Classification
-	category: "AI/ML",
+	category: "Web + AI",
 	isPinned: true,
 	featured: true,
 

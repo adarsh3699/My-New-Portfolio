@@ -41,13 +41,13 @@ export const experiences: Experience[] = [
 		endDate: "July 2022",
 		isCurrent: false,
 		description: [
-			"Developed a test-based faculty evaluation platform enabling administrators to assess performance through exam results.",
-			"Architected a scalable system with role-based authentication for faculty, candidates, and administrative access.",
-			"Implemented real-time evaluation logic and seamless data flow between frontend and backend components.",
-			"Built robust REST APIs and database architecture using Node.js, Express, and MySQL for efficient result processing.",
-			"Designed responsive frontend interfaces using React.js, ensuring optimal user experience across all device types."
+			"Developed Facility evaluation System for college IITP.",
+			"Internships duration from 1 june 2022 to 15 july 2022.",
+			"Work on both the frontend and backend.",
+			"Created a multiuser login system for the facility, candidate, and admin.",
+			"Learned and did software architecture design of complete project."
 		],
-		technologies: ["React", "Node.js", "Express", "MySQL", "JavaScript"],
+		technologies: ["React", "Node.js", "JavaScript", "MySQL", "MongoDB", "Material-UI", "Express.js", "PDFKit", "Nodemailer"],
 		companyUrl: "https://drive.google.com/file/d/1E87uohp5lcWnNxixL27b4vlunchCWTWs/view?usp=drive_link",
 		companyLogo: "/images/iitp-logo.png"
 	},

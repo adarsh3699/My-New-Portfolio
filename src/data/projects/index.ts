@@ -18,7 +18,7 @@ export interface Project {
 	// Tech details
 	technologies: string[];
 	primaryLanguage: { name: string; color: string };
-	category: "Web" | "Mobile" | "Desktop" | "Library" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other";
+	category: "Web" | "Mobile" | "Library" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other" | "Web + AI";
 
 	// Status
 	isPinned: boolean;
@@ -66,10 +66,12 @@ export interface Project {
 // Import project data
 import { myNewPortfolioData } from "./my-new-portfolio";
 import { nirakshGuardianData } from "./niraksh-guardian";
-import { taskManagerProData } from "./task-manager-pro";
+import { bhemuNotesData } from "./bhemu-notes";
+import { priceComparisonWebData } from "./price-comparison-web";
+import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 
 // All projects - single source of truth
-export const projects: Project[] = [myNewPortfolioData, nirakshGuardianData, taskManagerProData];
+export const projects: Project[] = [myNewPortfolioData, nirakshGuardianData, facilityEvaluationSystemIITPData, bhemuNotesData, priceComparisonWebData];
 
 // Core utility functions
 export const getProjectById = (id: string): Project | undefined => {
