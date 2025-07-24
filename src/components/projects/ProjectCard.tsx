@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { StarIcon } from "@heroicons/react/24/outline";
 
 const formatCreatedTime = (dateString: string) => {
 	const date = new Date(dateString);
