@@ -86,16 +86,17 @@ export default function AboutPage() {
 							<h3 className="font-medium gh-text">Bachelor of Technology in Computer Science</h3>
 							<p className="gh-text-muted text-sm">Lovely Professional University • 2024-2028</p>
 							<p className="gh-text-muted text-sm mt-1">
-								Focused on software engineering, data structures, algorithms, and web development.
+								{/* Focused on software engineering, data structures, algorithms, and web development. */}
+								CGPA: 8.86
 							</p>
 						</div>
-						<div className="border-l-2 border-green-500 pl-4">
+						{/* <div className="border-l-2 border-green-500 pl-4">
 							<h3 className="font-medium gh-text">AWS Certified Developer</h3>
 							<p className="gh-text-muted text-sm">Amazon Web Services • 2023</p>
 							<p className="gh-text-muted text-sm mt-1">
 								Certified in developing and maintaining applications on AWS platform.
 							</p>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</section>
