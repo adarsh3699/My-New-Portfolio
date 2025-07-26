@@ -33,7 +33,7 @@ export const myNewPortfolioData: Project = {
 	featured: true,
 
 	// Dates
-	createdAt: "2023-01-15",
+	createdAt: "2025-07-04",
 
 	// Project screenshots with descriptions
 	screenshots: [

@@ -69,6 +69,7 @@ import { nirakshGuardianData } from "./niraksh-guardian";
 import { bhemuNotesData } from "./bhemu-notes";
 import { bhemuCalculatorData } from "./bhemu-calculator";
 import { priceComparisonWebData } from "./price-comparison-web";
+import { bhemuCalendarData } from "./bhemu-calendar";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 import { youngMindsClubData } from "./youngminds-club";
 
@@ -76,9 +77,10 @@ import { youngMindsClubData } from "./youngminds-club";
 export const projects: Project[] = [
 	youngMindsClubData,
 	nirakshGuardianData,
-	bhemuNotesData,
-	bhemuCalculatorData,
 	priceComparisonWebData,
+	bhemuCalculatorData,
+	bhemuCalendarData,
+	bhemuNotesData,
 	facilityEvaluationSystemIITPData,
 	myNewPortfolioData,
 ];
