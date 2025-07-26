@@ -85,7 +85,7 @@ const SOCIAL_LINKS: SocialLink[] = [
 const NAV_ITEMS: NavItem[] = [
 	{ href: "/", label: "Overview", icon: BookOpenIcon },
 	{ href: "/about", label: "About", icon: InformationCircleIcon },
-	{ href: "/projects", label: "Projects", icon: FolderOpenIcon, badge: "5" },
+	{ href: "/projects", label: "Projects", icon: FolderOpenIcon, badge: "6" },
 	{ href: "/experience", label: "Experience", icon: BriefcaseIcon },
 	{ href: "/contact", label: "Contact", icon: EnvelopeIcon },
 ];

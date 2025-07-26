@@ -48,7 +48,8 @@ const ProjectCard = ({ project }: { project: Project }) => (
 );
 
 export default function PinnedRepositories() {
-	const projects = getPinnedProjects();
+	// Get only the first 6 pinned projects
+	const projects = getPinnedProjects(6);
 
 	return (
 		<div className="border gh-border rounded-lg p-4 sm:p-6 gh-shadow">

@@ -39,6 +39,7 @@ export interface Project {
 			styling: string;
 			animations?: string;
 			deployment: string;
+			backend?: string;
 			performance?: {
 				lighthouse: number;
 				loadTime: string;
@@ -66,6 +67,7 @@ export interface Project {
 import { myNewPortfolioData } from "./my-new-portfolio";
 import { nirakshGuardianData } from "./niraksh-guardian";
 import { bhemuNotesData } from "./bhemu-notes";
+import { bhemuCalculatorData } from "./bhemu-calculator";
 import { priceComparisonWebData } from "./price-comparison-web";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 import { youngMindsClubData } from "./youngminds-club";
@@ -75,6 +77,7 @@ export const projects: Project[] = [
 	youngMindsClubData,
 	nirakshGuardianData,
 	bhemuNotesData,
+	bhemuCalculatorData,
 	priceComparisonWebData,
 	facilityEvaluationSystemIITPData,
 	myNewPortfolioData,
@@ -85,8 +88,9 @@ export const getProjectById = (id: string): Project | undefined => {
 	return projects.find((project) => project.id === id);
 };
 
-export const getPinnedProjects = (): Project[] => {
-	return projects.filter((project) => project.isPinned);
+export const getPinnedProjects = (limit?: number): Project[] => {
+	const pinnedProjects = projects.filter((project) => project.isPinned);
+	return limit ? pinnedProjects.slice(0, limit) : pinnedProjects;
 };
 
 // Main function for project detail page
