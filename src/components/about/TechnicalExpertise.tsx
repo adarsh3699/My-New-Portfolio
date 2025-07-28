@@ -3,37 +3,40 @@ import { skillCategories } from "@/data/about";
 
 export default function TechnicalExpertise() {
 	return (
-		<div className="border gh-border rounded-xl p-8 mb-12">
-			<h2 className="text-2xl font-bold gh-text mb-8 flex items-center">
-				<div className="p-2 rounded-lg bg-gradient-to-r from-blue-400/20 to-purple-400/20 mr-3">
-					<WrenchScrewdriverIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+		<div className="border gh-border rounded-xl p-4 sm:p-6 lg:p-8 mb-8 sm:mb-10 lg:mb-12">
+			<h2 className="text-xl sm:text-2xl font-bold gh-text mb-4 sm:mb-6 lg:mb-8 flex items-center">
+				<div className="p-1.5 sm:p-2 rounded-lg bg-gradient-to-r from-blue-400/20 to-purple-400/20 mr-2 sm:mr-3">
+					<WrenchScrewdriverIcon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
 				</div>
-				Technical Expertise
+				<span className="hidden sm:inline">Technical Expertise</span>
+				<span className="sm:hidden">Skills</span>
 			</h2>
 
-			<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 				{skillCategories.map((category, index) => (
 					<div key={index}>
-						<div className="border gh-border rounded-lg p-6 h-full">
-							<h3 className={`font-bold gh-text mb-5 ${category.color} text-lg flex items-center`}>
+						<div className="border gh-border rounded-lg p-4 sm:p-5 lg:p-6 h-full">
+							<h3
+								className={`font-bold gh-text mb-3 sm:mb-4 lg:mb-5 ${category.color} text-base sm:text-lg flex items-center`}
+							>
 								<div
-									className={`w-3 h-3 rounded-full ${category.color
+									className={`w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full ${category.color
 										.replace("text-", "bg-")
-										.replace("-600", "-500")} mr-3`}
+										.replace("-600", "-500")} mr-2 sm:mr-3`}
 								/>
 								{category.title}
 							</h3>
 
-							<div className="space-y-3">
+							<div className="space-y-2 sm:space-y-3">
 								{category.skills.map((skill) => (
 									<div
 										key={skill.name}
-										className="group flex justify-between items-center p-3 rounded-lg gh-bg-canvas-subtle hover:gh-bg-accent-subtle transition-colors duration-200"
+										className="group flex justify-between items-center p-2 sm:p-2.5 lg:p-3 rounded-lg gh-bg-canvas-subtle hover:gh-bg-accent-subtle transition-colors duration-200"
 									>
-										<span className="gh-text font-medium group-hover:gh-text-accent transition-colors duration-200">
+										<span className="gh-text font-medium text-sm sm:text-base group-hover:gh-text-accent transition-colors duration-200">
 											{skill.name}
 										</span>
-										<span className="text-xs px-3 py-1 gh-bg-accent-subtle gh-text-accent rounded-full font-semibold">
+										<span className="text-xs px-2 sm:px-2.5 lg:px-3 py-0.5 sm:py-1 gh-bg-accent-subtle gh-text-accent rounded-full font-semibold">
 											{skill.level}
 										</span>
 									</div>

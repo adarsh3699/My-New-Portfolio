@@ -4,7 +4,7 @@ export default function AboutHeader() {
 	return (
 		<div className="text-center mb-16 relative">
 			{/* Background decoration */}
-			<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl opacity-100" />
+			<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-2xl sm:blur-3xl opacity-80 sm:opacity-100" />
 
 			<div className="relative z-10 py-12">
 				{/* Profile Image with enhanced styling */}
