@@ -3,24 +3,36 @@ import { education } from "@/data/about";
 
 export default function Education() {
 	return (
-		<div className="border gh-border rounded-lg p-6">
-			<h2 className="text-2xl font-semibold gh-text mb-4 flex items-center">
-				<AcademicCapIcon className="w-6 h-6 mr-2 gh-text-accent" />
+		<div className="border gh-border rounded-xl p-6">
+			<h2 className="text-2xl font-bold gh-text mb-5 flex items-center">
+				<div className="p-2 rounded-lg bg-gradient-to-r from-green-400/20 to-blue-400/20 mr-3">
+					<AcademicCapIcon className="w-6 h-6 text-green-600 dark:text-green-400" />
+				</div>
 				Education
 			</h2>
-			<div className="space-y-4">
-				{education.map((edu, index) => (
-					<div key={index} className={`border-l-4 ${edu.color} pl-4`}>
-						<h3 className="font-medium gh-text">{edu.degree}</h3>
-						<p className="gh-text-accent text-sm font-medium">{edu.field}</p>
-						<p className="gh-text-muted text-sm">
-							{edu.institution} • {edu.duration}
-						</p>
-						{edu.cgpa && <p className="gh-text-muted text-sm mt-1">Current CGPA: {edu.cgpa}</p>}
-						{edu.percentage && <p className="gh-text-muted text-sm mt-1">Percentage: {edu.percentage}</p>}
+
+			{education.map((edu, index) => (
+				<div key={index} className="group p-2 hover:gh-bg-canvas-subtle flex items-start">
+					<div className={`w-2.5 h-2.5 rounded-full ${edu.color} mt-1.5 mr-3`} />
+					<div className="flex-1">
+						<h3 className="font-bold gh-text mb-1 group-hover:gh-text-accent transition-colors">
+							{edu.degree}
+						</h3>
+						<p className="gh-text-accent text-sm font-semibold mb-1">{edu.field}</p>
+						<div className="flex flex-wrap items-center gap-2 text-sm gh-text-muted">
+							<span className="font-medium">{edu.institution}</span>
+							<span>•</span>
+							<span>{edu.duration}</span>
+							{edu.cgpa && (
+								<>
+									<span>•</span>
+									<span className="font-medium">CGPA: {edu.cgpa}</span>
+								</>
+							)}
+						</div>
 					</div>
-				))}
-			</div>
+				</div>
+			))}
 		</div>
 	);
 }

@@ -92,7 +92,7 @@ export const aboutData = {
 			institution: "Lovely Professional University",
 			duration: "2024-2028",
 			cgpa: "8.86",
-			color: "border-blue-500",
+			color: "bg-blue-500",
 		},
 		{
 			degree: "Higher Secondary Education",
@@ -100,7 +100,7 @@ export const aboutData = {
 			institution: "Allama Iqbal College",
 			duration: "2022-2024",
 			// percentage: "92%",
-			color: "border-green-500",
+			color: "bg-green-500",
 		},
 		{
 			degree: "Secondary Education",
@@ -108,7 +108,7 @@ export const aboutData = {
 			institution: "RPS Public School",
 			duration: "2019-2021",
 			// percentage: "95%",
-			color: "border-purple-500",
+			color: "bg-purple-500",
 		},
 	],
 
@@ -120,28 +120,28 @@ export const aboutData = {
 			year: "2025",
 			description:
 				"Participated in State-Level Inter-University Hackathon showcasing exceptional skills in coding and problem-solving",
-			color: "border-red-500",
+			color: "bg-red-500",
 		},
 		{
 			title: "Hack-a-Throne 1.0 : Round 2",
 			organization: "GeeksforGeeks",
 			year: "2024",
 			description: "Participated in hackathon organized by AIESEC in Jalandhar under GeeksforGeeks guidance",
-			color: "border-green-500",
+			color: "bg-green-500",
 		},
 		{
 			title: "Introduction to DSA with Proctored Exam",
 			organization: "Coding Tantra",
 			year: "2025",
 			description: "Completed 15+ hours MOOC on Data Structures and Algorithms with proctored examination",
-			color: "border-blue-500",
+			color: "bg-blue-500",
 		},
 		{
 			title: "Computer Programming Certification",
 			organization: "Lovely Professional University",
 			year: "2025",
 			description: "Completed 72 hours online course on Computer Programming via iamneo Platform",
-			color: "border-purple-500",
+			color: "bg-purple-500",
 		},
 	],
 

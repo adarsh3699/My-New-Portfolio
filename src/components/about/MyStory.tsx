@@ -30,7 +30,7 @@ export default function MyStory() {
 				{/* Quote decoration */}
 				<div className="mt-8 px-4 gh-bg-accent-subtle/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
 					<p className="gh-text-muted italic text-sm">
-						"Code is like humor. When you have to explain it, it's bad." - Cory House
+						&quot;Code is like humor. When you have to explain it, it&apos;s bad.&quot; - Cory House
 					</p>
 				</div>
 			</div>
