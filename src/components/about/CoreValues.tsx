@@ -11,7 +11,7 @@ export default function CoreValues() {
 			<div className="space-y-3">
 				{values.map((value) => (
 					<div key={value.title} className="p-3 rounded gh-bg-accent-subtle">
-						<h4 className="font-medium gh-text text-sm">{value.title}</h4>
+						<div className="font-medium gh-text text-sm">{value.title}</div>
 						<p className="gh-text-muted text-xs">{value.desc}</p>
 					</div>
 				))}
