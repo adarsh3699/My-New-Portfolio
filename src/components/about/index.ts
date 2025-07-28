@@ -1,0 +1,10 @@
+export { default as AboutHeader } from "./AboutHeader";
+export { default as QuickStats } from "./QuickStats";
+export { default as MyStory } from "./MyStory";
+export { default as CurrentFocus } from "./CurrentFocus";
+export { default as TechnicalExpertise } from "./TechnicalExpertise";
+export { default as Education } from "./Education";
+export { default as CertificatesAchievements } from "./CertificatesAchievements";
+export { default as InterestsHobbies } from "./InterestsHobbies";
+export { default as CoreValues } from "./CoreValues";
+export { default as FunFacts } from "./FunFacts";
