@@ -12,14 +12,11 @@ export default function CertificatesAchievements() {
 				<span className="sm:hidden">Achievements</span>
 			</h2>
 
-			<div className="space-y-1 sm:space-y-2">
+			<div className="space-y-5 sm:space-y-6">
 				{achievements.map((achievement, index) => (
-					<div
-						key={index}
-						className="group p-2 sm:p-2.5 lg:p-3 hover:gh-bg-canvas-subtle rounded-lg flex items-start"
-					>
+					<div key={index} className="group px-2 sm:px-2.5 lg:px-3 flex items-start">
 						<div
-							className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${achievement.color} mt-1.5 mr-2 sm:mr-3 flex-shrink-0`}
+							className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${achievement.color} mt-1.5 mr-2 sm:mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300`}
 						/>
 						<div className="flex-1 min-w-0">
 							<h3 className="font-bold gh-text mb-1 text-sm sm:text-base group-hover:gh-text-accent transition-colors">

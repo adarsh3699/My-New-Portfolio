@@ -19,22 +19,13 @@ export default function CurrentFocus() {
 
 				<div className="space-y-2 sm:space-y-3">
 					{currentFocus.map((focus, index) => (
-						<div
-							key={index}
-							className="group/item p-3 sm:p-4 rounded-lg gh-bg-canvas-subtle hover:gh-bg-accent-subtle transition-all duration-300"
-						>
-							<div className="flex items-start space-x-2 sm:space-x-3">
-								<div
-									className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mt-1.5 sm:mt-2 ${focus.color}`}
-								/>
-								<div className="flex-1">
-									<h3 className="font-semibold gh-text mb-1 text-sm sm:text-base group-hover/item:gh-text-accent transition-colors duration-300">
-										{focus.title}
-									</h3>
-									<p className="gh-text-muted text-xs sm:text-sm leading-relaxed">
-										{focus.description}
-									</p>
-								</div>
+						<div key={index} className="group/item p-3 sm:p-4 flex items-start space-x-2 sm:space-x-3">
+							<div
+								className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full mt-1.5 sm:mt-2 ${focus.color} group-hover/item:scale-125 transition-transform duration-300`}
+							/>
+							<div className="flex-1">
+								<h3 className="font-semibold gh-text mb-1 text-sm sm:text-base">{focus.title}</h3>
+								<p className="gh-text-muted text-xs sm:text-sm leading-relaxed">{focus.description}</p>
 							</div>
 						</div>
 					))}
