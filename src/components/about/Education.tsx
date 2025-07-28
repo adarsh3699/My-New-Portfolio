@@ -17,7 +17,7 @@ export default function Education() {
 							{edu.institution} • {edu.duration}
 						</p>
 						{edu.cgpa && <p className="gh-text-muted text-sm mt-1">Current CGPA: {edu.cgpa}</p>}
-						{/* {edu.percentage && <p className="gh-text-muted text-sm mt-1">Percentage: {edu.percentage}</p>} */}
+						{edu.percentage && <p className="gh-text-muted text-sm mt-1">Percentage: {edu.percentage}</p>}
 					</div>
 				))}
 			</div>

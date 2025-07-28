@@ -23,27 +23,27 @@ export const aboutData = {
 			title: "Data Structures & Algorithms Mastery",
 			description:
 				"Strengthening problem-solving skills and mastering core DSA concepts for competitive programming",
-			color: "border-indigo-500",
+			color: "bg-indigo-500",
 		},
 		{
 			title: "Full-Stack Mastery",
 			description: "Deepening expertise in modern web technologies and building scalable applications",
-			color: "border-blue-500",
+			color: "bg-blue-500",
 		},
 		// {
 		// 	title: "Open Source Impact",
 		// 	description: "Contributing meaningfully to developer community and popular React/Next.js projects",
-		// 	color: "border-green-500",
+		// 	color: "bg-green-500",
 		// },
 		{
 			title: "Cloud & DevOps Skills",
 			description: "Learning cloud architecture, containerization, and modern deployment practices",
-			color: "border-purple-500",
+			color: "bg-purple-500",
 		},
 		{
 			title: "Career Growth",
 			description: "Seeking opportunities in innovative companies where I can create impactful solutions",
-			color: "border-orange-500",
+			color: "bg-orange-500",
 		},
 	],
 

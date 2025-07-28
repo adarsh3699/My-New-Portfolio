@@ -186,7 +186,7 @@ export default function Header() {
 		>
 			<button
 				onClick={toggleDarkMode}
-				className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
+				className={`p-2 gh-border-1 cursor-pointer rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
 				aria-label="Toggle dark mode"
 			>
 				{theme === "dark" ? (
