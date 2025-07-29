@@ -70,10 +70,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 					{/* Bottom gradient effect */}
 					<span
-						className={`absolute z-10 inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent ${gradientColors.primary} to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-70`}
+						className={`hidden sm:block absolute z-10 inset-x-0 -bottom-px h-px w-full bg-gradient-to-r from-transparent ${gradientColors.primary} to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-70`}
 					/>
 					<span
-						className={`absolute z-10 inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent ${gradientColors.secondary} to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-80`}
+						className={`hidden sm:block absolute z-10 inset-x-10 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent ${gradientColors.secondary} to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-80`}
 					/>
 
 					{/* Shimmer effect */}

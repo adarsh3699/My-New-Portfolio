@@ -15,7 +15,7 @@ const FILTER_DEFAULTS = {
 
 const SORT_OPTIONS: SelectOption[] = [
 	{ value: "none", label: "No Sort" },
-	{ value: "featured", label: "Featured First" },
+	{ value: "featured", label: "Featured" },
 	{ value: "name", label: "Name" },
 	{ value: "created", label: "Created" },
 ];
@@ -217,7 +217,7 @@ export function ProjectFilters({ projects, onFilterChange, viewMode, onViewModeC
 				{/* Filter Selects */}
 				<div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
 					<div className="flex gap-2">
-						<div className="flex-1 min-w-0 sm:w-36 lg:w-40">
+						<div className="flex-1 min-w-0 sm:w-36 ">
 							<Select
 								value={activeFilters.category}
 								onValueChange={(value) => updateFilter("category", value)}
@@ -225,7 +225,7 @@ export function ProjectFilters({ projects, onFilterChange, viewMode, onViewModeC
 								placeholder="Category"
 							/>
 						</div>
-						<div className="flex-1 min-w-0 sm:w-36 lg:w-40">
+						<div className="flex-1 min-w-0 sm:w-36 ">
 							<Select
 								value={activeFilters.language}
 								onValueChange={(value) => updateFilter("language", value)}
@@ -235,7 +235,7 @@ export function ProjectFilters({ projects, onFilterChange, viewMode, onViewModeC
 						</div>
 					</div>
 					<div className="flex gap-2">
-						<div className="flex-1 min-w-0 sm:w-32 lg:w-40">
+						<div className="flex-1 min-w-0 sm:w-32 ">
 							<Select
 								value={activeFilters.sort}
 								onValueChange={(value) => updateFilter("sort", value)}

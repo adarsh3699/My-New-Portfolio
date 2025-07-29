@@ -95,6 +95,10 @@ export const getPinnedProjects = (limit?: number): Project[] => {
 	return limit ? pinnedProjects.slice(0, limit) : pinnedProjects;
 };
 
+export const getProjectsCount = (): number => {
+	return projects.length;
+};
+
 // Main function for project detail page
 export async function getProjectWithReadme(id: string): Promise<{
 	project: Project;

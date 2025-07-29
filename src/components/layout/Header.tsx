@@ -16,6 +16,7 @@ import {
 	MoonIcon,
 } from "@heroicons/react/24/outline";
 import { GitHubIcon } from "@/components/icons";
+import { getProjectsCount } from "@/data/projects";
 
 import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
 import { Tooltip } from "../ui";
@@ -85,7 +86,7 @@ const SOCIAL_LINKS: SocialLink[] = [
 const NAV_ITEMS: NavItem[] = [
 	{ href: "/", label: "Overview", icon: BookOpenIcon },
 	{ href: "/about", label: "About", icon: InformationCircleIcon },
-	{ href: "/projects", label: "Projects", icon: FolderOpenIcon, badge: "7" },
+	{ href: "/projects", label: "Projects", icon: FolderOpenIcon, badge: getProjectsCount().toString() },
 	{ href: "/experience", label: "Experience", icon: BriefcaseIcon },
 	{ href: "/contact", label: "Contact", icon: EnvelopeIcon },
 ];
