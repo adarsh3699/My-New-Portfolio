@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CalendarIcon, StarIcon, TagIcon, LinkIcon, EyeIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
-import { GitHubIcon } from "@/components/icons";
 
 interface ProjectSidebarProps {
 	project: {
