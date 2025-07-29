@@ -16,14 +16,19 @@ export default function FunFacts() {
 				{funFacts.map((fact, index) => (
 					<div
 						key={index}
-						className="group relative p-3 sm:p-4 lg:p-5 rounded-lg gh-bg-canvas-subtle hover:gh-bg-accent-subtle transition-all duration-300 border gh-border hover:border-cyan-500/20 overflow-hidden"
+						className="group relative p-3 sm:p-4 lg:p-5 rounded-lg gh-bg-canvas-subtle hover:gh-bg-canvas-default transition-all duration-300 border gh-border hover:border-cyan-500/20 overflow-hidden cursor-pointer"
 						style={{ animationDelay: `${index * 0.1}s` }}
 					>
-						{/* Background decoration */}
-						<div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-bl from-cyan-500/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+						{/* Background gradient on hover */}
+						<div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+						{/* Decorative corner accent */}
+						<div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-bl-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
 						<div className="relative z-10 flex items-center h-full">
-							<p className="gh-text text-xs sm:text-sm leading-relaxed">{fact}</p>
+							<p className="gh-text-muted group-hover:gh-text text-xs sm:text-sm leading-relaxed transition-colors duration-300">
+								{fact}
+							</p>
 						</div>
 					</div>
 				))}

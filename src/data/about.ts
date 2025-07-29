@@ -13,7 +13,7 @@ export const aboutData = {
 		paragraphs: [
 			"I'm Adarsh, a passionate full-stack developer currently pursuing my B.Tech in Computer Science at Lovely Professional University. My journey in technology started with curiosity about how websites work, and it has evolved into a deep love for creating innovative solutions that make a real difference.",
 			"I specialize in modern web technologies including React, Next.js, Node.js, and various databases. What excites me most is the intersection of frontend creativity and backend logic - building seamless, performant applications that users love to interact with.",
-			"Beyond coding, I'm an active contributor to open-source projects and enjoy sharing knowledge with the developer community. I believe in continuous learning and always stay updated with the latest industry trends and best practices.",
+			"Beyond coding, I enjoy sharing and learning knowledge with other developers. I believe in continuous learning and always stay updated with the latest industry trends and best practices through collaboration and knowledge exchange.",
 		],
 	},
 
@@ -57,7 +57,7 @@ export const aboutData = {
 				{ name: "Next.js", level: "Advanced" },
 				{ name: "JavaScript", level: "Expert" },
 				{ name: "TypeScript", level: "Advanced" },
-				{ name: "Tailwind CSS", level: "Expert" },
+				{ name: "Tailwind CSS", level: "Advanced" },
 			],
 		},
 		{
@@ -147,12 +147,14 @@ export const aboutData = {
 
 	// Personal interests and hobbies
 	interests: [
-		{ icon: "🎮", name: "Gaming" },
+		{ icon: "🍿", name: "Watching Movies" },
 		{ icon: "🎧", name: "Listening to Music" },
-		{ icon: "🎤", name: "Singing" },
 		{ icon: "🎥", name: "Video Editing" },
 		{ icon: "📸", name: "Photography" },
 		{ icon: "🏃‍♂️", name: "Exercise" },
+		{ icon: "🎮", name: "Gaming" },
+		{ icon: "🎲", name: "Chess" },
+		{ icon: "🤖", name: "Exploring AI Tools" },
 	],
 
 	// Core professional values

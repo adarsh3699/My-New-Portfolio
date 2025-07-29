@@ -47,7 +47,7 @@ export default function AboutPage() {
 				<FunFacts />
 
 				{/* Opportunities Section */}
-				<OpportunitiesSection />
+				<OpportunitiesSection variant="contact" />
 			</section>
 		</main>
 	);
