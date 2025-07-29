@@ -56,7 +56,7 @@ export const StickyScroll = ({
 			ref={ref}
 		>
 			{/* Mobile sticky content - shows at top on mobile */}
-			<div className="lg:hidden sticky top-20 z-10 mb-6 bg-black/10 rounded-lg shadow-xl shadow-black/100">
+			<div className="lg:hidden sticky top-20 md:top-30 z-10 mb-6 bg-black/10 rounded-lg shadow-xl shadow-black/100">
 				<div className={cn("h-48 sm:h-56 w-full overflow-hidden rounded-md bg-white", contentClassName)}>
 					<motion.div key={activeCard} className="h-full w-full">
 						{content[activeCard].content ?? null}
