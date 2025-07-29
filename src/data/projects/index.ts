@@ -120,23 +120,29 @@ export async function getProjectWithReadme(id: string): Promise<{
 	return { project, readme };
 }
 
-// Language colors for tech badges
+// Language colors for tech badges - arranged alphabetically with authentic logo colors
 export const languageColors: Record<string, string> = {
-	JavaScript: "bg-yellow-500",
-	TypeScript: "bg-blue-500",
-	Python: "bg-blue-600",
-	Java: "bg-orange-500",
-	"C++": "bg-blue-700",
-	React: "bg-cyan-500",
-	Vue: "bg-green-500",
-	Angular: "bg-red-500",
-	Node: "bg-green-600",
-	Go: "bg-cyan-600",
-	Rust: "bg-orange-700",
-	PHP: "bg-purple-500",
-	Ruby: "bg-red-600",
-	Swift: "bg-orange-400",
-	Kotlin: "bg-purple-600",
+	Axios: "bg-purple-600", // Axios purple
+	"C++": "bg-blue-700", // ISO C++ blue
+	"Express.js": "bg-gray-300", // Express.js gray
+	Firebase: "bg-orange-400", // Firebase orange
+	"Firebase Authentication": "bg-orange-400", // Firebase Authentication orange
+	Firestore: "bg-orange-400", // Firebase/Firestore orange
+	"Framer Motion": "bg-yellow-300", // Framer Motion yellow
+	Java: "bg-orange-500", // Java orange
+	JavaScript: "bg-yellow-400", // JavaScript yellow
+	"Material-UI": "bg-blue-500", // MUI blue
+	MongoDB: "bg-green-500", // MongoDB green
+	MySQL: "bg-blue-600", // MySQL blue
+	"Next.js": "bg-gray-200", // Next.js black
+	"Node.js": "bg-green-600", // Node.js green
+	PHP: "bg-indigo-600", // PHP indigo/purple
+	Python: "bg-yellow-500", // Python yellow (could also use blue-600 for the blue variant)
+	React: "bg-cyan-400", // React cyan
+	"React 19": "bg-cyan-400", // React cyan
+	"Redux Toolkit": "bg-purple-600", // Redux purple
+	"Tailwind CSS": "bg-teal-500", // Tailwind teal
+	TypeScript: "bg-blue-600", // TypeScript blue
 };
 
 export default projects;
