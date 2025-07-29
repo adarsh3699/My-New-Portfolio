@@ -10,12 +10,6 @@ const backgroundColors = [
 	"#171717", // neutral-900
 ];
 
-const linearGradients = [
-	"linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-	"linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-	"linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
-];
-
 export const StickyScroll = ({
 	content,
 	contentClassName,
@@ -31,14 +25,14 @@ export const StickyScroll = ({
 	const ref = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		// uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
-		// target: ref
-		container: ref,
+		target: ref,
+		// container: ref,
 		offset: ["start start", "end start"],
 	});
 	const cardLength = content.length;
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
-		const cardsBreakpoints = content.map((_, index) => index / (cardLength + 0.5));
+		const cardsBreakpoints = content.map((_, index) => index / (cardLength + 2.5));
 		const closestBreakpointIndex = cardsBreakpoints.reduce((acc, breakpoint, index) => {
 			const distance = Math.abs(latest - breakpoint);
 			if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
@@ -49,12 +43,6 @@ export const StickyScroll = ({
 		setActiveCard(closestBreakpointIndex);
 	});
 
-	const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
-
-	useEffect(() => {
-		setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-	}, [activeCard]);
-
 	return (
 		<motion.div
 			animate={{
@@ -64,13 +52,38 @@ export const StickyScroll = ({
 				duration: 0.8,
 				ease: "easeInOut",
 			}}
-			className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
+			className="relative flex flex-col lg:flex-row justify-center lg:space-x-10 space-y-6 lg:space-y-0 rounded-md p-4 sm:p-6 lg:p-10 min-h-[80vh]"
 			ref={ref}
 		>
-			<div className="div relative flex items-start px-4">
-				<div className="max-w-2xl">
+			{/* Mobile sticky content - shows at top on mobile */}
+			<div className="lg:hidden sticky top-20 z-10 mb-6 bg-black/10 rounded-lg shadow-xl shadow-black/100">
+				<div className={cn("h-48 sm:h-56 w-full overflow-hidden rounded-md bg-white", contentClassName)}>
+					<motion.div key={activeCard} className="h-full w-full">
+						{content[activeCard].content ?? null}
+					</motion.div>
+				</div>
+
+				{/* Progress indicator for mobile */}
+				<div className="mb-2 flex justify-center backdrop-blur-sm bg-black/30 rounded-full mx-auto w-fit px-4 py-2 space-x-2">
+					{content.map((_, index) => (
+						<div
+							key={index}
+							className={cn(
+								"h-2 rounded-full transition-all duration-300",
+								activeCard === index ? "bg-slate-100 w-8" : "bg-slate-500 w-2"
+							)}
+						/>
+					))}
+				</div>
+			</div>
+
+			<div className="relative flex items-start px-2 sm:px-4 lg:flex-1">
+				<div className="max-w-2xl w-full">
 					{content.map((item, index) => (
-						<div key={item.title + index} className="my-20 mb-40">
+						<div
+							key={item.title + index}
+							className="my-12 sm:my-16 lg:my-20 mb-24 sm:mb-32 lg:mb-40 first:mt-6 sm:first:mt-8 lg:first:mt-10 last:mb-12 sm:last:mb-16 lg:last:mb-20"
+						>
 							<motion.h2
 								initial={{
 									opacity: 0,
@@ -82,7 +95,7 @@ export const StickyScroll = ({
 									duration: 0.3,
 									ease: "easeInOut",
 								}}
-								className="text-2xl font-bold text-slate-100"
+								className="text-xl sm:text-2xl lg:text-2xl font-bold text-slate-100"
 							>
 								{item.title}
 							</motion.h2>
@@ -97,23 +110,22 @@ export const StickyScroll = ({
 									duration: 0.3,
 									ease: "easeInOut",
 								}}
-								className="text-kg mt-10 max-w-sm text-slate-300"
+								className="text-sm sm:text-base lg:text-lg mt-4 sm:mt-8 lg:mt-10 max-w-full sm:max-w-lg text-slate-300"
 							>
 								{item.description}
 							</motion.p>
 						</div>
 					))}
-					<div className="h-40" />
 				</div>
 			</div>
-			<div
-				style={{ background: backgroundGradient }}
-				className={cn(
-					"sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
-					contentClassName
-				)}
-			>
-				{content[activeCard].content ?? null}
+
+			{/* Desktop sticky content - hidden on mobile */}
+			<div className="hidden lg:block lg:flex-shrink-0">
+				<div className={cn("sticky top-40 h-60 w-80 overflow-hidden rounded-lg", contentClassName)}>
+					<motion.div key={activeCard} className="h-full w-full">
+						{content[activeCard].content ?? null}
+					</motion.div>
+				</div>
 			</div>
 		</motion.div>
 	);
