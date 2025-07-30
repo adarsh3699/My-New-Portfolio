@@ -26,7 +26,7 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 			title: screenshot.title,
 			description: screenshot.description,
 			content: (
-				<div className="h-full w-full bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-950">
+				<div className="relative h-full w-full bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-950">
 					<Image
 						src={screenshot.url}
 						alt={`${project.name} - ${screenshot.title}`}
@@ -41,7 +41,7 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 	);
 
 	return (
-		<div className="mb-12">
+		<div className="mb-12" data-component="project-screenshots">
 			<div className="mb-6">
 				<h2 className="text-xl font-bold gh-text mb-2">Project Showcase</h2>
 				<p className="gh-text-muted text-sm">

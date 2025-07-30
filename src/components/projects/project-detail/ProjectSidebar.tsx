@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendarIcon, StarIcon, TagIcon, LinkIcon, EyeIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 interface ProjectSidebarProps {
 	project: {
@@ -16,6 +17,93 @@ interface ProjectSidebarProps {
 }
 
 export function ProjectSidebar({ project }: ProjectSidebarProps) {
+	const [showSticky, setShowSticky] = useState(true);
+	const [topOffset, setTopOffset] = useState(0);
+	const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+	// Performance optimization refs
+	const screenshotsRef = useRef<Element | null>(null);
+	const scrollTimeoutRef = useRef<number | null>(null);
+	const resizeTimeoutRef = useRef<number | null>(null);
+
+	// Memoized screen size check
+	const checkScreenSize = useCallback(() => {
+		setIsLargeScreen(window.innerWidth >= 1024);
+	}, []);
+
+	// Throttled scroll handler for better performance
+	const handleScroll = useCallback(() => {
+		// Cancel previous timeout to throttle
+		if (scrollTimeoutRef.current) {
+			cancelAnimationFrame(scrollTimeoutRef.current);
+		}
+
+		scrollTimeoutRef.current = requestAnimationFrame(() => {
+			// Cache DOM query
+			if (!screenshotsRef.current) {
+				screenshotsRef.current = document.querySelector('[data-component="project-screenshots"]');
+			}
+
+			const screenshots = screenshotsRef.current;
+			if (!screenshots) {
+				setShowSticky(false);
+				return;
+			}
+
+			const rect = screenshots.getBoundingClientRect();
+			const shouldBeSticky = rect.bottom > 74;
+
+			// Only update if state actually changed (prevent unnecessary re-renders)
+			if (showSticky !== shouldBeSticky) {
+				// Calculate offset when switching from sticky to relative
+				if (showSticky && !shouldBeSticky) {
+					const offset = project.featured ? rect.height - 74 : rect.height + 48;
+					setTopOffset(offset);
+				}
+				setShowSticky(shouldBeSticky);
+			}
+		});
+	}, [showSticky, project.featured]);
+
+	// Debounced resize handler
+	const handleResize = useCallback(() => {
+		// Clear previous timeout
+		if (resizeTimeoutRef.current) {
+			clearTimeout(resizeTimeoutRef.current);
+		}
+
+		// Debounce resize events
+		resizeTimeoutRef.current = window.setTimeout(() => {
+			checkScreenSize();
+			// Clear cached element on resize (it might change)
+			screenshotsRef.current = null;
+		}, 100);
+	}, [checkScreenSize]);
+
+	useEffect(() => {
+		// Initial setup
+		checkScreenSize();
+		handleScroll();
+
+		// Use passive listeners for better performance
+		window.addEventListener("resize", handleResize);
+		window.addEventListener("scroll", handleScroll, { passive: true });
+
+		return () => {
+			// Cleanup event listeners
+			window.removeEventListener("resize", handleResize);
+			window.removeEventListener("scroll", handleScroll);
+
+			// Cleanup timeouts
+			if (scrollTimeoutRef.current) {
+				cancelAnimationFrame(scrollTimeoutRef.current);
+			}
+			if (resizeTimeoutRef.current) {
+				clearTimeout(resizeTimeoutRef.current);
+			}
+		};
+	}, [handleScroll, handleResize, checkScreenSize]);
+
 	const formatDate = (dateString: string) => {
 		return new Date(dateString).toLocaleDateString("en-US", {
 			year: "numeric",
@@ -25,7 +113,12 @@ export function ProjectSidebar({ project }: ProjectSidebarProps) {
 	};
 
 	return (
-		<div className="space-y-6 sticky top-0">
+		<div
+			className={`space-y-6 ${
+				showSticky ? (project.featured ? "lg:sticky lg:top-0" : "lg:sticky lg:top-8") : ""
+			}`}
+			style={{ marginTop: showSticky ? 0 : isLargeScreen ? `${topOffset}px` : 0 }}
+		>
 			{/* Featured Badge */}
 			{project.featured && (
 				<div className="gh-bg-canvas-overlay border gh-border rounded-lg p-4 relative overflow-hidden">

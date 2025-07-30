@@ -89,13 +89,15 @@ export const StickyScroll = ({
 									opacity: 0,
 								}}
 								animate={{
-									opacity: activeCard === index ? 1 : 0.3,
+									opacity: 1,
 								}}
 								transition={{
 									duration: 0.3,
 									ease: "easeInOut",
 								}}
-								className="text-xl sm:text-2xl lg:text-2xl font-bold text-slate-100"
+								className={`text-xl sm:text-2xl lg:text-2xl font-bold transition-colors duration-300 ${
+									activeCard === index ? "text-slate-100" : "text-slate-500"
+								}`}
 							>
 								{item.title}
 							</motion.h2>
@@ -104,13 +106,15 @@ export const StickyScroll = ({
 									opacity: 0,
 								}}
 								animate={{
-									opacity: activeCard === index ? 1 : 0.3,
+									opacity: 1,
 								}}
 								transition={{
 									duration: 0.3,
 									ease: "easeInOut",
 								}}
-								className="text-sm sm:text-base lg:text-lg mt-4 sm:mt-8 lg:mt-10 max-w-full sm:max-w-lg text-slate-300"
+								className={`text-sm sm:text-base lg:text-lg mt-4 sm:mt-8 lg:mt-10 max-w-full sm:max-w-lg transition-colors duration-300 ${
+									activeCard === index ? "text-slate-300" : "text-slate-400"
+								}`}
 							>
 								{item.description}
 							</motion.p>
