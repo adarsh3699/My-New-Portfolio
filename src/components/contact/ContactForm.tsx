@@ -1,15 +1,12 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { Input, Textarea, Button } from "@/components/ui";
+import { formAction } from "@/data/contact";
 
 export default function ContactForm() {
 	return (
 		<div className="border gh-border rounded-lg p-6">
 			<h2 className="text-xl font-semibold gh-text mb-4">Send a Message</h2>
-			<form
-				className="space-y-4"
-				method="post"
-				action="https://send.pageclip.co/YYFiRgfPYOw99mcNfB9R8RHgiwcappSO"
-			>
+			<form className="space-y-4" method="post" action={formAction}>
 				<div>
 					<label htmlFor="fullName" className="block text-sm font-medium gh-text mb-1">
 						Full Name
@@ -21,7 +18,7 @@ export default function ContactForm() {
 						name="fullName"
 						required
 						className="gh-bg-canvas-overlay"
-						placeholder="John"
+						placeholder="Example: John Doe"
 					/>
 				</div>
 

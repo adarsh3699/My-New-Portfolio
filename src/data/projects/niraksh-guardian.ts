@@ -10,7 +10,7 @@ export const nirakshGuardianData: Project = {
 
 	// URLs and links
 	githubUrl: "https://github.com/adarsh3699/Niraksh-Guardian",
-	liveUrl: "https://niraksh-20.vercel.app",
+	liveUrl: "https://niraksh.vercel.app/",
 
 	// GitHub repository information for README fetching
 	githubRepo: {

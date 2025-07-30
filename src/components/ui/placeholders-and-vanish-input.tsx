@@ -8,10 +8,12 @@ export function PlaceholdersAndVanishInput({
 	placeholders,
 	onChange,
 	onSubmit,
+	value: controlledValue,
 }: {
 	placeholders: string[];
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+	value?: string;
 }) {
 	const [currentPlaceholder, setCurrentPlaceholder] = useState(0);
 
@@ -53,8 +55,11 @@ export function PlaceholdersAndVanishInput({
 		}>
 	>([]);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const [value, setValue] = useState("");
+	const [internalValue, setInternalValue] = useState("");
 	const [animating, setAnimating] = useState(false);
+
+	// Use controlled value if provided, otherwise use internal state
+	const value = controlledValue !== undefined ? controlledValue : internalValue;
 
 	const draw = useCallback(() => {
 		if (!inputRef.current) return;
@@ -144,7 +149,9 @@ export function PlaceholdersAndVanishInput({
 				if (newDataRef.current.length > 0) {
 					animateFrame(pos - 8);
 				} else {
-					setValue("");
+					if (controlledValue === undefined) {
+						setInternalValue("");
+					}
 					setAnimating(false);
 				}
 			});
@@ -192,7 +199,10 @@ export function PlaceholdersAndVanishInput({
 			<input
 				onChange={(e) => {
 					if (!animating) {
-						setValue(e.target.value);
+						// Only update internal state if not controlled
+						if (controlledValue === undefined) {
+							setInternalValue(e.target.value);
+						}
 						void (onChange && onChange(e));
 					}
 				}}

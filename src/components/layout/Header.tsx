@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
 	Bars3Icon,
 	XMarkIcon,
@@ -21,6 +21,12 @@ import { getProjectsCount } from "@/data/projects";
 import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
 import { Tooltip } from "../ui";
 import { useTheme } from "./theme-provider";
+import { searchContent, type SearchResult } from "@/lib/search";
+
+// Dynamic import for better performance - only load SearchResults when needed
+const SearchResults = React.lazy(() =>
+	import("../ui/search-results").then((module) => ({ default: module.SearchResults }))
+);
 
 // Types
 interface SocialLink {
@@ -94,9 +100,16 @@ const NAV_ITEMS: NavItem[] = [
 export default function Header() {
 	const { theme, setTheme } = useTheme();
 	const pathname = usePathname();
+	const router = useRouter();
 	const [mounted, setMounted] = React.useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 	const [isPhoneView, setIsPhoneView] = React.useState(false);
+	const [searchQuery, setSearchQuery] = React.useState("");
+	const [searchResults, setSearchResults] = React.useState<SearchResult[]>([]);
+	const [showSearchResults, setShowSearchResults] = React.useState(false);
+	const [isSearching, setIsSearching] = React.useState(false);
+	const searchContainerRef = React.useRef<HTMLDivElement>(null);
+	const searchTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
 	// Effects
 	React.useEffect(() => {
@@ -126,6 +139,41 @@ export default function Header() {
 		};
 	}, [isMobileMenuOpen]);
 
+	// Handle clicks outside search container
+	React.useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+				setShowSearchResults(false);
+			}
+		};
+
+		// Use passive listener for better performance
+		document.addEventListener("mousedown", handleClickOutside, { passive: true });
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, []);
+
+	// Handle keyboard events
+	React.useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				setShowSearchResults(false);
+			}
+		};
+
+		// Use passive listener for better performance
+		document.addEventListener("keydown", handleKeyDown, { passive: true });
+		return () => document.removeEventListener("keydown", handleKeyDown);
+	}, []);
+
+	// Cleanup search timeout on unmount
+	React.useEffect(() => {
+		return () => {
+			if (searchTimeoutRef.current) {
+				clearTimeout(searchTimeoutRef.current);
+			}
+		};
+	}, []);
+
 	// Optimized Event Handlers
 	const toggleDarkMode = React.useCallback(() => {
 		setTheme(theme === "dark" ? "light" : "dark");
@@ -139,14 +187,81 @@ export default function Header() {
 		setIsMobileMenuOpen(false);
 	}, []);
 
-	const handleSearchChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.value);
+	const performSearch = React.useCallback((query: string) => {
+		if (query.trim()) {
+			setIsSearching(true);
+			// Perform search immediately for better performance
+			const results = searchContent(query);
+			setSearchResults(results);
+			setShowSearchResults(true);
+			setIsSearching(false);
+		} else {
+			// Batch state updates for empty query
+			setSearchResults([]);
+			setShowSearchResults(false);
+			setIsSearching(false);
+		}
 	}, []);
 
-	const handleSearchSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		console.log("submitted");
+	const handleSearchChange = React.useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const query = e.target.value;
+			setSearchQuery(query);
+
+			// Clear existing timeout
+			if (searchTimeoutRef.current) {
+				clearTimeout(searchTimeoutRef.current);
+			}
+
+			// Handle empty query immediately
+			if (!query.trim()) {
+				setSearchResults([]);
+				setShowSearchResults(false);
+				setIsSearching(false);
+				return;
+			}
+
+			// Show search dropdown immediately and set loading state
+			setShowSearchResults(true);
+			setIsSearching(true);
+
+			// Debounce search by 300ms
+			searchTimeoutRef.current = setTimeout(() => {
+				performSearch(query);
+			}, 300);
+		},
+		[performSearch]
+	);
+
+	const closeSearchResults = React.useCallback(() => {
+		setShowSearchResults(false);
 	}, []);
+
+	const clearSearchQuery = React.useCallback(() => {
+		// Clear any pending search timeout
+		if (searchTimeoutRef.current) {
+			clearTimeout(searchTimeoutRef.current);
+			searchTimeoutRef.current = null;
+		}
+
+		// Batch all search state resets
+		setSearchQuery("");
+		setSearchResults([]);
+		setShowSearchResults(false);
+		setIsSearching(false);
+	}, []);
+
+	const handleSearchSubmit = React.useCallback(
+		(e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			if (searchResults.length > 0) {
+				// Navigate to the first result using Next.js routing
+				router.push(searchResults[0].url);
+				clearSearchQuery(); // Clear search bar and results
+			}
+		},
+		[searchResults, clearSearchQuery, router]
+	);
 
 	// Render Components
 	const renderMobileMenuButton = () => (
@@ -172,12 +287,34 @@ export default function Header() {
 	);
 
 	const renderSearchBar = () => (
-		<div className="max-w-sm">
+		<div className="max-w-sm relative" ref={searchContainerRef}>
 			<PlaceholdersAndVanishInput
 				placeholders={SEARCH_PLACEHOLDERS}
 				onChange={handleSearchChange}
 				onSubmit={handleSearchSubmit}
+				value={searchQuery}
 			/>
+			{showSearchResults && (
+				<React.Suspense
+					fallback={
+						<div className="absolute top-full left-0 right-0 mt-2 gh-bg-canvas-inset border gh-border rounded-lg shadow-lg z-50">
+							<div className="px-4 py-8 text-center">
+								<div className="animate-spin w-5 h-5 border-2 border-orange-500 border-t-transparent rounded-full mx-auto mb-2"></div>
+								<p className="text-sm gh-text-muted">Loading search results...</p>
+							</div>
+						</div>
+					}
+				>
+					<SearchResults
+						results={searchResults}
+						isVisible={showSearchResults}
+						isLoading={isSearching}
+						onClose={closeSearchResults}
+						onClearSearch={clearSearchQuery}
+						query={searchQuery}
+					/>
+				</React.Suspense>
+			)}
 		</div>
 	);
 
