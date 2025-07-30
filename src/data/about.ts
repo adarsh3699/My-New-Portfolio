@@ -51,7 +51,7 @@ export const aboutData = {
 	skillCategories: [
 		{
 			title: "Frontend Development",
-			color: "text-blue-600",
+			color: "bg-blue-500",
 			skills: [
 				{ name: "React", level: "Expert" },
 				{ name: "Next.js", level: "Advanced" },
@@ -62,7 +62,7 @@ export const aboutData = {
 		},
 		{
 			title: "Backend & Database",
-			color: "text-green-600",
+			color: "bg-green-500",
 			skills: [
 				{ name: "Node.js", level: "Advanced" },
 				{ name: "Express.js", level: "Advanced" },
@@ -73,7 +73,7 @@ export const aboutData = {
 		},
 		{
 			title: "Tools & Others",
-			color: "text-purple-600",
+			color: "bg-purple-500",
 			skills: [
 				{ name: "Git", level: "Expert" },
 				{ name: "C Programming", level: "Intermediate" },
