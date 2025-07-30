@@ -1,14 +1,21 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-const backgroundColors = [
-	"#0f172a", // slate-900
-	"#000000", // black
-	"#171717", // neutral-900
-];
+const backgroundColors = {
+	dark: [
+		"#0f172a", // slate-900
+		"#000000", // black
+		"#171717", // neutral-900
+	],
+	light: [
+		"#f8fafc", // slate-50
+		"#ffffff", // white
+		"#f1f5f9", // slate-100
+	],
+};
 
 export const StickyScroll = ({
 	content,
@@ -22,6 +29,7 @@ export const StickyScroll = ({
 	contentClassName?: string;
 }) => {
 	const [activeCard, setActiveCard] = React.useState(0);
+	const [isDark, setIsDark] = useState(false);
 	const ref = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		// uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
@@ -30,6 +38,24 @@ export const StickyScroll = ({
 		offset: ["start start", "end start"],
 	});
 	const cardLength = content.length;
+
+	useEffect(() => {
+		const checkTheme = () => {
+			const isDarkMode = document.documentElement.classList.contains("dark");
+			setIsDark(isDarkMode);
+		};
+
+		checkTheme();
+
+		// Listen for theme changes
+		const observer = new MutationObserver(checkTheme);
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+
+		return () => observer.disconnect();
+	}, []);
 
 	useMotionValueEvent(scrollYProgress, "change", (latest) => {
 		const cardsBreakpoints = content.map((_, index) => index / (cardLength + 2.5));
@@ -43,10 +69,12 @@ export const StickyScroll = ({
 		setActiveCard(closestBreakpointIndex);
 	});
 
+	const currentColors = isDark ? backgroundColors.dark : backgroundColors.light;
+
 	return (
 		<motion.div
 			animate={{
-				backgroundColor: backgroundColors[activeCard % backgroundColors.length],
+				backgroundColor: currentColors[activeCard % currentColors.length],
 			}}
 			transition={{
 				duration: 0.8,
@@ -56,21 +84,23 @@ export const StickyScroll = ({
 			ref={ref}
 		>
 			{/* Mobile sticky content - shows at top on mobile */}
-			<div className="lg:hidden sticky top-20 md:top-30 z-10 mb-6 bg-black/10 rounded-lg shadow-xl shadow-black/100">
-				<div className={cn("h-48 sm:h-56 w-full overflow-hidden rounded-md bg-white", contentClassName)}>
+			<div className="lg:hidden sticky top-20 md:top-30 z-10 shadow-xl dark:shadow-black/100 shadow-gray-900/25">
+				<div className={cn("h-56 w-full overflow-hidden rounded-lg", contentClassName)}>
 					<motion.div key={activeCard} className="h-full w-full">
 						{content[activeCard].content ?? null}
 					</motion.div>
 				</div>
 
 				{/* Progress indicator for mobile */}
-				<div className="mb-2 flex justify-center backdrop-blur-sm bg-black/30 rounded-full mx-auto w-fit px-4 py-2 space-x-2">
+				<div className="absolute bottom-2 left-0 right-0 flex justify-center backdrop-blur-sm bg-white/70 dark:bg-black/30 rounded-full mx-auto w-fit px-4 py-2 space-x-2">
 					{content.map((_, index) => (
 						<div
 							key={index}
 							className={cn(
 								"h-2 rounded-full transition-all duration-300",
-								activeCard === index ? "bg-slate-100 w-8" : "bg-slate-500 w-2"
+								activeCard === index
+									? "bg-slate-800 dark:bg-slate-100 w-8"
+									: "bg-slate-400 dark:bg-slate-500 w-2"
 							)}
 						/>
 					))}
@@ -96,7 +126,9 @@ export const StickyScroll = ({
 									ease: "easeInOut",
 								}}
 								className={`text-xl sm:text-2xl lg:text-2xl font-bold transition-colors duration-300 ${
-									activeCard === index ? "text-slate-100" : "text-slate-500"
+									activeCard === index
+										? "text-slate-900 dark:text-slate-100"
+										: "text-slate-600 dark:text-slate-500"
 								}`}
 							>
 								{item.title}
@@ -113,7 +145,9 @@ export const StickyScroll = ({
 									ease: "easeInOut",
 								}}
 								className={`text-sm sm:text-base lg:text-lg mt-4 sm:mt-8 lg:mt-10 max-w-full sm:max-w-lg transition-colors duration-300 ${
-									activeCard === index ? "text-slate-300" : "text-slate-400"
+									activeCard === index
+										? "text-slate-700 dark:text-slate-300"
+										: "text-slate-500 dark:text-slate-400"
 								}`}
 							>
 								{item.description}

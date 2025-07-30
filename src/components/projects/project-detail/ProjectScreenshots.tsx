@@ -26,7 +26,7 @@ export function ProjectScreenshots({ project }: ProjectScreenshotsProps) {
 			title: screenshot.title,
 			description: screenshot.description,
 			content: (
-				<div className="relative h-full w-full bg-gradient-to-br from-cyan-50 to-blue-100 dark:from-cyan-950 dark:to-blue-950">
+				<div className="relative h-full w-full">
 					<Image
 						src={screenshot.url}
 						alt={`${project.name} - ${screenshot.title}`}
