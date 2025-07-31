@@ -1,4 +1,22 @@
 import dynamic from "next/dynamic";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+
+export const metadata = generateSEOMetadata({
+	title: "Home",
+	description:
+		"Welcome to my portfolio! I'm a full-stack developer passionate about creating innovative web solutions. Explore my projects, GitHub contributions, and technical expertise.",
+	path: "/",
+	keywords: [
+		"home",
+		"portfolio homepage",
+		"developer profile",
+		"github contributions",
+		"pinned repositories",
+		"software engineer",
+		"web developer profile",
+	],
+});
+
 // Dynamic imports with loading skeletons
 const ProfileSection = dynamic(() => import("@/components/home/ProfileSection"));
 

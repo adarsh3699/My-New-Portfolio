@@ -11,6 +11,24 @@ import {
 	FunFacts,
 } from "@/components/about";
 import { OpportunitiesSection } from "@/components/ui";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+
+export const metadata = generateSEOMetadata({
+	title: "About Me",
+	description:
+		"Learn about my journey as a full-stack developer, technical expertise, education, core values, and what drives my passion for creating innovative web solutions.",
+	path: "/about",
+	keywords: [
+		"about",
+		"developer story",
+		"technical skills",
+		"education",
+		"experience",
+		"full stack developer",
+		"career journey",
+		"professional background",
+	],
+});
 
 export default function AboutPage() {
 	return (

@@ -1,5 +1,23 @@
 import dynamic from "next/dynamic";
 import { ContactFormSkeleton } from "@/components/contact/ContactForm";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+
+export const metadata = generateSEOMetadata({
+	title: "Contact Me",
+	description:
+		"Get in touch for collaboration opportunities, project discussions, or any questions about my work. I'm always open to connecting with fellow developers and potential clients.",
+	path: "/contact",
+	keywords: [
+		"contact",
+		"get in touch",
+		"collaboration",
+		"hire developer",
+		"project inquiry",
+		"freelance",
+		"consultation",
+		"business contact",
+	],
+});
 
 // Dynamic imports - lightweight components don't need skeletons
 const ContactHeader = dynamic(() => import("@/components/contact/ContactHeader"));

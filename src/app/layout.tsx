@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider, Header, Footer } from "@/components/layout";
+import { generateMetadata, generatePersonJsonLd, generateWebsiteJsonLd } from "@/lib/seo";
 import "../styles/globals.css";
 
 // Font configurations with performance optimizations
@@ -16,15 +17,29 @@ const geistMono = Geist_Mono({
 	display: "swap",
 });
 
-// Site metadata
+// Site metadata with comprehensive SEO
 export const metadata: Metadata = {
-	title: "Portfolio - adarsh3699",
-	description: "A GitHub-inspired portfolio showcasing my work and projects",
+	...generateMetadata(),
 	icons: {
 		icon: "/myLogo.webp",
 		shortcut: "/myLogo.webp",
 		apple: "/myLogo.webp",
+		other: [
+			{
+				rel: "icon",
+				type: "image/webp",
+				sizes: "32x32",
+				url: "/myLogo.webp",
+			},
+			{
+				rel: "icon",
+				type: "image/webp",
+				sizes: "16x16",
+				url: "/myLogo.webp",
+			},
+		],
 	},
+	manifest: "/manifest.json",
 };
 
 // Theme initialization script
@@ -52,6 +67,13 @@ export default function RootLayout({
 				<link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				{/* Structured Data */}
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify([generatePersonJsonLd(), generateWebsiteJsonLd()]),
+					}}
+				/>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 				<ThemeProvider defaultTheme="light" storageKey="theme">
 					<Header />

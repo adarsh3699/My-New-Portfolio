@@ -1,6 +1,24 @@
 import dynamic from "next/dynamic";
 import { ExperienceHeader } from "@/components/experience";
 import { ExperienceTimelineSkeleton } from "@/components/experience/ExperienceTimeline";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+
+export const metadata = generateSEOMetadata({
+	title: "Experience",
+	description:
+		"Explore my professional journey, work experience, key projects, and career milestones as a full-stack developer across various technologies and industries.",
+	path: "/experience",
+	keywords: [
+		"work experience",
+		"professional timeline",
+		"career history",
+		"projects",
+		"achievements",
+		"software development",
+		"programming experience",
+		"technology stack",
+	],
+});
 
 // Dynamic imports with loading skeletons
 const ExperienceTimeline = dynamic(() => import("@/components/experience/ExperienceTimeline"), {
