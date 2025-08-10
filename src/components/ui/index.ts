@@ -1,5 +1,4 @@
 export { Button } from "./button";
-export { ColourfulText } from "./colourful-text";
 export { FlipWords } from "./flip-words";
 export { Input } from "./input";
 export { PlaceholdersAndVanishInput } from "./placeholders-and-vanish-input";
