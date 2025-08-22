@@ -54,8 +54,9 @@
 }
 
 .github-readme li {
-	margin-bottom: 0.25rem;
+	margin-bottom: 0.75rem;
 	color: var(--gh-text);
+	line-height: 1.4;
 }
 
 .github-readme a:not(.btn-link) {
