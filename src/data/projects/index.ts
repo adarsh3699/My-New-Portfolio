@@ -72,6 +72,7 @@ import { priceComparisonWebData } from "./price-comparison-web";
 import { bhemuCalendarData } from "./bhemu-calendar";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 import { youngMindsClubData } from "./youngminds-club";
+import { sharpLearnData } from "./sharplearn";
 
 // All projects - single source of truth
 export const projects: Project[] = [
@@ -81,8 +82,9 @@ export const projects: Project[] = [
 	bhemuCalculatorData,
 	bhemuCalendarData,
 	bhemuNotesData,
-	facilityEvaluationSystemIITPData,
+	sharpLearnData,
 	myNewPortfolioData,
+	facilityEvaluationSystemIITPData,
 ];
 
 // Core utility functions
@@ -127,16 +129,20 @@ export async function getProjectWithReadme(id: string): Promise<{
 // Language colors for tech badges - arranged alphabetically with authentic logo colors
 export const languageColors: Record<string, string> = {
 	Axios: "bg-purple-600", // Axios purple
+	bcrypt: "bg-red-600", // bcrypt red
 	"C++": "bg-blue-700", // ISO C++ blue
+	CORS: "bg-gray-600", // CORS gray
 	"Express.js": "bg-gray-300", // Express.js gray
 	Firebase: "bg-orange-400", // Firebase orange
 	"Firebase Authentication": "bg-orange-400", // Firebase Authentication orange
 	Firestore: "bg-orange-400", // Firebase/Firestore orange
 	"Framer Motion": "bg-yellow-300", // Framer Motion yellow
+	"JWT Authentication": "bg-purple-700", // JWT purple
 	Java: "bg-orange-500", // Java orange
 	JavaScript: "bg-yellow-400", // JavaScript yellow
 	"Material-UI": "bg-blue-500", // MUI blue
 	MongoDB: "bg-green-500", // MongoDB green
+	Mongoose: "bg-green-600", // Mongoose green
 	MySQL: "bg-blue-600", // MySQL blue
 	"Next.js": "bg-gray-200", // Next.js black
 	"Node.js": "bg-green-600", // Node.js green
@@ -144,7 +150,12 @@ export const languageColors: Record<string, string> = {
 	Python: "bg-yellow-500", // Python yellow (could also use blue-600 for the blue variant)
 	React: "bg-cyan-400", // React cyan
 	"React 19": "bg-cyan-400", // React cyan
+	"React Router DOM": "bg-cyan-500", // React Router cyan
 	"Redux Toolkit": "bg-purple-600", // Redux purple
+	"Referral System": "bg-green-400", // Referral green
+	"Responsive Design": "bg-teal-400", // Responsive teal
+	"Search Functionality": "bg-blue-400", // Search blue
+	"Shopping Cart": "bg-orange-600", // Shopping cart orange
 	"Tailwind CSS": "bg-teal-500", // Tailwind teal
 	TypeScript: "bg-blue-600", // TypeScript blue
 };
