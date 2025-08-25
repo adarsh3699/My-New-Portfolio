@@ -17,7 +17,7 @@ export default function Footer() {
 							</svg>
 							<span className="font-semibold gh-text">adarsh3699</span>
 						</div>
-						<p className="text-sm gh-text-muted">© 2025 Adarsh Sumar. All rights reserved.</p>
+						<p className="text-sm gh-text-muted">© 2025 Adarsh Suman. All rights reserved.</p>
 					</div>
 
 					{/* Quick Links */}
