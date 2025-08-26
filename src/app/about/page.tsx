@@ -65,7 +65,7 @@ export default function AboutPage() {
 				<FunFacts />
 
 				{/* Opportunities Section */}
-				<OpportunitiesSection variant="contact" />
+				<OpportunitiesSection buttons={["projects", "resume"]} />
 			</section>
 		</main>
 	);

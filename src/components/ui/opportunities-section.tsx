@@ -7,53 +7,53 @@ type ButtonConfig = {
 	text: string;
 	variant: "default" | "outline" | "secondary";
 	icon?: React.ReactNode;
+	isExternalLink?: boolean;
 };
 
 const OPPORTUNITY_PHRASES = ["Looking for Opportunities", "Open to Work", "Ready for New Challenges"];
 
-type OpportunitiesSectionProps = {
-	variant?: "default" | "contact";
+// Icon configurations with shared classes
+const iconClass = {
+	briefcase: "w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-12",
+	folder: "w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-3",
+	document: "w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-12",
 };
 
-export default function OpportunitiesSection({ variant = "default" }: OpportunitiesSectionProps) {
-	const BUTTONS: ButtonConfig[] =
-		variant === "contact"
-			? [
-					{
-						href: "/projects",
-						text: "See My Work",
-						variant: "outline",
-						icon: (
-							<FolderIcon className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-3" />
-						),
-					},
-					{
-						href: "/experience",
-						text: "View My Experience",
-						variant: "secondary",
-						icon: (
-							<DocumentTextIcon className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-12" />
-						),
-					},
-			  ]
-			: [
-					{
-						href: "/contact",
-						text: "Get In Touch",
-						variant: "default",
-						icon: (
-							<BriefcaseIcon className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-12" />
-						),
-					},
-					{
-						href: "/projects",
-						text: "View My Work",
-						variant: "outline",
-						icon: (
-							<FolderIcon className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/button:rotate-3" />
-						),
-					},
-			  ];
+// All available buttons configuration
+const AVAILABLE_BUTTONS: Record<string, ButtonConfig> = {
+	contact: {
+		href: "/contact",
+		text: "Get In Touch",
+		variant: "default",
+		icon: <BriefcaseIcon className={iconClass.briefcase} />,
+	},
+	projects: {
+		href: "/projects",
+		text: "View My Work",
+		variant: "outline",
+		icon: <FolderIcon className={iconClass.folder} />,
+	},
+	resume: {
+		href: "https://drive.google.com/file/d/1AZqdkIJKl_0_e9mTljYpi3LZcpy9e9jH/view?usp=drive_link",
+		isExternalLink: true,
+		text: "My Resume",
+		variant: "secondary",
+		icon: <DocumentTextIcon className={iconClass.document} />,
+	},
+	experience: {
+		href: "/experience",
+		text: "View My Experience",
+		variant: "secondary",
+		icon: <DocumentTextIcon className={iconClass.document} />,
+	},
+};
+
+type OpportunitiesSectionProps = {
+	buttons: string[];
+};
+
+export default function OpportunitiesSection({ buttons }: OpportunitiesSectionProps) {
+	const BUTTONS: ButtonConfig[] = buttons.map((buttonName) => AVAILABLE_BUTTONS[buttonName]).filter(Boolean);
 
 	return (
 		<div className="mt-8 md:mt-12">
@@ -78,18 +78,25 @@ export default function OpportunitiesSection({ variant = "default" }: Opportunit
 
 					{/* Action Buttons */}
 					<div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
-						{BUTTONS.map(({ href, text, variant: buttonVariant, icon }) => (
-							<Link key={href} href={href} className="w-full sm:w-auto">
-								<Button
-									variant={buttonVariant}
-									size="lg"
-									className="w-full text-sm sm:text-base group/button"
+						{BUTTONS.map(({ href, text, variant: buttonVariant, icon, isExternalLink }) => {
+							return (
+								<Link
+									key={href}
+									href={href}
+									className="w-full sm:w-auto"
+									{...(isExternalLink && { target: "_blank", rel: "noopener noreferrer" })}
 								>
-									{icon}
-									<span>{text}</span>
-								</Button>
-							</Link>
-						))}
+									<Button
+										variant={buttonVariant}
+										size="lg"
+										className="w-full text-sm sm:text-base group/button"
+									>
+										{icon}
+										<span>{text}</span>
+									</Button>
+								</Link>
+							);
+						})}
 					</div>
 				</div>
 			</div>

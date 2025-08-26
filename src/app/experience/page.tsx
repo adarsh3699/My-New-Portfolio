@@ -37,7 +37,7 @@ export default function ExperiencePage() {
 				<div>
 					<ExperienceTimeline />
 				</div>
-				<OpportunitiesSection />
+				<OpportunitiesSection buttons={["contact", "projects"]} />
 			</section>
 		</main>
 	);

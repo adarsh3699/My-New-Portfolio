@@ -48,7 +48,7 @@ export default function ContactPage() {
 					<ContactForm />
 				</div>
 
-				<OpportunitiesSection variant="contact" />
+				<OpportunitiesSection buttons={["projects", "experience"]} />
 			</section>
 		</main>
 	);
