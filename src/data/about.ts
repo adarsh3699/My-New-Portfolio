@@ -123,11 +123,19 @@ export const aboutData = {
 			color: "bg-red-500",
 		},
 		{
-			title: "Hack-a-Throne 1.0 : Round 2",
-			organization: "GeeksforGeeks",
-			year: "2024",
-			description: "Participated in hackathon organized by AIESEC in Jalandhar under GeeksforGeeks guidance",
+			title: "Programming Using C++",
+			organization: "Infosys Springboard",
+			year: "2025",
+			description:
+				"Successfully completed comprehensive C++ programming course covering OOPs concepts and practical implementation",
 			color: "bg-green-500",
+		},
+		{
+			title: "C Programming Certification",
+			organization: "Lovely Professional University",
+			year: "2025",
+			description: "Completed 72 hours online course on Computer Programming via iamneo Platform",
+			color: "bg-purple-500",
 		},
 		{
 			title: "Introduction to DSA with Proctored Exam",
@@ -135,13 +143,6 @@ export const aboutData = {
 			year: "2025",
 			description: "Completed 15+ hours MOOC on Data Structures and Algorithms with proctored examination",
 			color: "bg-blue-500",
-		},
-		{
-			title: "Computer Programming Certification",
-			organization: "Lovely Professional University",
-			year: "2025",
-			description: "Completed 72 hours online course on Computer Programming via iamneo Platform",
-			color: "bg-purple-500",
 		},
 	],
 

@@ -28,7 +28,7 @@ const formatCount = (count: number): string => {
 };
 
 export default function ProfileSection() {
-	const { data: profileData, loading, error } = useApi(fetchGitHubProfile, { getCachedData: getCachedProfile });
+	const { data: profileData, loading } = useApi(fetchGitHubProfile, { getCachedData: getCachedProfile });
 
 	const getWebsiteDisplay = (url: string | undefined): string => {
 		if (loading) return "Loading...";
@@ -37,16 +37,9 @@ export default function ProfileSection() {
 
 	return (
 		<div className="border gh-border rounded-lg p-4 sm:px-12 py-8 gh-shadow sticky top-30">
-			{/* Error Banner */}
-			{error && (
-				<div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-					<p className="text-sm text-red-800">⚠️ GitHub API unavailable: {error}</p>
-				</div>
-			)}
-
 			{/* Profile Header */}
 			<div className="mb-4 sm:mb-6">
-				<div className="relative w-48 h-48 sm:w-64sm:h-64 xl:w-[298px] xl:h-[298px] mx-auto mb-3 sm:mb-4">
+				<div className="relative w-48 h-48 sm:w-64 sm:h-64 xl:w-[298px] xl:h-[298px] mx-auto mb-3 sm:mb-4">
 					<Image
 						src={PROFILE_DATA.image}
 						width={298}
