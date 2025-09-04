@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 interface TooltipProps {
 	children: React.ReactNode;
@@ -10,46 +10,76 @@ interface TooltipProps {
 
 export default function Tooltip({ children, content, side = "bottom", delay = 500 }: TooltipProps) {
 	const [isVisible, setIsVisible] = useState(false);
-	const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+	const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-	const showTooltip = () => {
-		const id = setTimeout(() => {
-			setIsVisible(true);
-		}, delay);
-		setTimeoutId(id);
-	};
+	// Cleanup function
+	const clearTimeouts = useCallback(() => {
+		if (showTimeoutRef.current) clearTimeout(showTimeoutRef.current);
+		if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+	}, []);
 
-	const hideTooltip = () => {
-		if (timeoutId) {
-			clearTimeout(timeoutId);
-			setTimeoutId(null);
-		}
+	// Show tooltip with delay
+	const showTooltip = useCallback(() => {
+		clearTimeouts();
+		showTimeoutRef.current = setTimeout(() => setIsVisible(true), delay);
+	}, [delay, clearTimeouts]);
+
+	// Hide tooltip immediately
+	const hideTooltip = useCallback(() => {
+		clearTimeouts();
 		setIsVisible(false);
+	}, [clearTimeouts]);
+
+	// Cleanup on unmount
+	useEffect(() => clearTimeouts, [clearTimeouts]);
+
+	// Handle escape key and outside clicks
+	useEffect(() => {
+		if (!isVisible) return;
+
+		const handleEscape = (e: KeyboardEvent) => {
+			if (e.key === "Escape") hideTooltip();
+		};
+
+		const handleClickOutside = (e: MouseEvent) => {
+			if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+				hideTooltip();
+			}
+		};
+
+		document.addEventListener("keydown", handleEscape);
+		document.addEventListener("click", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("keydown", handleEscape);
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, [isVisible, hideTooltip]);
+
+	// Optimized positioning classes
+	const positionClasses = {
+		top: "bottom-full left-1/2 -translate-x-1/2 mb-1",
+		bottom: "top-full left-1/2 -translate-x-1/2 mt-1",
+		left: "right-full top-1/2 -translate-y-1/2 mr-1",
+		right: "left-full top-1/2 -translate-y-1/2 ml-1",
 	};
 
-	const getTooltipClasses = () => {
-		const baseClasses =
-			"absolute z-50 px-2 py-1.5 text-xs font-medium text-white bg-gray-700 rounded shadow-lg whitespace-nowrap pointer-events-none transition-opacity duration-200";
-
-		switch (side) {
-			case "top":
-				return `${baseClasses} bottom-full left-1/2 transform -translate-x-1/2 mb-1`;
-			case "bottom":
-				return `${baseClasses} top-full left-1/2 transform -translate-x-1/2 mt-1`;
-			case "left":
-				return `${baseClasses} right-full top-1/2 transform -translate-y-1/2 mr-1`;
-			case "right":
-				return `${baseClasses} left-full top-1/2 transform -translate-y-1/2 ml-1`;
-			default:
-				return `${baseClasses} top-full left-1/2 transform -translate-x-1/2 mt-1`;
-		}
-	};
+	const tooltipClasses = `absolute z-50 px-2 py-1.5 text-xs font-medium text-white bg-gray-700 rounded shadow-lg whitespace-nowrap pointer-events-none transition-opacity duration-200 ${positionClasses[side]}`;
 
 	return (
-		<div className="relative inline-flex" onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+		<div
+			ref={containerRef}
+			className="relative inline-flex"
+			onMouseEnter={showTooltip}
+			onMouseLeave={hideTooltip}
+			onFocus={showTooltip}
+			onBlur={hideTooltip}
+		>
 			{children}
 			{isVisible && (
-				<div className={getTooltipClasses()} style={{ opacity: isVisible ? 1 : 0 }} role="tooltip">
+				<div className={tooltipClasses} role="tooltip" aria-label={content}>
 					{content}
 				</div>
 			)}
