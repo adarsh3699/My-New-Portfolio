@@ -5,7 +5,7 @@ export const aboutData = {
 		{ label: "Years Coding", value: "3+" },
 		{ label: "Projects Built", value: "10+" },
 		{ label: "Technologies", value: "15+" },
-		{ label: "GitHub Commits", value: "1000+" },
+		{ label: "GitHub Commits", value: "500+" },
 	],
 
 	// Personal story/bio content
@@ -55,7 +55,7 @@ export const aboutData = {
 			skills: [
 				{ name: "React", level: "Expert" },
 				{ name: "Next.js", level: "Advanced" },
-				{ name: "JavaScript", level: "Expert" },
+				{ name: "JavaScript", level: "Advanced" },
 				{ name: "TypeScript", level: "Advanced" },
 				{ name: "Tailwind CSS", level: "Advanced" },
 			],
@@ -118,6 +118,7 @@ export const aboutData = {
 			title: "Code-A-Haunt 2.0 Hackathon : Round 3 Top 15",
 			organization: "CodingBlock LPU",
 			year: "2025",
+			certificateUrl: "https://drive.google.com/file/d/1xIBC78xqAu8QXiOHEhdQ4xnh1ByB_Qda/view?usp=drive_link",
 			description:
 				"Participated in State-Level Inter-University Hackathon showcasing exceptional skills in coding and problem-solving",
 			color: "bg-red-500",
@@ -126,21 +127,24 @@ export const aboutData = {
 			title: "Programming Using C++",
 			organization: "Infosys Springboard",
 			year: "2025",
+			certificateUrl: "https://drive.google.com/file/d/1JHMLpVgK3EKP8uuXBDbEZ4vGvD9lDfYd/view?usp=drive_link",
 			description:
 				"Successfully completed comprehensive C++ programming course covering OOPs concepts and practical implementation",
 			color: "bg-green-500",
 		},
 		{
 			title: "C Programming Certification",
-			organization: "Lovely Professional University",
+			organization: "iamneo Platform",
 			year: "2025",
+			certificateUrl: "https://drive.google.com/file/d/1GT2_vjzDSrVftSrhTgo3x9fx7COSFMse/view?usp=drive_link",
 			description: "Completed 72 hours online course on Computer Programming via iamneo Platform",
 			color: "bg-purple-500",
 		},
 		{
-			title: "Introduction to DSA with Proctored Exam",
+			title: "Introduction to DSA",
 			organization: "Coding Tantra",
 			year: "2025",
+			certificateUrl: "https://drive.google.com/file/d/1hzte24CbbKAluC_kFpj-bVCzfXkUTBYP/view?usp=drive_link",
 			description: "Completed 15+ hours MOOC on Data Structures and Algorithms with proctored examination",
 			color: "bg-blue-500",
 		},
@@ -183,7 +187,7 @@ export const aboutData = {
 		"🚀 Built my first website at age 16",
 		"🌙 Night owl - best coding happens after 10 PM",
 		"⚡ Can spot a missing semicolon from across the room",
-		// "🎯 Completed 100+ coding challenges on LeetCode",
+		"🎯 Completed 20+ coding challenges on LeetCode",
 		"🔥 Can code for 12 hours straight when in the zone",
 		"🐛 I actually enjoy debugging - it's like solving puzzles",
 		"📝 Write code comments like I'm explaining to my future self",

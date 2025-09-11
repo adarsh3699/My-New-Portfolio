@@ -1,5 +1,6 @@
 import { TrophyIcon } from "@heroicons/react/24/outline";
 import { achievements } from "@/data/about";
+import Link from "next/link";
 
 export default function CertificatesAchievements() {
 	return (
@@ -23,7 +24,14 @@ export default function CertificatesAchievements() {
 								{achievement.title}
 							</h3>
 							<div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm gh-text-muted mb-1">
-								<span className="font-medium gh-text-accent">{achievement.organization}</span>
+								<Link
+									href={achievement.certificateUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="font-medium gh-text-accent hover:underline"
+								>
+									{achievement.organization}
+								</Link>
 								<span className="hidden sm:inline">•</span>
 								<span>{achievement.year}</span>
 							</div>
