@@ -69,9 +69,25 @@ function calculateMaxStreak(weeks: ContributionWeek[]): number {
 
 type ViewMode = "DEV" | "DSA";
 
+const STORAGE_KEY = "contributions-view-mode";
+
 export default function ContributionsGraph() {
 	const [viewMode, setViewMode] = useState<ViewMode>("DEV");
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+	// Initialize viewMode from session storage on component mount
+	useEffect(() => {
+		const savedViewMode = sessionStorage.getItem(STORAGE_KEY) as ViewMode;
+		if (savedViewMode === "DEV" || savedViewMode === "DSA") {
+			setViewMode(savedViewMode);
+		}
+	}, []);
+
+	// Handle view mode change and save to session storage
+	const handleViewModeChange = (mode: ViewMode) => {
+		setViewMode(mode);
+		sessionStorage.setItem(STORAGE_KEY, mode);
+	};
 
 	// Fetch GitHub contributions (DEV)
 	const {
@@ -131,21 +147,21 @@ export default function ContributionsGraph() {
 				</h2>
 				<div className="flex items-center gap-1 text-xs flex-shrink-0">
 					<button
-						onClick={() => setViewMode("DEV")}
-						className={`px-3 py-1 rounded-md transition-all duration-200 ${
+						onClick={() => handleViewModeChange("DEV")}
+						className={`px-3 py-1 rounded-md transition-all duration-200 font-medium ${
 							viewMode === "DEV"
-								? "bg-blue-500 text-white shadow-sm"
-								: "gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+								? "bg-blue-600 text-white shadow-sm"
+								: "text-gray-700 dark:text-gray-200 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white"
 						}`}
 					>
 						DEV
 					</button>
 					<button
-						onClick={() => setViewMode("DSA")}
-						className={`px-3 py-1 rounded-md transition-all duration-200 ${
+						onClick={() => handleViewModeChange("DSA")}
+						className={`px-3 py-1 rounded-md transition-all duration-200 font-medium ${
 							viewMode === "DSA"
-								? "bg-orange-500 text-white shadow-sm"
-								: "gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+								? "bg-orange-600 text-white shadow-sm"
+								: "text-gray-700 dark:text-gray-200 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white"
 						}`}
 					>
 						DSA

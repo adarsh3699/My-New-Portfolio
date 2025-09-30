@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { projects } from "@/data";
 import { ProjectHeader } from "@/components/projects";
@@ -31,6 +31,8 @@ const ProjectCard = dynamic(
 
 export type ViewMode = "list" | "grid";
 
+const STORAGE_KEY = "projects-view-mode";
+
 // Empty state component
 const EmptyState = () => (
 	<div className="text-center py-12">
@@ -42,6 +44,20 @@ const EmptyState = () => (
 export default function ProjectsPage() {
 	const [filteredProjects, setFilteredProjects] = useState(projects);
 	const [viewMode, setViewMode] = useState<ViewMode>("list");
+
+	// Load saved view mode from localStorage on client side
+	useEffect(() => {
+		const savedViewMode = localStorage.getItem(STORAGE_KEY) as ViewMode;
+		if (savedViewMode && (savedViewMode === "list" || savedViewMode === "grid")) {
+			setViewMode(savedViewMode);
+		}
+	}, []);
+
+	// Handle view mode change and save to localStorage
+	const handleViewModeChange = (mode: ViewMode) => {
+		setViewMode(mode);
+		localStorage.setItem(STORAGE_KEY, mode);
+	};
 
 	// Error boundary would be better, but basic error handling
 	if (!projects || projects.length === 0) {
@@ -67,7 +83,7 @@ export default function ProjectsPage() {
 						projects={projects}
 						onFilterChange={setFilteredProjects}
 						viewMode={viewMode}
-						onViewModeChange={setViewMode}
+						onViewModeChange={handleViewModeChange}
 					/>
 				</Suspense>
 
