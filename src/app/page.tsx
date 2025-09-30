@@ -20,7 +20,7 @@ export const metadata = generateSEOMetadata({
 // Dynamic imports with loading skeletons
 const ProfileSection = dynamic(() => import("@/components/home/ProfileSection"));
 
-const GitHubContributions = dynamic(() => import("@/components/home/GitHubContributions"));
+const ContributionsGraph = dynamic(() => import("@/components/home/ContributionsGraph"));
 
 const PinnedRepositories = dynamic(() => import("@/components/home/PinnedRepositories"));
 
@@ -36,7 +36,7 @@ export default function Home() {
 
 					{/* Main Content */}
 					<div className="xl:col-span-2">
-						<GitHubContributions />
+						<ContributionsGraph />
 						<PinnedRepositories />
 					</div>
 				</div>

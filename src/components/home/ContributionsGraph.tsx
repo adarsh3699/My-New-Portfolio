@@ -1,13 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
 	fetchGitHubContributions,
 	getCachedContributions,
 	type ContributionDay,
 	type ContributionWeek,
 } from "@/lib/github-api";
+import {
+	fetchLeetCodeContributions,
+	getCachedLeetCodeContributions,
+	convertLeetCodeToGitHubFormat,
+} from "@/lib/leetcode-api";
 import { useApi } from "@/lib/hooks";
 import "@/styles/github-contributions.css";
+import { stringify } from "querystring";
 
 // Constants
 const CONTRIBUTION_LEVELS = {
@@ -37,8 +43,67 @@ function generateMonthLabels(weeks: ContributionWeek[]): string[] {
 	});
 }
 
-export default function GitHubContributions() {
-	const { data, loading, error } = useApi(fetchGitHubContributions, { getCachedData: getCachedContributions });
+// Calculate total active days (days with contributions > 0)
+function calculateActiveDays(weeks: ContributionWeek[]): number {
+	return weeks.reduce((total, week) => {
+		return total + week.contributionDays.filter((day) => day.contributionCount > 0).length;
+	}, 0);
+}
+
+// Calculate maximum streak of consecutive days with contributions
+function calculateMaxStreak(weeks: ContributionWeek[]): number {
+	const allDays = weeks.flatMap((week) => week.contributionDays);
+	let maxStreak = 0;
+	let currentStreak = 0;
+
+	for (const day of allDays) {
+		if (day.contributionCount > 0) {
+			currentStreak++;
+			maxStreak = Math.max(maxStreak, currentStreak);
+		} else {
+			currentStreak = 0;
+		}
+	}
+
+	return maxStreak;
+}
+
+type ViewMode = "DEV" | "DSA";
+
+export default function ContributionsGraph() {
+	const [viewMode, setViewMode] = useState<ViewMode>("DEV");
+	const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+	// Fetch GitHub contributions (DEV)
+	const {
+		data: githubData,
+		loading: githubLoading,
+		error: githubError,
+	} = useApi(fetchGitHubContributions, { getCachedData: getCachedContributions });
+
+	// Fetch LeetCode contributions (DSA)
+	const {
+		data: leetcodeData,
+		loading: leetcodeLoading,
+		error: leetcodeError,
+	} = useApi(fetchLeetCodeContributions, { getCachedData: getCachedLeetCodeContributions });
+
+	// Determine current data based on view mode
+	const isDevMode = viewMode === "DEV";
+	const data = isDevMode ? githubData : leetcodeData ? convertLeetCodeToGitHubFormat(leetcodeData) : null;
+	const loading = isDevMode ? githubLoading : leetcodeLoading;
+	const error = isDevMode ? githubError : leetcodeError;
+
+	// Auto-scroll to end on mobile when data loads or view mode changes
+	useEffect(() => {
+		if (data && scrollContainerRef.current) {
+			const container = scrollContainerRef.current;
+			// Small delay to ensure DOM is updated
+			setTimeout(() => {
+				container.scrollLeft = container.scrollWidth - container.clientWidth;
+			}, 100);
+		}
+	}, [data, viewMode]);
 
 	// Loading state - maintain exact layout dimensions
 	if (loading) {
@@ -52,22 +117,45 @@ export default function GitHubContributions() {
 
 	const { totalContributions, weeks } = data;
 	const months = generateMonthLabels(weeks);
+	const activeDays = calculateActiveDays(weeks);
+	const maxStreak = calculateMaxStreak(weeks);
 
 	return (
 		<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
 			{/* Header - fixed height to prevent shifts */}
-			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 min-h-[24px] sm:min-h-[28px]">
-				<h2 className="text-base sm:text-lg font-semibold gh-text">
-					<span className="block sm:inline">{totalContributions} contributions</span>{" "}
+			<div className="flex items-center justify-between gap-2 mb-4 min-h-[28px]">
+				<h2 className="text-base sm:text-lg font-semibold gh-text flex-1">
+					<span className="block sm:inline">
+						{totalContributions} {isDevMode ? "contributions" : "problems solved"}
+					</span>{" "}
 					<span className="block sm:inline gh-text-muted text-sm sm:text-base">in the last year</span>
 				</h2>
-				<div className="flex items-center gap-2 text-xs gh-text-muted">
-					<span className="hidden sm:inline">Learn how we count contributions</span>
+				<div className="flex items-center gap-1 text-xs flex-shrink-0">
+					<button
+						onClick={() => setViewMode("DEV")}
+						className={`px-3 py-1 rounded-md transition-all duration-200 ${
+							viewMode === "DEV"
+								? "bg-blue-500 text-white shadow-sm"
+								: "gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+						}`}
+					>
+						DEV
+					</button>
+					<button
+						onClick={() => setViewMode("DSA")}
+						className={`px-3 py-1 rounded-md transition-all duration-200 ${
+							viewMode === "DSA"
+								? "bg-orange-500 text-white shadow-sm"
+								: "gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800"
+						}`}
+					>
+						DSA
+					</button>
 				</div>
 			</div>
 
 			{/* Contributions Grid - fixed dimensions to prevent shifts */}
-			<div className="overflow-x-auto">
+			<div className="overflow-x-auto" ref={scrollContainerRef}>
 				<div className="font-mono text-xs min-w-[680px]">
 					{/* Month labels */}
 					<div className="flex items-center mb-1">
@@ -100,7 +188,7 @@ export default function GitHubContributions() {
 						</div>
 
 						{/* Contribution squares */}
-						<div className="flex ml-[8px] flex-1 justify-between">
+						<div className="flex ml-[8px] flex-1 justify-between pr-px pb-px">
 							{weeks.map((week: ContributionWeek, weekIndex: number) => (
 								<div key={weekIndex} className="flex flex-col gap-1" style={{ minWidth: "10px" }}>
 									{week.contributionDays.map((day: ContributionDay, dayIndex: number) => (
@@ -109,9 +197,9 @@ export default function GitHubContributions() {
 											className={`w-[10px] h-[10px] rounded-[2px] hover:outline-1 hover:outline-gray-400 transition-colors duration-150 ${getLevelClass(
 												day.contributionLevel
 											)}`}
-											title={`${day.contributionCount} contributions on ${new Date(
-												day.date
-											).toLocaleDateString()}`}
+											title={`${day.contributionCount} ${
+												isDevMode ? "contributions" : "problems solved"
+											} on ${new Date(day.date).toLocaleDateString()}`}
 										/>
 									))}
 								</div>
@@ -121,8 +209,16 @@ export default function GitHubContributions() {
 				</div>
 			</div>
 
-			{/* Legend */}
-			<div className="mt-3 flex items-center justify-end">
+			{/* Legend and Statistics */}
+			<div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+				<div className="flex items-center gap-3 sm:gap-4 text-sm">
+					<span className="gh-text-muted">
+						Total active days: <span className="gh-text font-semibold">{activeDays}</span>
+					</span>
+					<span className="gh-text-muted">
+						Max streak: <span className="gh-text font-semibold">{maxStreak}</span>
+					</span>
+				</div>
 				<div className="flex items-center gap-1 text-[11px] gh-text-muted">
 					<span>Less</span>
 					<div className="flex gap-[2px] mx-2">
@@ -143,12 +239,13 @@ function loadingPlaceholder() {
 	return (
 		<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
 			{/* Header skeleton - exact same structure as real content */}
-			<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4">
-				<div className="animate-pulse">
+			<div className="flex items-center justify-between gap-2 mb-4 min-h-[28px]">
+				<div className="animate-pulse flex-1">
 					<div className="h-5 sm:h-6 bg-gray-200 dark:bg-gray-700 rounded w-64"></div>
 				</div>
-				<div className="flex items-center gap-2 text-xs gh-text-muted">
-					<span className="hidden sm:inline opacity-0">Learn how we count contributions</span>
+				<div className="flex items-center gap-1 text-xs flex-shrink-0">
+					<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-6 w-12 rounded-md"></div>
+					<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-6 w-12 rounded-md"></div>
 				</div>
 			</div>
 
@@ -202,8 +299,12 @@ function loadingPlaceholder() {
 				</div>
 			</div>
 
-			{/* Legend skeleton */}
-			<div className="mt-3 flex items-center justify-end">
+			{/* Legend and Statistics skeleton */}
+			<div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+				<div className="flex items-center gap-3 sm:gap-4 text-sm">
+					<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-4 w-32 rounded"></div>
+					<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-4 w-20 rounded"></div>
+				</div>
 				<div className="flex items-center gap-1 text-[11px] gh-text-muted">
 					<span>Less</span>
 					<div className="flex gap-[2px] mx-2">
@@ -224,8 +325,31 @@ function errorPlaceholder(error: string) {
 	return (
 		<div className="border gh-border rounded-lg p-3 sm:p-6 gh-shadow mb-6 min-h-[180px] gh-contributions-container">
 			<div className="text-center py-8">
-				<p className="text-red-500 mb-2">Failed to load GitHub contributions</p>
+				<p className="text-red-500 mb-2">Failed to load contributions</p>
 				<p className="text-sm gh-text-muted">{error || "No data available"}</p>
+			</div>
+
+			{/* Statistics placeholder */}
+			<div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+				<div className="flex items-center gap-3 sm:gap-4 text-sm">
+					<span className="gh-text-muted">
+						Total active days: <span className="gh-text font-semibold">--</span>
+					</span>
+					<span className="gh-text-muted">
+						Max streak: <span className="gh-text font-semibold">--</span>
+					</span>
+				</div>
+				<div className="flex items-center gap-1 text-[11px] gh-text-muted">
+					<span>Less</span>
+					<div className="flex gap-[2px] mx-2">
+						<div className="w-[10px] h-[10px] rounded-[2px] gh-contribution-level-0"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] gh-contribution-level-1"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] gh-contribution-level-2"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] gh-contribution-level-3"></div>
+						<div className="w-[10px] h-[10px] rounded-[2px] gh-contribution-level-4"></div>
+					</div>
+					<span>More</span>
+				</div>
 			</div>
 		</div>
 	);

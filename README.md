@@ -46,7 +46,7 @@ src/
 │   │   └── index.ts
 │   ├── home/             # Home page components
 │   │   ├── ProfileSection.tsx
-│   │   ├── GitHubContributions.tsx
+│   │   ├── ContributionsGraph.tsx
 │   │   └── index.ts
 │   ├── projects/         # Project page components
 │   │   ├── ProjectsSection.tsx

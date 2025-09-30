@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon } from "@heroicons/react/24/outline";
-import { GitHubIcon, TwitterIcon, LinkedInIcon } from "@/components/icons";
+import { GitHubIcon, TwitterIcon, LinkedInIcon, LeetCodeIcon } from "@/components/icons";
 import { fetchGitHubProfile, getCachedProfile } from "@/lib/github-api";
 import { useApi } from "@/lib/hooks";
 
@@ -18,7 +18,7 @@ const PROFILE_DATA = {
 	defaultWebsite: "www.bhemu.me",
 	social: {
 		github: "https://github.com/adarsh3699",
-		twitter: "https://twitter.com/adarsh3699",
+		leetcode: "https://leetcode.com/u/adarsh3699",
 		linkedin: "https://linkedin.com/in/adarsh3699",
 	},
 } as const;
@@ -117,7 +117,7 @@ export default function ProfileSection() {
 						href={PROFILE_DATA.social.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="gh-text-muted hover:gh-text-accent transition-colors"
+						className="gh-text-muted hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg"
 						aria-label="GitHub Profile"
 					>
 						<div className="w-4 h-4 sm:w-5 sm:h-5">
@@ -125,21 +125,21 @@ export default function ProfileSection() {
 						</div>
 					</Link>
 					<Link
-						href={PROFILE_DATA.social.twitter}
+						href={PROFILE_DATA.social.leetcode}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="gh-text-muted hover:gh-text-accent transition-colors"
-						aria-label="Twitter Profile"
+						className="gh-text-muted hover:text-orange-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg"
+						aria-label="LeetCode Profile"
 					>
 						<div className="w-4 h-4 sm:w-5 sm:h-5">
-							<TwitterIcon />
+							<LeetCodeIcon />
 						</div>
 					</Link>
 					<Link
 						href={PROFILE_DATA.social.linkedin}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="gh-text-muted hover:gh-text-accent transition-colors"
+						className="gh-text-muted hover:text-blue-500 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-lg"
 						aria-label="LinkedIn Profile"
 					>
 						<div className="w-4 h-4 sm:w-5 sm:h-5">
