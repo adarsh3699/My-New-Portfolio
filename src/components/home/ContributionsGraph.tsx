@@ -125,7 +125,7 @@ export default function ContributionsGraph() {
 			<div className="flex items-center justify-between gap-2 mb-4 min-h-[28px]">
 				<h2 className="text-base sm:text-lg font-semibold gh-text flex-1">
 					<span className="block sm:inline">
-						{totalContributions} {isDevMode ? "contributions" : "problems solved"}
+						{totalContributions} {isDevMode ? "contributions" : "submissions"}
 					</span>{" "}
 					<span className="block sm:inline gh-text-muted text-sm sm:text-base">in the last year</span>
 				</h2>
@@ -197,7 +197,7 @@ export default function ContributionsGraph() {
 												day.contributionLevel
 											)}`}
 											title={`${day.contributionCount} ${
-												isDevMode ? "contributions" : "problems solved"
+												isDevMode ? "contributions" : "submissions"
 											} on ${new Date(day.date).toLocaleDateString()}`}
 										/>
 									))}
