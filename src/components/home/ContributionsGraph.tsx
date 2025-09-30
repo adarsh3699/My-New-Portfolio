@@ -13,7 +13,6 @@ import {
 } from "@/lib/leetcode-api";
 import { useApi } from "@/lib/hooks";
 import "@/styles/github-contributions.css";
-import { stringify } from "querystring";
 
 // Constants
 const CONTRIBUTION_LEVELS = {

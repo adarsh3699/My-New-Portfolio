@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon } from "@heroicons/react/24/outline";
-import { GitHubIcon, TwitterIcon, LinkedInIcon, LeetCodeIcon } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from "@/components/icons";
 import { fetchGitHubProfile, getCachedProfile } from "@/lib/github-api";
 import { useApi } from "@/lib/hooks";
 
