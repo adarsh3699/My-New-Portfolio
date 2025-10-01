@@ -182,6 +182,12 @@
 .gh-text-accent {
 	color: var(--gh-accent-fg);
 }
+.hover\:gh-text-accent:hover {
+	color: var(--gh-accent-fg);
+}
+.group:hover .group-hover\:gh-text-accent {
+	color: var(--gh-accent-fg);
+}
 .gh-bg-accent {
 	background-color: var(--gh-accent-emphasis);
 }

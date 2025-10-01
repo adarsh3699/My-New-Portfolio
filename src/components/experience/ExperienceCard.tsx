@@ -33,9 +33,7 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 						{/* Title and Company Info */}
 						<div className="flex-1 min-w-0">
 							<div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-1 sm:mb-2">
-								<h2 className="text-lg sm:text-xl font-semibold gh-text group-hover:gh-text-accent transition-colors truncate">
-									{exp.position}
-								</h2>
+								<h2 className="text-lg sm:text-xl font-semibold gh-text truncate">{exp.position}</h2>
 								{exp.isCurrent && (
 									<span className="inline-flex items-center text-xs px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full font-medium w-fit">
 										Current

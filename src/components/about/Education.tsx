@@ -18,9 +18,7 @@ export default function Education() {
 							className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full ${edu.color} mt-1.5 mr-2 sm:mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300`}
 						/>
 						<div className="flex-1 min-w-0">
-							<h3 className="font-bold gh-text mb-1 text-sm sm:text-base group-hover:gh-text-accent transition-colors">
-								{edu.degree}
-							</h3>
+							<h3 className="font-bold gh-text mb-1 text-sm sm:text-base">{edu.degree}</h3>
 							<p className="gh-text-accent text-xs sm:text-sm font-semibold mb-1">{edu.field}</p>
 							<div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm gh-text-muted">
 								<span className="font-medium">{edu.institution}</span>

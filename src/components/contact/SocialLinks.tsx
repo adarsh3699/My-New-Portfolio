@@ -29,7 +29,9 @@ export default function SocialLinks() {
 								<IconComponent className={`w-5 h-5 ${platform.text}`} />
 							</div>
 							<div className="flex flex-col">
-								<span className="gh-text group-hover:gh-text-accent font-medium">{platform.name}</span>
+								<span className="gh-text group-hover:gh-text-accent transition-colors duration-300 font-medium">
+									{platform.name}
+								</span>
 								<span className="gh-text-muted text-xs">{platform.description}</span>
 							</div>
 						</a>

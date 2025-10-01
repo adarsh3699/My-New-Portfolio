@@ -344,7 +344,7 @@ export default function Header() {
 						href={link.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						className={`p-2 gh-border-1 rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
+						className={`p-2 gh-border-1 rounded-md gh-text-muted hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
 						aria-label={link.tooltip}
 					>
 						<div className={`${TRANSITIONS.scale} group-hover:scale-110`}>{link.icon}</div>

@@ -32,7 +32,9 @@ export default function ContactInformation() {
 							</div>
 							<div className="flex flex-col">
 								<div className="flex items-center gap-2">
-									<h3 className="font-medium gh-text">{contact.label}</h3>
+									<h3 className="font-medium gh-text  group-hover:gh-text-accent transition-colors duration-300">
+										{contact.label}
+									</h3>
 									{contact.isPrimary && (
 										<span className="text-xs bg-blue-700 text-white px-2 py-0.5 rounded-full">
 											Primary

@@ -24,9 +24,7 @@ export default function CoreValues() {
 						<div className="relative z-10 flex items-start">
 							<div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-500 mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0 group-hover:scale-125 transition-transform duration-300" />
 							<div className="flex-1 min-w-0">
-								<h3 className="font-bold gh-text mb-1 text-sm sm:text-base group-hover:gh-text-accent transition-colors duration-300">
-									{value.title}
-								</h3>
+								<h3 className="font-bold gh-text mb-1 text-sm sm:text-base">{value.title}</h3>
 								<p className="gh-text-muted text-xs sm:text-sm leading-relaxed">{value.desc}</p>
 							</div>
 						</div>

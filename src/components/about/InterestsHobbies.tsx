@@ -24,9 +24,7 @@ export default function InterestsHobbies() {
 								{interest.icon}
 							</span>
 						</div>
-						<span className="gh-text text-sm sm:text-base font-medium group-hover:gh-text-accent transition-colors duration-300">
-							{interest.name}
-						</span>
+						<span className="gh-text text-sm sm:text-base font-medium">{interest.name}</span>
 					</div>
 				))}
 			</div>
