@@ -157,7 +157,7 @@ export default function ContributionsGraph() {
 							side="bottom"
 							delay={300}
 						>
-							<InformationCircleIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-help transition-colors duration-200 ml-1" />
+							<InformationCircleIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 cursor-help transition-colors duration-200 ml-1" />
 						</Tooltip>
 					</span>
 				</h2>
