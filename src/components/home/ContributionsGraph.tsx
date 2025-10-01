@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import {
 	fetchGitHubContributions,
 	getCachedContributions,
@@ -12,6 +13,7 @@ import {
 	convertLeetCodeToGitHubFormat,
 } from "@/lib/leetcode-api";
 import { useApi } from "@/lib/hooks";
+import Tooltip from "@/components/ui/tooltip";
 import "@/styles/github-contributions.css";
 
 // Constants
@@ -143,7 +145,21 @@ export default function ContributionsGraph() {
 					<span className="block sm:inline">
 						{totalContributions} {isDevMode ? "contributions" : "submissions"}
 					</span>{" "}
-					<span className="block sm:inline gh-text-muted text-sm sm:text-base">in the last year</span>
+					<span className="inline-flex gh-text-muted text-sm sm:text-base items-center">
+						in the last year
+						<Tooltip
+							content={
+								<>
+									This graph data is fetched from <b>{isDevMode ? " GitHub" : " LeetCode"}</b> real
+									graph data.
+								</>
+							}
+							side="bottom"
+							delay={300}
+						>
+							<InformationCircleIcon className="w-4 h-4 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-help transition-colors duration-200 ml-1" />
+						</Tooltip>
+					</span>
 				</h2>
 				<div className="flex items-center gap-1 text-xs flex-shrink-0">
 					<button

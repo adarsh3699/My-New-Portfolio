@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 
 interface TooltipProps {
 	children: React.ReactNode;
-	content: string;
+	content: string | React.ReactNode;
 	side?: "top" | "bottom" | "left" | "right";
 	delay?: number;
 }
@@ -66,7 +66,7 @@ export default function Tooltip({ children, content, side = "bottom", delay = 50
 		right: "left-full top-1/2 -translate-y-1/2 ml-1",
 	};
 
-	const tooltipClasses = `absolute z-50 px-2 py-1.5 text-xs font-medium text-white bg-gray-700 rounded shadow-lg whitespace-nowrap pointer-events-none transition-opacity duration-200 ${positionClasses[side]}`;
+	const tooltipClasses = `absolute z-50 px-3 py-2 text-xs font-medium text-white bg-gray-700 rounded shadow-lg pointer-events-none transition-opacity duration-200 w-64 sm:w-auto sm:whitespace-nowrap ${positionClasses[side]}`;
 
 	return (
 		<div
@@ -79,7 +79,11 @@ export default function Tooltip({ children, content, side = "bottom", delay = 50
 		>
 			{children}
 			{isVisible && (
-				<div className={tooltipClasses} role="tooltip" aria-label={content}>
+				<div
+					className={tooltipClasses}
+					role="tooltip"
+					aria-label={typeof content === "string" ? content : "Tooltip"}
+				>
 					{content}
 				</div>
 			)}
