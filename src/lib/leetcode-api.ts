@@ -1,4 +1,4 @@
-import { cache } from "./cache";
+import { cache, CACHE_TTL, createCacheKey, withCache } from "./cache";
 
 // LeetCode data interfaces
 export interface LeetCodeSubmission {
@@ -12,29 +12,23 @@ export interface LeetCodeContributions {
 	weeks: Array<{ contributionDays: LeetCodeSubmission[] }>;
 }
 
-// Cache configuration
-const CACHE_KEY = "leetcode_contributions";
-const CACHE_TTL = 1000 * 60 * 60 * 1; // 1 hour
+// Dynamic cache key
+const LEETCODE_KEY = createCacheKey("leetcode", "contributions");
 
 // Cache getter
-export const getCachedLeetCodeContributions = () => cache.getSync<LeetCodeContributions>(CACHE_KEY);
+export const getCachedLeetCodeContributions = () => cache.getSync<LeetCodeContributions>(LEETCODE_KEY);
 
-// Fetch LeetCode contributions
+// Fetch LeetCode contributions using the new withCache helper
 export async function fetchLeetCodeContributions(): Promise<LeetCodeContributions> {
-	const cached = cache.get<LeetCodeContributions>(CACHE_KEY);
-	if (cached) return cached;
-
-	try {
-		const response = await fetch("/api/leetcode-contributions");
-		if (!response.ok) throw new Error("Failed to fetch LeetCode data");
-
-		const data = await response.json();
-		cache.set(CACHE_KEY, data, CACHE_TTL);
-		return data;
-	} catch (error) {
-		console.error("LeetCode API error:", error);
-		throw error;
-	}
+	return withCache(
+		LEETCODE_KEY,
+		async () => {
+			const response = await fetch("/api/leetcode-contributions");
+			if (!response.ok) throw new Error("Failed to fetch LeetCode data");
+			return response.json();
+		},
+		CACHE_TTL.MEDIUM // cache for 15 minutes
+	);
 }
 
 // Convert LeetCode data to GitHub-compatible format
