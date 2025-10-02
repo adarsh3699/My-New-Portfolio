@@ -150,8 +150,8 @@ export default function ContributionsGraph() {
 						<Tooltip
 							content={
 								<>
-									This graph data is fetched from <b>{isDevMode ? " GitHub" : " LeetCode"}</b> real
-									graph data.
+									This graph is fetched from real <b>{isDevMode ? " GitHub" : " LeetCode"}</b> graph
+									data.
 								</>
 							}
 							side="bottom"
