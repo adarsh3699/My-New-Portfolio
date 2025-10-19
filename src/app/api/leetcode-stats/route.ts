@@ -3,6 +3,30 @@ import { NextResponse } from "next/server";
 const LEETCODE_API_URL = "https://leetcode.com/graphql";
 const USERNAME = "adarsh3699";
 
+// Type definitions for LeetCode API response
+interface LeetCodeSubmissionStat {
+	difficulty: string;
+	count: number;
+	submissions: number;
+}
+
+interface LeetCodeQuestionCount {
+	difficulty: string;
+	count: number;
+}
+
+interface LeetCodeAPIResponse {
+	data: {
+		allQuestionsCount: LeetCodeQuestionCount[];
+		matchedUser: {
+			submitStats: {
+				acSubmissionNum: LeetCodeSubmissionStat[];
+			};
+		};
+	};
+	errors?: Array<{ message: string }>;
+}
+
 const LEETCODE_STATS_QUERY = `
   query userProblemsSolved($username: String!) {
     allQuestionsCount {
@@ -41,7 +65,7 @@ export async function GET() {
 			throw new Error(`LeetCode API error: ${response.status}`);
 		}
 
-		const { data, errors } = await response.json();
+		const { data, errors } = await response.json() as LeetCodeAPIResponse;
 
 		if (errors) {
 			throw new Error("GraphQL errors occurred");
@@ -56,13 +80,13 @@ export async function GET() {
 		const allQuestionsCount = data.allQuestionsCount;
 
 		// Create a map for easy lookup
-		const solvedMap = new Map();
-		solvedStats.forEach((stat: any) => {
+		const solvedMap = new Map<string, number>();
+		solvedStats.forEach((stat: LeetCodeSubmissionStat) => {
 			solvedMap.set(stat.difficulty, stat.count);
 		});
 
-		const allQuestionsMap = new Map();
-		allQuestionsCount.forEach((stat: any) => {
+		const allQuestionsMap = new Map<string, number>();
+		allQuestionsCount.forEach((stat: LeetCodeQuestionCount) => {
 			allQuestionsMap.set(stat.difficulty, stat.count);
 		});
 
