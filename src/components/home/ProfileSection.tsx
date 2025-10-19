@@ -6,6 +6,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from "@/components/icons";
 import { fetchGitHubProfile, getCachedProfile } from "@/lib/github-api";
+import { fetchLeetCodeStats, getCachedLeetCodeStats } from "@/lib/leetcode-api";
 import { useApi } from "@/lib/hooks";
 
 const PROFILE_DATA = {
@@ -13,7 +14,7 @@ const PROFILE_DATA = {
 	username: "@adarsh3699",
 	email: "adarsh3699@gmail.com",
 	location: "Nalanda, Bihar, India",
-	bio: "Full Stack Developer || NEXT.js, React, NodeJs, MongoDB, TypeScript, TailwindCSS, C++",
+	bio: "Full Stack Developer || NEXT.js, React, NodeJs, MongoDB, TypeScript, TailwindCSS, C++ DSA",
 	image: "/images/myPhoto.png",
 	defaultWebsite: "www.bhemu.me",
 	social: {
@@ -29,6 +30,9 @@ const formatCount = (count: number): string => {
 
 export default function ProfileSection() {
 	const { data: profileData, loading } = useApi(fetchGitHubProfile, { getCachedData: getCachedProfile });
+	const { data: leetcodeStats, loading: leetcodeLoading } = useApi(fetchLeetCodeStats, {
+		getCachedData: getCachedLeetCodeStats,
+	});
 
 	const getWebsiteDisplay = (url: string | undefined): string => {
 		if (loading) return "Loading...";
@@ -74,9 +78,9 @@ export default function ProfileSection() {
 					</div>
 					<div className="text-center">
 						<div className="font-semibold gh-text text-sm sm:text-base">
-							{loading ? "..." : profileData?.following?.toString() || "N/A"}
+							{leetcodeLoading ? "..." : leetcodeStats?.totalSolved?.toString() || "N/A"}
 						</div>
-						<div className="gh-text-muted text-xs">Following</div>
+						<div className="gh-text-muted text-xs">LeetCode Solved</div>
 					</div>
 				</div>
 			</div>

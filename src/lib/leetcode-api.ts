@@ -12,11 +12,24 @@ export interface LeetCodeContributions {
 	weeks: Array<{ contributionDays: LeetCodeSubmission[] }>;
 }
 
-// Dynamic cache key
-const LEETCODE_KEY = createCacheKey("leetcode", "contributions");
+export interface LeetCodeStats {
+	totalSolved: number;
+	totalQuestions: number;
+	easySolved: number;
+	mediumSolved: number;
+	hardSolved: number;
+	totalEasy: number;
+	totalMedium: number;
+	totalHard: number;
+}
 
-// Cache getter
+// Dynamic cache keys
+const LEETCODE_KEY = createCacheKey("leetcode", "contributions");
+const LEETCODE_STATS_KEY = createCacheKey("leetcode", "stats");
+
+// Cache getters
 export const getCachedLeetCodeContributions = () => cache.getSync<LeetCodeContributions>(LEETCODE_KEY);
+export const getCachedLeetCodeStats = () => cache.getSync<LeetCodeStats>(LEETCODE_STATS_KEY);
 
 // Fetch LeetCode contributions using the new withCache helper
 export async function fetchLeetCodeContributions(): Promise<LeetCodeContributions> {
@@ -25,6 +38,19 @@ export async function fetchLeetCodeContributions(): Promise<LeetCodeContribution
 		async () => {
 			const response = await fetch("/api/leetcode-contributions");
 			if (!response.ok) throw new Error("Failed to fetch LeetCode data");
+			return response.json();
+		},
+		CACHE_TTL.MEDIUM // cache for 15 minutes
+	);
+}
+
+// Fetch LeetCode statistics using the new withCache helper
+export async function fetchLeetCodeStats(): Promise<LeetCodeStats> {
+	return withCache(
+		LEETCODE_STATS_KEY,
+		async () => {
+			const response = await fetch("/api/leetcode-stats");
+			if (!response.ok) throw new Error("Failed to fetch LeetCode stats");
 			return response.json();
 		},
 		CACHE_TTL.MEDIUM // cache for 15 minutes

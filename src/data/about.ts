@@ -5,7 +5,7 @@ export const aboutData = {
 		{ label: "Years Coding", value: "3+" },
 		{ label: "Projects Built", value: "10+" },
 		{ label: "Technologies", value: "15+" },
-		{ label: "LeetCode Ques", value: "40+" },
+		{ label: "LeetCode Ques", value: "50+" },
 		// { label: "GitHub Commits", value: "500+" },
 	],
 
@@ -188,7 +188,7 @@ export const aboutData = {
 		"🚀 Built my first website at age 16",
 		"🌙 Night owl - best coding happens after 10 PM",
 		"⚡ Can spot a missing semicolon from across the room",
-		"🎯 Completed 40+ coding challenges on LeetCode",
+		"🎯 Completed 50+ coding challenges on LeetCode",
 		"🔥 Can code for 12 hours straight when in the zone",
 		"🐛 I actually enjoy debugging - it's like solving puzzles",
 		"📝 Write code comments like I'm explaining to my future self",
