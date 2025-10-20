@@ -65,7 +65,7 @@ export async function GET() {
 			throw new Error(`LeetCode API error: ${response.status}`);
 		}
 
-		const { data, errors } = await response.json() as LeetCodeAPIResponse;
+		const { data, errors } = (await response.json()) as LeetCodeAPIResponse;
 
 		if (errors) {
 			throw new Error("GraphQL errors occurred");
