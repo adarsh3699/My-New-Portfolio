@@ -8,9 +8,18 @@ export default function QuickStats() {
 		getCachedData: getCachedLeetCodeStats,
 	});
 
+	const formatLeetCodeCount = (count: number): string => {
+		const rounded = Math.floor(count / 5) * 5;
+		return `${rounded}+`;
+	};
+
 	const getStatValue = (stat: { label: string; value: string }) => {
 		if (stat.label === "LeetCode Ques") {
-			return leetcodeLoading ? "..." : leetcodeStats?.totalSolved?.toString() || stat.value;
+			if (leetcodeLoading) return "...";
+			if (leetcodeStats?.totalSolved) {
+				return formatLeetCodeCount(leetcodeStats.totalSolved);
+			}
+			return stat.value;
 		}
 		return stat.value;
 	};

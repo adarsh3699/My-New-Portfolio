@@ -28,6 +28,11 @@ const formatCount = (count: number): string => {
 	return count >= 1000 ? (count / 1000).toFixed(1).replace(/\.0$/, "") + "k" : count.toString();
 };
 
+const formatLeetCodeCount = (count: number): string => {
+	const rounded = Math.floor(count / 5) * 5;
+	return `${rounded}+`;
+};
+
 export default function ProfileSection() {
 	const { data: profileData, loading } = useApi(fetchGitHubProfile, { getCachedData: getCachedProfile });
 	const { data: leetcodeStats, loading: leetcodeLoading } = useApi(fetchLeetCodeStats, {
@@ -78,7 +83,11 @@ export default function ProfileSection() {
 					</div>
 					<div className="text-center">
 						<div className="font-semibold gh-text text-sm sm:text-base">
-							{leetcodeLoading ? "..." : leetcodeStats?.totalSolved?.toString() || "N/A"}
+							{leetcodeLoading
+								? "..."
+								: leetcodeStats?.totalSolved
+								? formatLeetCodeCount(leetcodeStats.totalSolved)
+								: "N/A"}
 						</div>
 						<div className="gh-text-muted text-xs">LeetCode Solved</div>
 					</div>
