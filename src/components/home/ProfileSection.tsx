@@ -16,7 +16,7 @@ const PROFILE_DATA = {
 	location: "Nalanda, Bihar, India",
 	bio: "Full Stack Developer || NEXT.js, React, NodeJs, MongoDB, TypeScript, TailwindCSS, C++ DSA",
 	image: "/images/myPhoto.png",
-	defaultWebsite: "www.bhemu.me",
+	defaultWebsite: "www.bhemu.in",
 	social: {
 		github: "https://github.com/adarsh3699",
 		leetcode: "https://leetcode.com/u/adarsh3699",
@@ -41,7 +41,7 @@ export default function ProfileSection() {
 
 	const getWebsiteDisplay = (url: string | undefined): string => {
 		if (loading) return "Loading...";
-		return url?.replace(/^https?:\/\//, "") || "www.bhemu.me";
+		return url?.replace(/^https?:\/\//, "") || "www.bhemu.in";
 	};
 
 	return (

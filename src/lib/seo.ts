@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
 	name: "Adarsh Suman - Full Stack Developer",
 	description:
 		"Full-stack developer portfolio featuring comprehensive project showcase, professional experience, technical expertise, and GitHub-inspired portfolio built with Next.jsFull-stack developer portfolio featuring a comprehensive project showcase, professional experience, technical expertise, and a GitHub-inspired portfolio built with Next.js",
-	url: "https://www.bhemu.me",
+	url: "https://www.bhemu.in",
 	creator: "Adarsh Suman",
 	keywords: [
 		"Full Stack Developer",
@@ -25,7 +25,7 @@ export const SITE_CONFIG = {
 	authors: [
 		{
 			name: "Adarsh Suman",
-			url: "https://www.bhemu.me",
+			url: "https://www.bhemu.in",
 		},
 	],
 	openGraph: {
@@ -35,10 +35,10 @@ export const SITE_CONFIG = {
 		description:
 			"Full-stack developer portfolio featuring comprehensive project showcase, professional experience, technical expertise, and GitHub integration",
 		siteName: "Adarsh Suman Portfolio",
-		url: "https://www.bhemu.me",
+		url: "https://www.bhemu.in",
 		images: [
 			{
-				url: "https://www.bhemu.me/images/og-image.jpg", // We'll create this
+				url: "https://www.bhemu.in/images/og-image.jpg", // We'll create this
 				width: 1200,
 				height: 630,
 				alt: "Adarsh Suman - Full Stack Developer Portfolio",
@@ -50,7 +50,7 @@ export const SITE_CONFIG = {
 		creator: "@adarsh3699", // X (formerly Twitter) handle
 		title: "Adarsh Suman - Full Stack Developer",
 		description: "Full-stack developer portfolio with comprehensive project showcase and technical expertise",
-		images: ["https://www.bhemu.me/images/og-image.jpg"],
+		images: ["https://www.bhemu.in/images/og-image.jpg"],
 	},
 };
 
@@ -136,10 +136,10 @@ export function generatePersonJsonLd() {
 		"@context": "https://schema.org",
 		"@type": "Person",
 		name: "Adarsh Suman",
-		url: "https://www.bhemu.me",
+		url: "https://www.bhemu.in",
 		jobTitle: "Full Stack Developer",
 		description: "Experienced full-stack developer specializing in modern web technologies",
-		image: "https://www.bhemu.me/images/profile-avatar.jpg",
+		image: "https://www.bhemu.in/images/profile-avatar.jpg",
 		sameAs: [
 			"https://github.com/adarsh3699",
 			"https://linkedin.com/in/adarsh3699", // Update with your LinkedIn
@@ -175,7 +175,7 @@ export function generateWebsiteJsonLd() {
 		"@context": "https://schema.org",
 		"@type": "WebSite",
 		name: "Adarsh Suman Portfolio",
-		url: "https://www.bhemu.me",
+		url: "https://www.bhemu.in",
 		description: SITE_CONFIG.description,
 		author: {
 			"@type": "Person",
@@ -185,7 +185,7 @@ export function generateWebsiteJsonLd() {
 			"@type": "SearchAction",
 			target: {
 				"@type": "EntryPoint",
-				urlTemplate: "https://www.bhemu.me/projects?search={search_term_string}",
+				urlTemplate: "https://www.bhemu.in/projects?search={search_term_string}",
 			},
 			"query-input": "required name=search_term_string",
 		},
@@ -213,7 +213,7 @@ export function generateProjectJsonLd(project: {
 		creator: {
 			"@type": "Person",
 			name: "Adarsh Suman",
-			url: "https://www.bhemu.me",
+			url: "https://www.bhemu.in",
 		},
 		author: {
 			"@type": "Person",

@@ -151,6 +151,26 @@ export const aboutData = {
 		},
 	],
 
+	// Why Choose Me - Professional highlights
+	whyChooseMe: [
+		{
+			title: "Full-Stack Expertise",
+			desc: "Proficient in both frontend and backend development with modern technologies like React, Next.js, Node.js, and databases",
+		},
+		{
+			title: "Problem-Solving Mindset",
+			desc: "Strong foundation in DSA and algorithmic thinking with 60+ LeetCode problems solved",
+		},
+		{
+			title: "Quality-Focused Development",
+			desc: "Writing clean, maintainable, and well-documented code following industry best practices",
+		},
+		{
+			title: "Project Delivery Track Record",
+			desc: "Successfully delivered 10+ production-ready projects with modern tech stacks",
+		},
+	],
+
 	// Personal interests and hobbies
 	interests: [
 		{ icon: "🍿", name: "Watching Movies" },
@@ -197,5 +217,15 @@ export const aboutData = {
 };
 
 // Export individual sections for easier importing
-export const { stats, story, currentFocus, skillCategories, education, achievements, interests, values, funFacts } =
-	aboutData;
+export const {
+	stats,
+	story,
+	currentFocus,
+	skillCategories,
+	education,
+	achievements,
+	whyChooseMe,
+	interests,
+	values,
+	funFacts,
+} = aboutData;

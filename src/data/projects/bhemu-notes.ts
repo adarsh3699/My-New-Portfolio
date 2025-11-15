@@ -10,7 +10,7 @@ export const bhemuNotesData: Project = {
 
 	// Links
 	githubUrl: "https://github.com/adarsh3699/Bhemu-Notes-Web",
-	liveUrl: "https://notes.bhemu.me",
+	liveUrl: "https://notes.bhemu.in",
 	githubRepo: {
 		owner: "adarsh3699",
 		name: "Bhemu-Notes-Web",

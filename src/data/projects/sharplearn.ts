@@ -10,7 +10,7 @@ export const sharpLearnData: Project = {
 		"SharpLearn is a comprehensive full-stack e-learning platform designed for employee skill development and training. Built with React, Node.js, Express, and MongoDB, it features secure user authentication, course management, shopping cart functionality, real-time search, referral system, and virtual wallet for course purchases. The platform offers 21 diverse courses across multiple technologies with a responsive mobile-first design and Material-UI components for a professional user experience.",
 
 	// Links
-	liveUrl: "https://sharplearn.bhemu.me/",
+	liveUrl: "https://sharplearn.bhemu.in/",
 	githubUrl: "https://github.com/adarsh3699/SharpLearn-production",
 
 	githubRepo: {

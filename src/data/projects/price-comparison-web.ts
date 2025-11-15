@@ -10,7 +10,7 @@ export const priceComparisonWebData: Project = {
 
 	// Links
 	githubUrl: "https://github.com/adarsh3699/price-comparison-web",
-	liveUrl: "https://comparison.bhemu.me",
+	liveUrl: "https://comparison.bhemu.in",
 	githubRepo: {
 		owner: "adarsh3699",
 		name: "price-comparison-web",
@@ -110,13 +110,13 @@ export const priceComparisonWebData: Project = {
 				title: "Live Demo",
 				icon: "🌐",
 				content:
-					"Experience the application live at **https://comparison.bhemu.me**\n\nSimply search for any product to see real-time price comparisons across multiple e-commerce platforms. The first API call may take longer on free hosting platforms.",
+					"Experience the application live at **https://comparison.bhemu.in**\n\nSimply search for any product to see real-time price comparisons across multiple e-commerce platforms. The first API call may take longer on free hosting platforms.",
 			},
 			{
 				title: "API Documentation",
 				icon: "📡",
 				content:
-					"**Search Products:** `GET /?search={query}&page={page}`\n**Get Product URL:** `GET /product/{productId}`\n\n**Base URLs:**\n- Production: `https://api-comparison.bhemu.me/`\n- Development: `http://localhost:10000/`",
+					"**Search Products:** `GET /?search={query}&page={page}`\n**Get Product URL:** `GET /product/{productId}`\n\n**Base URLs:**\n- Production: `https://api-comparison.bhemu.in/`\n- Development: `http://localhost:10000/`",
 			},
 			{
 				title: "Project Architecture",
