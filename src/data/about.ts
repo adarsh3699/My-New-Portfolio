@@ -159,11 +159,11 @@ export const aboutData = {
 		},
 		{
 			title: "Problem-Solving Mindset",
-			desc: "Strong foundation in DSA and algorithmic thinking with 60+ LeetCode problems solved",
+			desc: "Strong foundation in DSA and algorithmic thinking with 100+ LeetCode problems solved",
 		},
 		{
-			title: "Quality-Focused Development",
-			desc: "Writing clean, maintainable, and well-documented code following industry best practices",
+			title: "Continuous Learning",
+			desc: "Always staying updated with the latest technologies and industry trends to deliver cutting-edge solutions",
 		},
 		{
 			title: "Project Delivery Track Record",
@@ -181,26 +181,6 @@ export const aboutData = {
 		{ icon: "🎮", name: "Gaming" },
 		{ icon: "🎲", name: "Chess" },
 		{ icon: "🤖", name: "Exploring AI Tools" },
-	],
-
-	// Core professional values
-	values: [
-		{
-			title: "Continuous Learning",
-			desc: "Always staying curious and open to new technologies",
-		},
-		{
-			title: "Quality Code",
-			desc: "Writing clean, maintainable, and well-documented code",
-		},
-		{
-			title: "User-Centric",
-			desc: "Prioritizing user experience in every project",
-		},
-		{
-			title: "Collaboration",
-			desc: "Believing in the power of teamwork and knowledge sharing",
-		},
 	],
 
 	// Fun personal facts
@@ -226,6 +206,5 @@ export const {
 	achievements,
 	whyChooseMe,
 	interests,
-	values,
 	funFacts,
 } = aboutData;

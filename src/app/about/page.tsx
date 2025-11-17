@@ -7,7 +7,7 @@ import {
 	Education,
 	CertificatesAchievements,
 	WhyChooseMe,
-	CoreValues,
+	InterestsHobbies,
 	FunFacts,
 } from "@/components/about";
 import { OpportunitiesSection } from "@/components/ui";
@@ -55,11 +55,11 @@ export default function AboutPage() {
 					<CertificatesAchievements />
 				</div>
 
-			{/* Why Choose Me & Values */}
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-				<WhyChooseMe />
-				<CoreValues />
-			</div>
+				{/* Interests & Why Choose Me */}
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+					<InterestsHobbies />
+					<WhyChooseMe />
+				</div>
 
 				{/* Fun Facts */}
 				<FunFacts />

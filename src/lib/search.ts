@@ -81,13 +81,6 @@ const getAboutSearchTerms = (): Set<string> => {
 				.filter((w) => w.length > 3),
 		]),
 		...aboutData.interests.map((int) => int.name.toLowerCase()),
-		...aboutData.values.flatMap((val) => [
-			val.title.toLowerCase(),
-			...val.desc
-				.toLowerCase()
-				.split(" ")
-				.filter((w) => w.length > 3),
-		]),
 	].forEach((term) => terms.add(term));
 
 	aboutTermsCache = terms;
@@ -237,7 +230,6 @@ export function searchContent(query: string): SearchResult[] {
 			...aboutData.education.map((edu) => `${edu.degree} ${edu.field} ${edu.institution}`),
 			...aboutData.achievements.map((ach) => `${ach.title} ${ach.organization} ${ach.description}`),
 			...aboutData.interests.map((int) => int.name),
-			...aboutData.values.map((val) => `${val.title} ${val.desc}`),
 			...aboutData.funFacts,
 		];
 
