@@ -41,7 +41,7 @@ export const facilityEvaluationSystemIITPData: Project = {
 
 	// Classification
 	category: "Web",
-	isPinned: true,
+	isPinned: false,
 	featured: false,
 
 	// Dates

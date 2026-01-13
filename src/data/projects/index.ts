@@ -17,7 +17,7 @@ export interface Project {
 	// Tech details
 	technologies: string[];
 	primaryLanguage: { name: string; color: string };
-	category: "Web" | "Mobile" | "Library" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other" | "Web + AI";
+	category: "Web" | "Mobile" | "App" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other" | "Web + AI";
 
 	// Status
 	isPinned: boolean;
@@ -73,11 +73,13 @@ import { bhemuCalendarData } from "./bhemu-calendar";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
 import { youngMindsClubData } from "./youngminds-club";
 import { sharpLearnData } from "./sharplearn";
+import { bhemuUniDownloaderData } from "./bhemu-uni-downloader";
 
 // All projects - single source of truth
 export const projects: Project[] = [
 	youngMindsClubData,
 	nirakshGuardianData,
+	bhemuUniDownloaderData,
 	priceComparisonWebData,
 	bhemuCalculatorData,
 	bhemuCalendarData,
@@ -156,6 +158,7 @@ export const languageColors: Record<string, string> = {
 	"Responsive Design": "bg-teal-400", // Responsive teal
 	"Search Functionality": "bg-blue-400", // Search blue
 	"Shopping Cart": "bg-orange-600", // Shopping cart orange
+	Swift: "bg-orange-500", // Swift orange
 	"Tailwind CSS": "bg-teal-500", // Tailwind teal
 	TypeScript: "bg-blue-600", // TypeScript blue
 };
