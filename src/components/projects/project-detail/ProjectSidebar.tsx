@@ -1,19 +1,22 @@
+"use client";
 import Link from "next/link";
 import { CalendarIcon, StarIcon, TagIcon, LinkIcon, EyeIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState, useRef, useCallback } from "react";
+import type { Project } from "@/types";
 
 interface ProjectSidebarProps {
-	project: {
-		featured?: boolean;
-		description: string;
-		longDescription?: string;
-		category: string;
-		technologies: string[];
-		primaryLanguage: { name: string; color: string };
-		createdAt: string;
-		githubUrl?: string;
-		liveUrl?: string;
-	};
+	project: Pick<
+		Project,
+		| "featured"
+		| "description"
+		| "longDescription"
+		| "category"
+		| "technologies"
+		| "primaryLanguage"
+		| "createdAt"
+		| "githubUrl"
+		| "liveUrl"
+	>;
 }
 
 export function ProjectSidebar({ project }: ProjectSidebarProps) {
@@ -81,15 +84,18 @@ export function ProjectSidebar({ project }: ProjectSidebarProps) {
 	}, [checkScreenSize]);
 
 	useEffect(() => {
-		// Initial setup
-		checkScreenSize();
-		handleScroll();
+		// Defer initial state reads to avoid synchronous setState-in-effect
+		const init = setTimeout(() => {
+			checkScreenSize();
+			handleScroll();
+		}, 0);
 
 		// Use passive listeners for better performance
 		window.addEventListener("resize", handleResize);
 		window.addEventListener("scroll", handleScroll, { passive: true });
 
 		return () => {
+			clearTimeout(init);
 			// Cleanup event listeners
 			window.removeEventListener("resize", handleResize);
 			window.removeEventListener("scroll", handleScroll);

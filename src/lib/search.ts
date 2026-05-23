@@ -2,18 +2,10 @@ import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import { aboutData } from "@/data/about";
 import { contactData } from "@/data/contact";
+import type { SearchResult } from "@/types";
 
-// Search result interface
-export interface SearchResult {
-	type: "project" | "experience" | "tech" | "about" | "contact";
-	title: string;
-	description: string;
-	url: string;
-	category?: string;
-	technologies?: string[];
-	matchedTerm?: string;
-	relevanceScore?: number;
-}
+// Re-export for backward compatibility
+export type { SearchResult };
 
 // Memoized search terms for performance
 let contactTermsCache: Set<string> | null = null;
@@ -385,8 +377,3 @@ function findMatchedTerm(query: string, content: string): string {
 	return query;
 }
 
-// Reset cache function for development/testing
-export function resetSearchCache(): void {
-	contactTermsCache = null;
-	aboutTermsCache = null;
-}

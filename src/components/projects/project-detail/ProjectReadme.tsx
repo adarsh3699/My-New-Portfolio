@@ -1,56 +1,15 @@
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import React from "react";
 import "../../../styles/github-readme.css";
+import type { Project } from "@/types";
 
 const STYLES = {
 	container: "gh-bg-canvas-overlay border gh-border rounded-lg",
 	header: "flex items-center gap-2 px-4 py-3 border-b gh-border",
 	content: "p-6",
 } as const;
-
-interface Project {
-	name: string;
-	description: string;
-	longDescription?: string;
-	technologies: string[];
-	liveUrl?: string;
-	githubUrl?: string;
-	githubRepo?: {
-		owner: string;
-		name: string;
-		branch?: string;
-	};
-	readmeContent?: {
-		features?: string[];
-		techDetails?: {
-			framework: string;
-			styling: string;
-			animations?: string;
-			deployment: string;
-			performance?: {
-				lighthouse: number;
-				loadTime: string;
-				coreWebVitals: string;
-			};
-		};
-		installation?: {
-			prerequisites: string[];
-			steps: string[];
-		};
-		envVariables?: Array<{
-			name: string;
-			description: string;
-			required: boolean;
-		}>;
-		customSections?: Array<{
-			title: string;
-			icon: string;
-			content: string;
-		}>;
-	};
-}
 
 interface ProjectReadmeProps {
 	project: Project;
@@ -80,7 +39,7 @@ const GitHubReadme = ({ content, project }: { content: string; project: Project 
 	return (
 		<div className={STYLES.content}>
 			<div className="github-readme">
-				<ReactMarkdown rehypePlugins={[rehypeRaw]}>{processedContent}</ReactMarkdown>
+				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{processedContent}</ReactMarkdown>
 			</div>
 		</div>
 	);
@@ -119,16 +78,19 @@ const GeneratedReadme = ({ project }: { project: Project }) => {
 		if (readmeContent?.techDetails) {
 			const { techDetails } = readmeContent;
 			markdown += `## ⚙️ Technical Details\n\n`;
-			markdown += `- **Framework:** ${techDetails.framework}\n`;
-			markdown += `- **Styling:** ${techDetails.styling}\n`;
-			if (techDetails.animations) {
-				markdown += `- **Animations:** ${techDetails.animations}\n`;
-			}
-			markdown += `- **Deployment:** ${techDetails.deployment}\n`;
+
+			Object.entries(techDetails).forEach(([key, value]) => {
+				if (typeof value === "string" && value) {
+					const label = key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
+					markdown += `- **${label}:** ${value}\n`;
+				}
+			});
+
 			if (techDetails.performance) {
 				const { lighthouse, loadTime, coreWebVitals } = techDetails.performance;
 				markdown += `- **Performance:** Lighthouse ${lighthouse}/100, ${loadTime}, ${coreWebVitals}\n`;
 			}
+
 			markdown += `\n`;
 		}
 
@@ -207,7 +169,7 @@ const GeneratedReadme = ({ project }: { project: Project }) => {
 	return (
 		<div className={STYLES.content}>
 			<div className="github-readme">
-				<ReactMarkdown rehypePlugins={[rehypeRaw]}>{generateMarkdownContent()}</ReactMarkdown>
+				<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{generateMarkdownContent()}</ReactMarkdown>
 			</div>
 		</div>
 	);

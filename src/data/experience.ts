@@ -1,16 +1,7 @@
-export interface Experience {
-	id: number;
-	company: string;
-	position: string;
-	location: string;
-	startDate: string;
-	endDate: string;
-	isCurrent: boolean;
-	description: string[];
-	technologies: string[];
-	companyUrl?: string;
-	companyLogo?: string;
-}
+import type { Experience } from "@/types";
+
+// Re-export for backward compatibility
+export type { Experience };
 
 export const experiences: Experience[] = [
 	{

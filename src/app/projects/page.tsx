@@ -45,11 +45,11 @@ export default function ProjectsPage() {
 	const [filteredProjects, setFilteredProjects] = useState(projects);
 	const [viewMode, setViewMode] = useState<ViewMode>("list");
 
-	// Load saved view mode from localStorage on client side
+	// Read from localStorage after hydration to avoid mismatch
 	useEffect(() => {
-		const savedViewMode = localStorage.getItem(STORAGE_KEY) as ViewMode;
-		if (savedViewMode && (savedViewMode === "list" || savedViewMode === "grid")) {
-			setViewMode(savedViewMode);
+		const saved = localStorage.getItem(STORAGE_KEY) as ViewMode;
+		if (saved === "list" || saved === "grid") {
+			setViewMode(saved);
 		}
 	}, []);
 

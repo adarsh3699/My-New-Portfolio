@@ -1,19 +1,10 @@
 import Link from "next/link";
 import { EyeIcon, CodeBracketIcon, PlayIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui";
+import type { Project } from "@/types";
 
 interface ProjectDetailHeaderProps {
-	project: {
-		name: string;
-		liveUrl?: string;
-		githubUrl?: string;
-		demoVideoUrl?: string;
-		githubRepo?: {
-			owner: string;
-			name: string;
-			branch?: string;
-		};
-	};
+	project: Pick<Project, "name" | "liveUrl" | "githubUrl" | "demoVideoUrl" | "githubRepo">;
 }
 
 export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {

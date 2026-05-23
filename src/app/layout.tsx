@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider, Header, Footer } from "@/components/layout";
 import { generateMetadata, generatePersonJsonLd, generateWebsiteJsonLd } from "@/lib/seo";
@@ -42,6 +42,12 @@ export const metadata: Metadata = {
 	manifest: "/manifest.json",
 };
 
+// Viewport — separate export required by Next.js for streaming support
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+};
+
 // Theme initialization script
 const themeScript = `
 	try {
@@ -61,7 +67,6 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				{/* Preload critical resources to prevent layout shifts */}
 				<link rel="dns-prefetch" href="https://api.github.com" />
 				<link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
@@ -74,7 +79,7 @@ export default function RootLayout({
 						__html: JSON.stringify([generatePersonJsonLd(), generateWebsiteJsonLd()]),
 					}}
 				/>
-				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+				<script id="theme-init" dangerouslySetInnerHTML={{ __html: themeScript }} />
 				<ThemeProvider defaultTheme="light" storageKey="theme">
 					<Header />
 					{children}

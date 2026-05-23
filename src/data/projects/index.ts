@@ -1,67 +1,8 @@
-import { fetchGitHubReadme, type GitHubRepo } from "@/lib/github-readme";
+import { fetchGitHubReadme } from "@/lib/github-readme";
+import type { Project } from "@/types";
 
-// Core project interface
-export interface Project {
-	// Basic info
-	id: string;
-	name: string;
-	description: string;
-	longDescription?: string;
-
-	// Links
-	githubUrl?: string;
-	liveUrl?: string;
-	demoVideoUrl?: string;
-	githubRepo?: GitHubRepo; // For README fetching
-
-	// Tech details
-	technologies: string[];
-	primaryLanguage: { name: string; color: string };
-	category: "Web" | "Mobile" | "App" | "Tool" | "Game" | "AI/ML" | "API" | "Blockchain" | "Other" | "Web + AI";
-
-	// Status
-	isPinned: boolean;
-	featured?: boolean;
-	createdAt: string;
-
-	// Visual content
-	screenshots?: Array<{
-		url: string;
-		title: string;
-		description: string;
-	}>;
-
-	// README content (fallback when GitHub README unavailable)
-	readmeContent?: {
-		features?: string[];
-		techDetails?: {
-			framework: string;
-			styling: string;
-			animations?: string;
-			deployment: string;
-			backend?: string;
-			performance?: {
-				lighthouse: number;
-				loadTime: string;
-				coreWebVitals: string;
-			};
-		};
-		installation?: {
-			prerequisites: string[];
-			steps: string[];
-		};
-		envVariables?: Array<{
-			name: string;
-			description: string;
-			required: boolean;
-		}>;
-		customSections?: Array<{
-			title: string;
-			icon: string;
-			content: string;
-		}>;
-	};
-}
+// Re-export for backward compatibility — consumers using @/data still work
+export type { Project };
 
 // Import project data
 import { myNewPortfolioData } from "./my-new-portfolio";
@@ -90,7 +31,7 @@ export const projects: Project[] = [
 ];
 
 // Core utility functions
-export const getProjectById = (id: string): Project | undefined => {
+const getProjectById = (id: string): Project | undefined => {
 	return projects.find((project) => project.id === id);
 };
 
@@ -162,5 +103,3 @@ export const languageColors: Record<string, string> = {
 	"Tailwind CSS": "bg-teal-500", // Tailwind teal
 	TypeScript: "bg-blue-600", // TypeScript blue
 };
-
-export default projects;

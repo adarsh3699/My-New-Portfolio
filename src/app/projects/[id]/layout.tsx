@@ -32,13 +32,6 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 	});
 }
 
-// Generate static params for static generation
-export async function generateStaticParams() {
-	return projects.map((project) => ({
-		id: project.id,
-	}));
-}
-
 export default async function ProjectLayout({ children, params }: ProjectLayoutProps) {
 	const { id } = await params;
 	const project = projects.find((p) => p.id === id);

@@ -106,3 +106,33 @@
 .dark .github-readme code {
 	background: #1f2937;
 }
+
+/* Markdown Tables Styling */
+.github-readme table {
+	border-collapse: collapse;
+	width: max-content;
+	max-width: 100%;
+	display: block;
+	overflow: auto;
+	margin-top: 0;
+	margin-bottom: 16px;
+}
+
+.github-readme table th {
+	font-weight: 600;
+}
+
+.github-readme table th,
+.github-readme table td {
+	padding: 6px 13px;
+	border: 1px solid var(--gh-border-default);
+}
+
+.github-readme table tr {
+	background-color: var(--gh-canvas-default);
+	border-top: 1px solid var(--gh-border-muted);
+}
+
+.github-readme table tr:nth-child(2n) {
+	background-color: var(--gh-canvas-subtle);
+}

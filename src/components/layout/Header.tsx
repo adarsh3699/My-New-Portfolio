@@ -25,7 +25,7 @@ import { searchContent, type SearchResult } from "@/lib/search";
 
 // Dynamic import for better performance - only load SearchResults when needed
 const SearchResults = React.lazy(() =>
-	import("../ui/search-results").then((module) => ({ default: module.SearchResults }))
+	import("./SearchResults").then((module) => ({ default: module.SearchResults }))
 );
 
 // Types
@@ -111,10 +111,9 @@ export default function Header() {
 	const searchContainerRef = React.useRef<HTMLDivElement>(null);
 	const searchTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-	// Effects
-	React.useEffect(() => {
-		setMounted(true);
-	}, []);
+	// Mark as mounted after hydration — the standard pattern for SSR-safe client detection
+	// eslint-disable-next-line react-hooks/set-state-in-effect
+	React.useEffect(() => { setMounted(true); }, []);
 
 	React.useEffect(() => {
 		const handleResize = () => {
@@ -327,7 +326,10 @@ export default function Header() {
 				className={`p-2 gh-border-1 cursor-pointer rounded-md gh-text-muted hover:gh-text-accent hover:bg-gray-100 dark:hover:bg-gray-800 ${TRANSITIONS.base} group`}
 				aria-label="Toggle dark mode"
 			>
-				{theme === "dark" ? (
+				{/* Render a neutral icon until client is mounted to avoid hydration mismatch */}
+				{!mounted ? (
+					<MoonIcon className={`w-4 h-4 ${TRANSITIONS.scale}`} />
+				) : theme === "dark" ? (
 					<SunIcon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />
 				) : (
 					<MoonIcon className={`w-4 h-4 ${TRANSITIONS.scale} group-hover:scale-110`} />

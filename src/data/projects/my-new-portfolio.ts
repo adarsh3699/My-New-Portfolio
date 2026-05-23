@@ -11,7 +11,8 @@ export const myNewPortfolioData: Project = {
 	// URLs and links
 	githubUrl: "https://github.com/adarsh3699/My-New-Portfolio",
 	liveUrl: "https://my-new-portfolio-mu-livid.vercel.app",
-	demoVideoUrl: "https://www.youtube.com/watch?v=example123", // Example demo video URL
+	demoVideoUrl:
+		"https://www.linkedin.com/posts/adarsh3699_github-git-webdevelopment-activity-7356731046630961153-rPI8", // Example demo video URL
 
 	// GitHub repository information
 	githubRepo: {

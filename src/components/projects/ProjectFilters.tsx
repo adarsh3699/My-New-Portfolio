@@ -78,6 +78,40 @@ interface ProjectFiltersProps {
 	onViewModeChange: (mode: ViewMode) => void;
 }
 
+// FilterChip must be defined outside the parent component to avoid re-creation on every render
+function FilterChip({
+	type,
+	label,
+	onRemove,
+	isMobile = false,
+	maxWidth,
+}: {
+	type: keyof typeof CHIP_STYLES;
+	label: string;
+	onRemove: () => void;
+	isMobile?: boolean;
+	maxWidth?: string;
+}) {
+	const styles = CHIP_STYLES[type];
+	const sizeClasses = isMobile ? "text-xs" : "text-sm";
+	const iconSize = isMobile ? "w-2.5 h-2.5" : "w-3 h-3";
+	const marginClass = isMobile ? "" : "ml-1";
+
+	return (
+		<div
+			className={`flex items-center gap-1 px-2 py-1 ${styles.bg} ${styles.text} rounded-full ${sizeClasses} border ${styles.border} ${styles.darkBg} ${styles.darkText} ${styles.darkBorder} ${styles.hover} ${styles.darkHover} transition-colors cursor-pointer`}
+		>
+			<span className={maxWidth ? `truncate ${maxWidth}` : ""}>{label}</span>
+			<button
+				onClick={onRemove}
+				className={`${marginClass} hover:bg-black/10 dark:hover:bg-white/10 rounded-full p-0.5 flex-shrink-0 transition-colors`}
+			>
+				<XMarkIcon className={iconSize} />
+			</button>
+		</div>
+	);
+}
+
 export function ProjectFilters({ projects, onFilterChange, viewMode, onViewModeChange }: ProjectFiltersProps) {
 	const [activeFilters, setActiveFilters] = useState<ActiveFilters>(FILTER_DEFAULTS);
 
@@ -100,40 +134,6 @@ export function ProjectFilters({ projects, onFilterChange, viewMode, onViewModeC
 
 	const clearAllFilters = () => {
 		setActiveFilters(FILTER_DEFAULTS);
-	};
-
-	// Filter chip component
-	const FilterChip = ({
-		type,
-		label,
-		onRemove,
-		isMobile = false,
-		maxWidth,
-	}: {
-		type: keyof typeof CHIP_STYLES;
-		label: string;
-		onRemove: () => void;
-		isMobile?: boolean;
-		maxWidth?: string;
-	}) => {
-		const styles = CHIP_STYLES[type];
-		const sizeClasses = isMobile ? "text-xs" : "text-sm";
-		const iconSize = isMobile ? "w-2.5 h-2.5" : "w-3 h-3";
-		const marginClass = isMobile ? "" : "ml-1";
-
-		return (
-			<div
-				className={`flex items-center gap-1 px-2 py-1 ${styles.bg} ${styles.text} rounded-full ${sizeClasses} border ${styles.border} ${styles.darkBg} ${styles.darkText} ${styles.darkBorder} ${styles.hover} ${styles.darkHover} transition-colors cursor-pointer`}
-			>
-				<span className={maxWidth ? `truncate ${maxWidth}` : ""}>{label}</span>
-				<button
-					onClick={onRemove}
-					className={`${marginClass} hover:bg-black/10 dark:hover:bg-white/10 rounded-full p-0.5 flex-shrink-0 transition-colors`}
-				>
-					<XMarkIcon className={iconSize} />
-				</button>
-			</div>
-		);
 	};
 
 	// Filter options

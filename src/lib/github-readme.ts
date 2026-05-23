@@ -1,9 +1,4 @@
-// GitHub repository interface
-export interface GitHubRepo {
-  owner: string;
-  name: string;
-  branch?: string;
-}
+import type { GitHubRepo } from "@/types";
 
 /**
  * Fetches README.md content from GitHub repository using raw URL
@@ -49,7 +44,7 @@ export async function fetchGitHubReadme(repo: GitHubRepo): Promise<string | null
 /**
  * Basic markdown content processing
  */
-export function processMarkdownContent(content: string): string {
+function processMarkdownContent(content: string): string {
   return content
     .replace(/<!--[\s\S]*?-->/g, '') // Remove HTML comments
     .replace(/\n{3,}/g, '\n\n')      // Clean excessive newlines

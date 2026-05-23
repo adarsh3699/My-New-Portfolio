@@ -10,7 +10,7 @@ import {
 	InterestsHobbies,
 	FunFacts,
 } from "@/components/about";
-import { OpportunitiesSection } from "@/components/ui";
+import { OpportunitiesSection } from "@/components/home";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 export const metadata = generateSEOMetadata({

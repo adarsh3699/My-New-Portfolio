@@ -21,18 +21,19 @@ const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undef
 
 // Provider Component
 export function ThemeProvider({ children, defaultTheme = "light", storageKey = "theme" }: ThemeProviderProps) {
+	// Start with defaultTheme on both server and client so hydration matches.
+	// The effect below sets the real stored/preferred theme after hydration.
 	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
 	useEffect(() => {
-		const root = document.documentElement;
 		const stored = localStorage.getItem(storageKey) as Theme;
 		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-		const initialTheme = stored || (prefersDark ? "dark" : "light");
-
-		// Apply theme to DOM
+		const resolved = stored || (prefersDark ? "dark" : "light");
+		const root = document.documentElement;
 		root.classList.remove("light", "dark");
-		root.classList.add(initialTheme);
-		setTheme(initialTheme);
+		root.classList.add(resolved);
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		setTheme(resolved);
 	}, [storageKey]);
 
 	const handleSetTheme = (newTheme: Theme) => {

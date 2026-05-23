@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import {
 	fetchGitHubContributions,
@@ -11,8 +11,9 @@ import {
 	fetchLeetCodeContributions,
 	getCachedLeetCodeContributions,
 	convertLeetCodeToGitHubFormat,
+	type LeetCodeContributions,
 } from "@/lib/leetcode-api";
-import { useApi } from "@/lib/hooks";
+import type { GitHubContributions } from "@/lib/github-api";
 import Tooltip from "@/components/ui/tooltip";
 import "@/styles/github-contributions.css";
 
@@ -75,35 +76,47 @@ const STORAGE_KEY = "contributions-view-mode";
 
 export default function ContributionsGraph() {
 	const [viewMode, setViewMode] = useState<ViewMode>("DEV");
-	const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-	// Initialize viewMode from session storage on component mount
+	// Read from sessionStorage after hydration to avoid mismatch
 	useEffect(() => {
-		const savedViewMode = sessionStorage.getItem(STORAGE_KEY) as ViewMode;
-		if (savedViewMode === "DEV" || savedViewMode === "DSA") {
-			setViewMode(savedViewMode);
+		const saved = sessionStorage.getItem(STORAGE_KEY) as ViewMode;
+		if (saved === "DEV" || saved === "DSA") {
+			setViewMode(saved);
 		}
 	}, []);
+	const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+	// GitHub contributions state
+	const [githubData, setGithubData] = useState<GitHubContributions | null>(getCachedContributions);
+	const [githubLoading, setGithubLoading] = useState(!getCachedContributions());
+	const [githubError, setGithubError] = useState<string | null>(null);
+
+	// LeetCode contributions state
+	const [leetcodeData, setLeetcodeData] = useState<LeetCodeContributions | null>(getCachedLeetCodeContributions);
+	const [leetcodeLoading, setLeetcodeLoading] = useState(!getCachedLeetCodeContributions());
+	const [leetcodeError, setLeetcodeError] = useState<string | null>(null);
+
+	useEffect(() => {
+		if (githubData) return;
+		fetchGitHubContributions()
+			.then(setGithubData)
+			.catch((err) => setGithubError(err instanceof Error ? err.message : "Failed to load"))
+			.finally(() => setGithubLoading(false));
+	}, [githubData]);
+
+	useEffect(() => {
+		if (leetcodeData) return;
+		fetchLeetCodeContributions()
+			.then(setLeetcodeData)
+			.catch((err) => setLeetcodeError(err instanceof Error ? err.message : "Failed to load"))
+			.finally(() => setLeetcodeLoading(false));
+	}, [leetcodeData]);
 
 	// Handle view mode change and save to session storage
 	const handleViewModeChange = (mode: ViewMode) => {
 		setViewMode(mode);
 		sessionStorage.setItem(STORAGE_KEY, mode);
 	};
-
-	// Fetch GitHub contributions (DEV)
-	const {
-		data: githubData,
-		loading: githubLoading,
-		error: githubError,
-	} = useApi(fetchGitHubContributions, { getCachedData: getCachedContributions });
-
-	// Fetch LeetCode contributions (DSA)
-	const {
-		data: leetcodeData,
-		loading: leetcodeLoading,
-		error: leetcodeError,
-	} = useApi(fetchLeetCodeContributions, { getCachedData: getCachedLeetCodeContributions });
 
 	// Determine current data based on view mode
 	const isDevMode = viewMode === "DEV";

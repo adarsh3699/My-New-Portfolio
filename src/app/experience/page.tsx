@@ -25,7 +25,7 @@ const ExperienceTimeline = dynamic(() => import("@/components/experience/Experie
 	loading: () => <ExperienceTimelineSkeleton />,
 });
 
-const OpportunitiesSection = dynamic(() => import("@/components/ui/opportunities-section"), {
+const OpportunitiesSection = dynamic(() => import("@/components/home/OpportunitiesSection"), {
 	loading: () => <div className="animate-pulse h-32 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>,
 });
 

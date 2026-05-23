@@ -1,13 +1,12 @@
 "use client";
-import React from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import { EnvelopeIcon, MapPinIcon, LinkIcon } from "@heroicons/react/24/outline";
 import { GitHubIcon, LinkedInIcon, LeetCodeIcon } from "@/components/icons";
-import { fetchGitHubProfile, getCachedProfile } from "@/lib/github-api";
-import { fetchLeetCodeStats, getCachedLeetCodeStats } from "@/lib/leetcode-api";
-import { useApi } from "@/lib/hooks";
+import { fetchGitHubProfile, getCachedProfile, type GitHubProfile } from "@/lib/github-api";
+import { fetchLeetCodeStats, getCachedLeetCodeStats, type LeetCodeStats } from "@/lib/leetcode-api";
 
 const PROFILE_DATA = {
 	name: "Adarsh Suman",
@@ -34,10 +33,24 @@ const formatLeetCodeCount = (count: number): string => {
 };
 
 export default function ProfileSection() {
-	const { data: profileData, loading } = useApi(fetchGitHubProfile, { getCachedData: getCachedProfile });
-	const { data: leetcodeStats, loading: leetcodeLoading } = useApi(fetchLeetCodeStats, {
-		getCachedData: getCachedLeetCodeStats,
-	});
+	const [profileData, setProfileData] = useState<GitHubProfile | null>(getCachedProfile);
+	const [loading, setLoading] = useState(!getCachedProfile());
+	const [leetcodeStats, setLeetcodeStats] = useState<LeetCodeStats | null>(getCachedLeetCodeStats);
+	const [leetcodeLoading, setLeetcodeLoading] = useState(!getCachedLeetCodeStats());
+
+	useEffect(() => {
+		if (profileData) return;
+		fetchGitHubProfile()
+			.then(setProfileData)
+			.finally(() => setLoading(false));
+	}, [profileData]);
+
+	useEffect(() => {
+		if (leetcodeStats) return;
+		fetchLeetCodeStats()
+			.then(setLeetcodeStats)
+			.finally(() => setLeetcodeLoading(false));
+	}, [leetcodeStats]);
 
 	const getWebsiteDisplay = (url: string | undefined): string => {
 		if (loading) return "Loading...";

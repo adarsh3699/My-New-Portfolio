@@ -24,6 +24,7 @@ export const bhemuUniDownloaderData: Project = {
 		"SwiftUI",
 		"yt-dlp",
 		"FFmpeg",
+		"Vibe Code",
 		"macOS",
 		"MVVM Architecture",
 		"Concurrency",

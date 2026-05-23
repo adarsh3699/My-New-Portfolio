@@ -1,12 +1,19 @@
 "use client";
+import { useState, useEffect } from "react";
 import { stats } from "@/data/about";
 import { fetchLeetCodeStats, getCachedLeetCodeStats } from "@/lib/leetcode-api";
-import { useApi } from "@/lib/hooks";
+import type { LeetCodeStats } from "@/lib/leetcode-api";
 
 export default function QuickStats() {
-	const { data: leetcodeStats, loading: leetcodeLoading } = useApi(fetchLeetCodeStats, {
-		getCachedData: getCachedLeetCodeStats,
-	});
+	const [leetcodeStats, setLeetcodeStats] = useState<LeetCodeStats | null>(getCachedLeetCodeStats);
+	const [leetcodeLoading, setLeetcodeLoading] = useState(!getCachedLeetCodeStats());
+
+	useEffect(() => {
+		if (leetcodeStats) return;
+		fetchLeetCodeStats()
+			.then(setLeetcodeStats)
+			.finally(() => setLeetcodeLoading(false));
+	}, [leetcodeStats]);
 
 	const formatLeetCodeCount = (count: number): string => {
 		const rounded = Math.floor(count / 5) * 5;
