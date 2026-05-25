@@ -20,21 +20,19 @@ export const bhemuCalculatorData: Project = {
 
 	// Tech details
 	technologies: [
-		"React",
+		"Next.js",
 		"Firebase",
 		"Firestore",
 		"Firebase Authentication",
-		"React Router DOM",
 		"Math.js",
-		"JavaScript",
+		"TypeScript",
 		"CSS",
 		"Google OAuth",
 		"Real-time Collaboration",
-		"Create React App",
 		"Responsive Design",
 		"PWA Ready",
 	],
-	primaryLanguage: { name: "JavaScript", color: "bg-yellow-500" },
+	primaryLanguage: { name: "TypeScript", color: "bg-blue-500" },
 	category: "Tool",
 
 	// Status

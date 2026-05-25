@@ -23,7 +23,8 @@ export default function ExperienceCard({ experience: exp, onViewDetails }: Exper
 									alt={`${exp.company} logo`}
 									width={48}
 									height={48}
-									className="object-contain w-10 h-10 sm:w-12 sm:h-12"
+									className="object-contain"
+									style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto" }}
 								/>
 							) : (
 								<BuildingOffice2Icon className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />

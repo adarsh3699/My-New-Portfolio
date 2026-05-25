@@ -5,6 +5,25 @@ export type { Experience };
 
 export const experiences: Experience[] = [
 	{
+		id: 4,
+		company: "Efficient Corporates Private Limited",
+		position: "Web Development Intern",
+		location: "Remote",
+		startDate: "May 2026",
+		endDate: "Present",
+		isCurrent: true,
+		description: [
+			"Developing a comprehensive MCQ practice platform for CA students.",
+			"Building the application using a modern tech stack including Next.js (App Router), deploying on Vercel with edge/serverless architecture.",
+			"Implementing robust PostgreSQL database schema on Supabase with Row Level Security (RLS) for data protection.",
+			"Integrating secure authentication using Email OTP and implementing API protections like Cloudflare Turnstile and rate limiting.",
+			"Developing robust test session engine with offline client runtime, batching screen events in IndexedDB for resilience.",
+		],
+		technologies: ["Next.js", "PostgreSQL", "Supabase", "TypeScript", "Tailwind CSS", "Vercel", "Cloudflare"],
+		companyUrl: "https://efficientcorporates.in/",
+		companyLogo: "/images/ecpl-logo.jpeg",
+	},
+	{
 		id: 1,
 		company: "Auric Touch LLP",
 		position: "ReactJS Developer",
@@ -17,11 +36,11 @@ export const experiences: Experience[] = [
 			"Implemented comprehensive authorization-based features and role-based access control using JWT.",
 			"Built responsive and cross-browser compatible UI components using React.js, Tailwind CSS, and Material UI.",
 			"Setup and integrated various frontend features enhancing user experience and platform functionality.",
-			"Collaborated effectively with the development team to deliver high-quality features on schedule."
+			"Collaborated effectively with the development team to deliver high-quality features on schedule.",
 		],
 		technologies: ["React", "Next.js", "JavaScript", "Tailwind CSS", "Material UI", "JWT"],
 		companyUrl: "https://drive.google.com/file/d/1OwEC4pNXD2OGM-F5TtCw8crnZa-StBtg/view?usp=drive_link",
-		companyLogo: "/images/aurictouch-logo.png"
+		companyLogo: "/images/aurictouch-logo.png",
 	},
 	{
 		id: 2,
@@ -36,11 +55,21 @@ export const experiences: Experience[] = [
 			"Internships duration from 1 june 2022 to 15 july 2022.",
 			"Work on both the frontend and backend.",
 			"Created a multiuser login system for the facility, candidate, and admin.",
-			"Learned and did software architecture design of complete project."
+			"Learned and did software architecture design of complete project.",
 		],
-		technologies: ["React", "Node.js", "JavaScript", "MySQL", "MongoDB", "Material-UI", "Express.js", "PDFKit", "Nodemailer"],
+		technologies: [
+			"React",
+			"Node.js",
+			"JavaScript",
+			"MySQL",
+			"MongoDB",
+			"Material-UI",
+			"Express.js",
+			"PDFKit",
+			"Nodemailer",
+		],
 		companyUrl: "https://drive.google.com/file/d/1E87uohp5lcWnNxixL27b4vlunchCWTWs/view?usp=drive_link",
-		companyLogo: "/images/iitp-logo.png"
+		companyLogo: "/images/iitp-logo.png",
 	},
 	{
 		id: 3,
@@ -58,6 +87,6 @@ export const experiences: Experience[] = [
 		],
 		technologies: ["HTML", "CSS", "JavaScript", "PHP"],
 		companyUrl: "https://drive.google.com/file/d/1k1Ga9QeMbF4-f-9-zVIPOubJy8oud2wB/view?usp=drive_link",
-		companyLogo: "/images/beawiz-logo.png"
-	}
-]; 
+		companyLogo: "/images/beawiz-logo.png",
+	},
+];

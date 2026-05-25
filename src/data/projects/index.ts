@@ -23,10 +23,10 @@ export const projects: Project[] = [
 	bhemuUniDownloaderData,
 	priceComparisonWebData,
 	bhemuCalculatorData,
-	bhemuCalendarData,
 	bhemuNotesData,
-	sharpLearnData,
 	myNewPortfolioData,
+	sharpLearnData,
+	bhemuCalendarData,
 	facilityEvaluationSystemIITPData,
 ];
 
