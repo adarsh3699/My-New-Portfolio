@@ -10,7 +10,7 @@ export const youngMindsClubData: Project = {
 		"YoungMinds Club is a comprehensive platform for youth engagement, event management, and career opportunities featuring advanced role-based access control (RBAC). Built with the modern MERN stack and TypeScript, it combines event management, internship opportunities, and gamified user engagement. The platform includes a complete internship management system, XP-based gamification with badges and streaks, professional email monitoring, advanced admin analytics, and modern responsive design. Features include JWT + Google OAuth authentication, QR code ticketing, cloud-based image storage, automated email notifications, and real-time performance tracking.",
 
 	// Links
-	liveUrl: "https://www.youngminds.club",
+	liveUrl: "https://youngminds.vercel.app/",
 	// Note: GitHub repo is private, so we use the fallback readmeContent below
 
 	// Tech details

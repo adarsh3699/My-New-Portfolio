@@ -65,7 +65,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
 			<head>
 				{/* Preload critical resources to prevent layout shifts */}
 				<link rel="dns-prefetch" href="https://api.github.com" />
