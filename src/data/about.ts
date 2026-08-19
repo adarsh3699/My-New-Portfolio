@@ -116,6 +116,14 @@ export const aboutData = {
 	// Certificates and achievements
 	achievements: [
 		{
+			title: "Oracle Certified AI Foundations Associate",
+			organization: "Oracle",
+			year: "2026",
+			certificateUrl: "https://drive.google.com/file/d/11gCCvdZfJZ0JAY5R481xfGww-3XTIy6J/view?usp=drive_link",
+			description: "Certified in AI, AI Foundations, generative AI, and Oracle Cloud Infrastructure fundamentals",
+			color: "bg-purple-500",
+		},
+		{
 			title: "Code-A-Haunt 2.0 Hackathon : Round 3 Top 15",
 			organization: "CodingBlock LPU",
 			year: "2025",
@@ -132,14 +140,6 @@ export const aboutData = {
 			description:
 				"Successfully completed comprehensive C++ programming course covering OOPs concepts and practical implementation",
 			color: "bg-green-500",
-		},
-		{
-			title: "Oracle AI Certified Foundations Associate",
-			organization: "Oracle",
-			year: "2026",
-			certificateUrl: "https://drive.google.com/file/d/11gCCvdZfJZ0JAY5R481xfGww-3XTIy6J/view?usp=drive_link",
-			description: "Certified in AI, AI Foundations, generative AI, and Oracle Cloud Infrastructure fundamentals",
-			color: "bg-purple-500",
 		},
 		{
 			title: "Introduction to DSA",
