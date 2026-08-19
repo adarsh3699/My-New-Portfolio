@@ -134,11 +134,11 @@ export const aboutData = {
 			color: "bg-green-500",
 		},
 		{
-			title: "C Programming Certification",
-			organization: "iamneo Platform",
-			year: "2025",
-			certificateUrl: "https://drive.google.com/file/d/1GT2_vjzDSrVftSrhTgo3x9fx7COSFMse/view?usp=drive_link",
-			description: "Completed 72 hours online course on Computer Programming via iamneo Platform",
+			title: "Oracle AI Certified Foundations Associate",
+			organization: "Oracle",
+			year: "2026",
+			certificateUrl: "https://drive.google.com/file/d/11gCCvdZfJZ0JAY5R481xfGww-3XTIy6J/view?usp=drive_link",
+			description: "Certified in AI, AI Foundations, generative AI, and Oracle Cloud Infrastructure fundamentals",
 			color: "bg-purple-500",
 		},
 		{
