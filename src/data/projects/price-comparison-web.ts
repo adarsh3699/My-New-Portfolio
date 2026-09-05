@@ -37,7 +37,7 @@ export const priceComparisonWebData: Project = {
 
 	// Status
 	isPinned: true,
-	featured: true,
+	featured: false,
 	createdAt: "2023-02-10",
 
 	// Visual content

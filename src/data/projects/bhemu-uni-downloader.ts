@@ -38,8 +38,8 @@ export const bhemuUniDownloaderData: Project = {
 	category: "Tool",
 
 	// Status
-	isPinned: true,
-	featured: true,
+	isPinned: false,
+	featured: false,
 	createdAt: "2026-01-12",
 
 	// Visual content

@@ -8,7 +8,7 @@ export type { Project };
 import { myNewPortfolioData } from "./my-new-portfolio";
 import { nirakshGuardianData } from "./niraksh-guardian";
 import { bhemuNotesData } from "./bhemu-notes";
-import { bhemuCalculatorData } from "./bhemu-calculator";
+import { bcampusData } from "./bcampus";
 import { priceComparisonWebData } from "./price-comparison-web";
 import { bhemuCalendarData } from "./bhemu-calendar";
 import { facilityEvaluationSystemIITPData } from "./facility-evaluation-system-iitp";
@@ -18,11 +18,11 @@ import { bhemuUniDownloaderData } from "./bhemu-uni-downloader";
 
 // All projects - single source of truth
 export const projects: Project[] = [
-	youngMindsClubData,
+	bcampusData,
 	nirakshGuardianData,
+	youngMindsClubData,
 	bhemuUniDownloaderData,
 	priceComparisonWebData,
-	bhemuCalculatorData,
 	bhemuNotesData,
 	myNewPortfolioData,
 	sharpLearnData,

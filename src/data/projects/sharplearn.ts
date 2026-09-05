@@ -41,8 +41,8 @@ export const sharpLearnData: Project = {
 	category: "Web",
 
 	// Status
-	isPinned: false,
-	featured: true,
+	isPinned: true,
+	featured: false,
 	createdAt: "2024-05-01",
 
 	// Visual content
