@@ -10,8 +10,8 @@ export const experiences: Experience[] = [
 		position: "Web Development Intern",
 		location: "Remote",
 		startDate: "May 2026",
-		endDate: "Present",
-		isCurrent: true,
+		endDate: "Oct 2026",
+		isCurrent: false,
 		description: [
 			"Developing a comprehensive MCQ practice platform for CA students.",
 			"Building the application using a modern tech stack including Next.js (App Router), deploying on Vercel with edge/serverless architecture.",
@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
 			"Developing robust test session engine with offline client runtime, batching screen events in IndexedDB for resilience.",
 		],
 		technologies: ["Next.js", "PostgreSQL", "Supabase", "TypeScript", "Tailwind CSS", "Vercel", "Cloudflare"],
-		companyUrl: "https://efficientcorporates.in/",
+		companyUrl: "https://drive.google.com/file/d/1py9-8F8shI_5Zv5mBOi1zn5uD1E7bAxG/view?usp=drive_link",
 		companyLogo: "/images/ecpl-logo.jpeg",
 	},
 	{
